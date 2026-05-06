@@ -1,0 +1,27 @@
+Copyright (c) 2026 Code Contract S.L. All rights reserved.
+
+This repository contains demonstrative materials for the Digital Product Passport
+(DPP) for textile products under EU regulation ESPR (UE) 2024/1781.
+
+The data shown in the demos is fictional and generated for illustrative purposes.
+It does not represent the operational reality of any brand, supplier or
+certification body cited (in particular, "Confecciones Atlantico S.A." and other
+suppliers are fictional). The simulated GTINs (e.g. 8412345678035) are not
+registered with AECOC.
+
+Public web data extracted from ternua.com is used under fair use for technical
+demonstration of how a real product can be mapped into a DPP structure. Ternua
+Group S.L. is the rightful owner of the underlying product information.
+
+Code, JSON-LD schemas and HTML templates produced by Code Contract S.L. are
+released under the following terms:
+
+- Reuse for non-commercial educational, research and regulatory-preparation
+  purposes is permitted with attribution to Code Contract S.L.
+- Commercial reuse, redistribution as a product, or use in client-facing
+  deliverables of third parties requires a written agreement with Code Contract
+  S.L.
+- The "Code Contract" name and Trackline platform branding are trademarks of
+  Code Contract S.L. and are not licensed by this repository.
+
+Contact: adkady@gmail.com

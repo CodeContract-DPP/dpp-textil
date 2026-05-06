@@ -1,0 +1,543 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://id.codecontract.eu/ctx/textile-v1.jsonld"
+  ],
+  "dpp_uid": "urn:dpp:codecontract:textile:1644413-0576",
+  "dpp_version": "1.0-mock",
+  "created": "2026-05-05",
+  "last_updated": "2026-05-05",
+  "regulation_framework": [
+    "ESPR (UE) 2024/1781 - base regulatoria",
+    "Reglamento DPP textil - pendiente delegated act (estimado mid-2028)",
+    "GS1 Digital Link",
+    "CIRPASS-2 alignment"
+  ],
+  "_meta": {
+    "model": "TextileDPPModel v0.9 (CIRPASS-2 + Battery Pass mapping)",
+    "phases_model": "6-phase Code Contract textile reuse model",
+    "generated_by": "Code Contract demo - 2026-05-05",
+    "product_label": "XENON JKT M",
+    "sku": "1644413-0576"
+  },
+  "responsibleEconomicOperator": {
+    "_icon": "🏢",
+    "_title": "Operador economico responsable",
+    "legalName": {
+      "value": "Ternua Group S.L.",
+      "_status": "confirmed",
+      "_phase": 1,
+      "_evidence": {
+        "blockchainTxHash": "0xd1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6",
+        "tracklineProcessId": "TL-MASTER-EO-001",
+        "registeredDate": "2026-01-15",
+        "registeredBy": "Code Contract Trackline"
+      }
+    },
+    "vatId": {
+      "value": "ESBXXXXXXXX",
+      "_status": "confirmed",
+      "_phase": 1
+    },
+    "lei": {
+      "value": "959800XXXXXXXXXXXXXX",
+      "_status": "confirmed",
+      "_phase": 1
+    },
+    "eori": {
+      "value": "ESBXXXXXXXXX",
+      "_status": "confirmed",
+      "_phase": 1
+    },
+    "headquarters": {
+      "value": "Mondragon, Gipuzkoa, ES",
+      "_status": "confirmed",
+      "_phase": 1
+    },
+    "responsiblePersonEU": {
+      "value": "Ternua Group (UE-establecido)",
+      "_status": "confirmed",
+      "_phase": 1
+    }
+  },
+  "productIdentification": {
+    "_icon": "🆔",
+    "_title": "Identificacion del producto",
+    "modelName": {
+      "value": "XENON JKT M",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_note": "De etiqueta producto Ternua"
+    },
+    "sku": {
+      "value": "1644413-0576",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_registryRequired": true
+    },
+    "gtin": {
+      "value": "08412345006789",
+      "_status": "confirmed",
+      "_phase": 6,
+      "_evidence": {
+        "blockchainTxHash": "0xa1b2c3d4e5f67890aabbccddeeff0011",
+        "tracklineProcessId": "TL-2026-XENON-001",
+        "registeredDate": "2026-04-15",
+        "registeredBy": "Code Contract Trackline"
+      },
+      "_registryRequired": true
+    },
+    "image": {
+      "value": "https://static.ternua.com/media/catalog/product/cache/d24a34bded6d2df740ef66d66d2112c9/1/6/1644413-0576-1-XENON-JKT-M-M.jpg.jpg",
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "brand": {
+      "value": "Ternua",
+      "_status": "confirmed",
+      "_phase": 1
+    },
+    "weight_g": {
+      "value": 860,
+      "unit": "g",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_note": "Talla M, dato Ternua"
+    },
+    "price_eur": {
+      "value": 99.95,
+      "unit": "EUR",
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "fit": {
+      "value": "Slim",
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "sizes": {
+      "value": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL",
+        "3XL"
+      ],
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "color": {
+      "value": "0576",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_note": "Extraido del PDF Cat#3 (Etiqueta interior) - documentacion ficticia del Trackline"
+    },
+    "collection": {
+      "value": "Adrenalite Series SS26",
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "categoryActivity": {
+      "value": [
+        "Trekking 5/5",
+        "Fast Hiking 5/5"
+      ],
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "hood": {
+      "value": false,
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "careInstructions": {
+      "value": "Max 30 C - DX seco - No lejia - No plancha - Secadora baja",
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "modelIdentifier": {
+      "value": "TER-XENON-JKT-M-2026",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_legalBasis": "ESPR Art. registry - PROYECCION",
+      "_registryRequired": true
+    },
+    "registryStatus": {
+      "value": "Pre-registrado en sandbox CIRPASS-2",
+      "_status": "confirmed-pending-norm",
+      "_phase": 6,
+      "_note": "Pendiente acto delegado textil UE - registro central definitivo se abre con la publicacion oficial (estimado mid-2028)",
+      "_registryRequired": true
+    },
+    "qrCarrier": {
+      "value": "GS1 Digital Link / QR persistente en etiqueta interior",
+      "_status": "confirmed",
+      "_phase": 6,
+      "_legalBasis": "GS1 Digital Link 1.3",
+      "_registryRequired": true
+    },
+    "lifecycle": {
+      "placementOnMarketDate": {
+        "value": "2026-04-01",
+        "_status": "confirmed",
+        "_phase": 6,
+        "_legalBasis": "ESPR Art. 12-13 - PROYECCION",
+        "_registryRequired": true
+      },
+      "complianceStatus": {
+        "value": "compliant",
+        "_status": "confirmed",
+        "_phase": 6,
+        "_legalBasis": "ESPR Art. 12-13 - PROYECCION",
+        "_registryRequired": true
+      }
+    },
+    "responsibleOperatorRef": {
+      "value": "urn:dpp:codecontract:operator:ternua-group",
+      "_status": "confirmed",
+      "_phase": 1,
+      "_legalBasis": "ESPR Art. 12-13 - PROYECCION",
+      "_registryRequired": true
+    }
+  },
+  "materialComposition": {
+    "_icon": "⚗",
+    "_title": "Composicion y materiales",
+    "fabricTechnology": {
+      "value": "Dryshell",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_note": "Tejido Ternua: microfibras para extraer sudor, alta transpirabilidad"
+    },
+    "fiberComposition": {
+      "value": "65% poliamida reciclada - 25% poliester reciclado - 10% elastano",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_note": "Extraido del PDF Cat#5 (TDS Dryshell) - documentacion ficticia del Trackline"
+    },
+    "functionalTreatments": {
+      "value": [
+        "Polygiene (control olor, sal de plata, permanente)"
+      ],
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "recycledContentPct": {
+      "value": 87,
+      "unit": "%",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_note": "Calculado desde PDF Cat#6 (BoM lote) - documentacion ficticia del Trackline"
+    },
+    "biodegradableContent": {
+      "value": "Componentes de refuerzo biodegradables",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_note": "Extraido del PDF Cat#5 (TDS) - claim Ternua respaldado en documentacion ficticia del Trackline"
+    },
+    "billOfMaterials": {
+      "_isTable": true,
+      "_status": "confirmed",
+      "_phase": 4,
+      "_columns": [
+        "Componente",
+        "% peso",
+        "Material",
+        "Origen reciclado"
+      ],
+      "_rows": [
+        [
+          "Tela exterior",
+          "78",
+          "Dryshell PA/PES recic",
+          "Si"
+        ],
+        [
+          "Forro",
+          "12",
+          "PES reciclado",
+          "Si"
+        ],
+        [
+          "Cremalleras",
+          "4",
+          "YKK reciclada",
+          "Si"
+        ],
+        [
+          "Cintas/refuerzos",
+          "6",
+          "Reciclado",
+          "Si"
+        ]
+      ]
+    }
+  },
+  "supplyChain": {
+    "_icon": "🔗",
+    "_title": "Cadena de suministro",
+    "tier1Operator": {
+      "value": "Confecciones Atlantico S.A. (FICTICIA)",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_evidence": {
+        "blockchainTxHash": "0xb1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+        "tracklineProcessId": "TL-MASTER-T1-001",
+        "registeredDate": "2026-03-10",
+        "registeredBy": "Code Contract Trackline"
+      }
+    },
+    "tier1Gln": {
+      "value": "5601999911114",
+      "_status": "confirmed",
+      "_phase": 2
+    },
+    "tier1Country": {
+      "value": "Portugal (Vila Nova de Gaia)",
+      "_status": "confirmed",
+      "_phase": 2
+    },
+    "tier2Fabric": {
+      "value": "Tejeduria iberica acreditada bluesign",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_note": "Extraido del PDF Cat#7 (Master proveedor T2, NDA-redacted) - documentacion ficticia del Trackline"
+    },
+    "tier3Fiber": {
+      "value": "Trazabilidad PES reciclado via GRS",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_legalBasis": "GRS 4.0",
+      "_note": "Extraido del PDF Cat#7 (GRS chain-of-custody) - documentacion ficticia del Trackline"
+    },
+    "tier4Raw": {
+      "value": "Pre-consumer + post-consumer PET",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_note": "Extraido del PDF Cat#7 (GRS pre/post-consumer PET) - documentacion ficticia del Trackline"
+    }
+  },
+  "performanceAndDurability": {
+    "_icon": "⚡",
+    "_title": "Durabilidad y prestaciones",
+    "expectedServiceLife": {
+      "value": "5 anos / 60 ciclos lavado",
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "tensileStrengthWarp": {
+      "value": 820,
+      "unit": "N",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_legalBasis": "ISO 13934-1"
+    },
+    "tensileStrengthWeft": {
+      "value": 740,
+      "unit": "N",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_legalBasis": "ISO 13934-1"
+    },
+    "abrasionResistance": {
+      "value": "25.000 ciclos Martindale",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_legalBasis": "ISO 12947"
+    },
+    "pillingResistance": {
+      "value": "Grado 4-5",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_legalBasis": "ISO 12945-2"
+    },
+    "colourFastnessWash": {
+      "value": "Grado 4",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_legalBasis": "ISO 105-C06"
+    },
+    "dimensionalStability": {
+      "value": "<3% tras 5 lavados",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_legalBasis": "ISO 5077"
+    }
+  },
+  "repairability": {
+    "_icon": "🔧",
+    "_title": "Reparabilidad",
+    "repairabilityScore": {
+      "value": "8.2/10",
+      "_status": "confirmed-pending-norm",
+      "_phase": 4,
+      "_note": "Pendiente metodo armonizado UE - JRC working group reparabilidad textil / acto delegado textil (estimado mid-2028)"
+    },
+    "sparesAvailable": {
+      "value": "5 anos desde fin de venta",
+      "_status": "confirmed",
+      "_phase": 4
+    }
+  },
+  "endOfLife": {
+    "_icon": "♻️",
+    "_title": "Fin de vida y reciclabilidad",
+    "recyclabilityPct": {
+      "value": 78,
+      "unit": "%",
+      "_status": "confirmed-pending-norm",
+      "_phase": 4,
+      "_note": "Pendiente metodo armonizado UE de reciclabilidad textil - JRC working group / acto delegado textil (estimado mid-2028)"
+    },
+    "monomateriality": {
+      "value": "Mayoritariamente PA/PES recic - separable",
+      "_status": "confirmed-pending-norm",
+      "_phase": 4,
+      "_note": "Pendiente metodo armonizado UE de reciclabilidad textil - acto delegado textil (estimado mid-2028)"
+    },
+    "eprEs": {
+      "value": "Re-Viste - ES-TX-2026-MOCK-XENON-001",
+      "_status": "confirmed",
+      "_phase": 2
+    },
+    "eprBatchVolume": {
+      "value": 1240,
+      "unit": "unidades",
+      "_status": "confirmed",
+      "_phase": 6,
+      "_note": "Lote Q2-2026"
+    },
+    "takeBackProgram": {
+      "value": "Ternua Komrest - puntos venta + online",
+      "_status": "confirmed",
+      "_phase": 4
+    }
+  },
+  "carbonFootprint": {
+    "_icon": "🌍",
+    "_title": "Huella ambiental",
+    "pcf": {
+      "value": 18.4,
+      "unit": "kg CO2eq",
+      "_status": "confirmed",
+      "_phase": 5,
+      "_legalBasis": "ISO 14067:2018"
+    },
+    "methodology": {
+      "value": "PEFCR Apparel & Footwear v3.1",
+      "_status": "confirmed",
+      "_phase": 5
+    },
+    "lab": {
+      "value": "SCS Global Services",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_note": "Master parcial reutilizable entre prendas"
+    },
+    "waterFootprint": {
+      "value": 41.2,
+      "unit": "L/prenda",
+      "_status": "confirmed-pending-norm",
+      "_phase": 5,
+      "_note": "Pendiente PEFCR Apparel & Footwear version final + metodo armonizado UE de huella hidrica textil"
+    },
+    "eolScenario": {
+      "value": "Reciclaje fibra-a-fibra - 78%",
+      "_status": "confirmed-pending-norm",
+      "_phase": 5,
+      "_note": "Pendiente metodo armonizado UE de reciclabilidad textil - acto delegado textil (estimado mid-2028)"
+    }
+  },
+  "supplyChainDueDiligence": {
+    "_icon": "🔍",
+    "_title": "Diligencia debida (CSDDD)",
+    "csdddPolicy": {
+      "value": "Vigente desde 2025-09",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_legalBasis": "Directiva (UE) 2024/1760 CSDDD"
+    },
+    "dueDiligenceReportBatch": {
+      "value": "Q2-2026 firmado",
+      "_status": "confirmed",
+      "_phase": 6
+    },
+    "forcedLabourAssessment": {
+      "value": "Sin findings",
+      "_status": "confirmed",
+      "_phase": 6,
+      "_legalBasis": "Reg. (UE) 2024/3015"
+    },
+    "socialAuditTier1": {
+      "value": "SA8000 valido hasta 2027-08",
+      "_status": "confirmed",
+      "_phase": 3,
+      "_note": "Master - auditor SGS"
+    }
+  },
+  "complianceLabels": {
+    "_icon": "✅",
+    "_title": "Etiquetas y certificaciones (compliance)",
+    "bluesignFabric": {
+      "value": "Activo - expira 2026-12-15",
+      "_status": "confirmed",
+      "_phase": 3,
+      "_legalBasis": "bluesign system",
+      "_evidence": {
+        "blockchainTxHash": "0xc1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6",
+        "tracklineProcessId": "TL-MASTER-CERT-BLU-001",
+        "registeredDate": "2026-02-01",
+        "registeredBy": "Code Contract Trackline"
+      }
+    },
+    "oekoTex": {
+      "value": "Standard 100 Class II",
+      "_status": "confirmed",
+      "_phase": 3,
+      "_note": "Master reutilizable entre prendas"
+    },
+    "zdhcFacility": {
+      "value": "Aspirational level",
+      "_status": "confirmed",
+      "_phase": 3
+    },
+    "polygiene": {
+      "value": "Permanente",
+      "_status": "confirmed",
+      "_phase": 4
+    }
+  },
+  "block_status": {
+    "phase1": {
+      "confirmed": 8,
+      "confirmed-pending-norm": 0,
+      "pending": 0
+    },
+    "phase4": {
+      "confirmed": 29,
+      "confirmed-pending-norm": 3,
+      "pending": 0
+    },
+    "phase6": {
+      "confirmed": 7,
+      "confirmed-pending-norm": 1,
+      "pending": 0
+    },
+    "phase2": {
+      "confirmed": 9,
+      "confirmed-pending-norm": 0,
+      "pending": 0
+    },
+    "phase5": {
+      "confirmed": 2,
+      "confirmed-pending-norm": 2,
+      "pending": 0
+    },
+    "phase3": {
+      "confirmed": 4,
+      "confirmed-pending-norm": 0,
+      "pending": 0
+    }
+  }
+}

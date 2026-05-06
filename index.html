@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoja de ruta DPP Textil - Code Contract</title>
+<meta name="description" content="Implementacion del Digital Product Passport para productos textiles UE. Marco regulatorio ESPR, estandares CIRPASS-2 y JTC 24, demos navegables.">
+<meta name="author" content="Code Contract S.L.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:site_name" content="Code Contract - DPP Textil">
+<meta property="og:title" content="Hoja de ruta DPP Textil">
+<meta property="og:description" content="Marco regulatorio + estandares + demos para preparacion temprana al Digital Product Passport textil de la UE.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F455;</text></svg>">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --dark: #1a1a2e;
+    --green: #2e7d4f;
+    --green-light: #e8f5ee;
+    --blue: #2563eb;
+    --blue-light: #eff6ff;
+    --amber: #d97706;
+    --amber-light: #fffbeb;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --purple: #7c3aed;
+    --purple-light: #f5f3ff;
+    --teal: #0d9488;
+    --teal-light: #f0fdfa;
+    --gray: #6b7280;
+    --border: #e5e7eb;
+    --bg: #f8fafc;
+    --cc-blue: #1f4e79;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: #1f2937;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #1f4e79 100%);
+    color: white;
+    padding: 60px 20px 50px;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+    max-width: 720px;
+    margin: 0 auto 18px;
+    font-weight: 400;
+  }
+  .reg-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Doc status */
+  .doc-status {
+    background: white;
+    border: 1px solid var(--amber);
+    border-left: 4px solid var(--amber);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: -25px auto 24px;
+    max-width: 1060px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    position: relative;
+    z-index: 5;
+  }
+  .doc-status .icon { font-size: 22px; }
+  .doc-status .text { flex: 1; font-size: 13px; }
+  .doc-status .text strong { display: block; color: var(--amber); margin-bottom: 2px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .doc-status .stamp { font-family: monospace; font-size: 11px; color: var(--gray); white-space: nowrap; }
+
+  /* Deadline banner */
+  .deadline-banner {
+    background: linear-gradient(90deg, #1f4e79, #2e75b6);
+    color: white;
+    padding: 18px 24px;
+    border-radius: 14px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .deadline-banner .date {
+    font-size: 22px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .deadline-banner .label { font-size: 13px; opacity: 0.95; }
+  .deadline-banner .note { font-size: 11px; opacity: 0.8; margin-top: 4px; }
+
+  /* Section card */
+  .section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--dark);
+  }
+  .section .lead {
+    color: var(--gray);
+    font-size: 14px;
+    margin-bottom: 22px;
+    max-width: 70ch;
+  }
+
+  /* Hierarchy */
+  .hierarchy-levels {
+    display: flex;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .h-level {
+    flex: 1;
+    border-radius: 12px;
+    padding: 18px 16px;
+    position: relative;
+  }
+  .h-level h3 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .h-level p { font-size: 13px; line-height: 1.5; }
+  .h-ley { background: #dbeafe; color: #1d4ed8; }
+  .h-guia { background: #d1fae5; color: #065f46; }
+  .h-solucion { background: #fef3c7; color: #92400e; }
+  .h-arrow {
+    position: absolute;
+    right: -11px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    color: var(--gray);
+    font-size: 18px;
+  }
+
+  /* Timeline */
+  .tl-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .tl-table thead th {
+    background: var(--bg);
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--gray);
+    border-bottom: 2px solid var(--border);
+  }
+  .tl-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .tl-date { font-family: monospace; font-weight: 600; white-space: nowrap; }
+  .tl-pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .pill-done { background: var(--green-light); color: var(--green); }
+  .pill-active { background: var(--amber-light); color: var(--amber); }
+  .pill-future { background: var(--purple-light); color: var(--purple); }
+  .pill-critical { background: var(--red-light); color: var(--red); }
+  .tl-table .estim { color: var(--gray); font-style: italic; font-size: 11px; }
+
+  /* Demo cards */
+  .demos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 18px;
+  }
+  .demo-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+  }
+  .demo-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); transform: translateY(-2px); border-color: var(--cc-blue); }
+  .demo-card.coming-soon { opacity: 0.65; pointer-events: none; }
+  .demo-card .demo-status {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .demo-card.live .demo-status { background: var(--green-light); color: var(--green); }
+  .demo-card.coming-soon .demo-status { background: var(--bg); color: var(--gray); }
+  .demo-card h3 {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    color: var(--dark);
+    padding-right: 80px;
+  }
+  .demo-card .brand { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 12px; font-weight: 600; }
+  .demo-card .meta {
+    font-size: 13px;
+    color: #4b5563;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .demo-card .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .demo-card .features span {
+    font-size: 10px;
+    background: var(--blue-light);
+    color: var(--blue);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .demo-card .cta {
+    color: var(--cc-blue);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  /* CTA section */
+  .cta-section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .cta-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .cta-section .lead {
+    color: var(--gray);
+    font-size: 14px;
+    margin-bottom: 22px;
+    max-width: 70ch;
+  }
+  .cta-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .cta-step {
+    border-left: 3px solid var(--cc-blue);
+    padding: 4px 14px;
+  }
+  .cta-step .num { font-size: 11px; color: var(--cc-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
+  .cta-step .txt { font-size: 13px; line-height: 1.5; }
+  .cta-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .cta-link {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.18s ease;
+  }
+  .cta-link:hover { filter: brightness(0.95); transform: translateY(-1px); }
+  .cta-link-primary { background: var(--cc-blue); color: white; }
+  .cta-link-secondary { background: var(--blue-light); color: var(--blue); border: 1px solid var(--blue); }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 30px 20px 50px;
+    font-size: 12px;
+    color: var(--gray);
+  }
+  .footer a { color: var(--blue); text-decoration: none; }
+  .footer .sources { margin-bottom: 10px; }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .header h1 { font-size: 22px; }
+    .deadline-banner { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .deadline-banner .date { font-size: 18px; }
+    .hierarchy-levels { flex-direction: column; gap: 12px; }
+    .h-arrow { display: none; }
+    .doc-status { flex-direction: column; align-items: flex-start; }
+    .tl-table { font-size: 11px; }
+    .cta-steps { grid-template-columns: 1fr; }
+    .demos-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>Hoja de ruta DPP Textil</h1>
+  <p class="subtitle">Implementacion del Digital Product Passport para productos textiles UE - marco regulatorio, estandares y demos navegables.</p>
+  <span class="reg-badge">ESPR 2024/1781 &middot; Working Plan 2025-2030 (textil prioridad 1)</span>
+</header>
+
+<div class="doc-status">
+  <span class="icon">&#x26A0;&#xFE0F;</span>
+  <div class="text">
+    <strong>Estado del documento</strong>
+    Datos demo ficticios. Acto delegado textil aun no adoptado a fecha de publicacion. Posicionamiento de preparacion temprana.
+  </div>
+  <span class="stamp">v1.0 &middot; 6 may 2026</span>
+</div>
+
+<div class="container">
+
+  <div class="deadline-banner">
+    <div class="date">mid-2028</div>
+    <div>
+      <div class="label">Fecha estimada de aplicacion obligatoria del DPP textil</div>
+      <div class="note">Estimacion sectorial - depende de cuando la Comision adopte el acto delegado textil. No es fecha oficial vinculante.</div>
+    </div>
+  </div>
+
+  <!-- HIERARCHY -->
+  <div class="section">
+    <h2>Tres niveles de implementacion</h2>
+    <p class="lead">Como se relacionan el reglamento, los estandares tecnicos y la solucion concreta en el flujo de un DPP textil.</p>
+    <div class="hierarchy-levels">
+      <div class="h-level h-ley">
+        <h3>Ley</h3>
+        <p><strong>ESPR Reg. UE 2024/1781</strong>. Marco horizontal. Acto delegado textil pendiente. Reg. 1007/2011 etiquetado, REACH, CSDDD, Reg. 2024/3015 trabajo forzoso.</p>
+        <span class="h-arrow">&rarr;</span>
+      </div>
+      <div class="h-level h-guia">
+        <h3>Guia tecnica</h3>
+        <p><strong>CIRPASS-2</strong> deliverables, <strong>JTC 24</strong> serie EN 18xxx (DPP horizontal), GS1 Digital Link AI 01/10/21, W3C Verifiable Credentials, ISO/IEC 18004.</p>
+        <span class="h-arrow">&rarr;</span>
+      </div>
+      <div class="h-level h-solucion">
+        <h3>Solucion Code Contract</h3>
+        <p><strong>Trackline</strong> + DPP item-level con firma <strong>eIDAS QES</strong>. Validez legal del dato certificado. Mappings textiles + plantillas JSON-LD por producto.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section">
+    <h2>Calendario regulatorio</h2>
+    <p class="lead">Hitos publicos vinculantes y estimaciones sectoriales. Las fechas oficiales se distinguen de las estimadas.</p>
+    <table class="tl-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hito</th>
+          <th>Estado</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tl-date">2024-07-18</td>
+          <td>ESPR Reg. UE 2024/1781 entra en vigor</td>
+          <td><span class="tl-pill pill-done">Cumplido</span></td>
+          <td>Oficial OJ</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2025-04-16</td>
+          <td>Working Plan ESPR 2025-2030 publicado - textil prioridad 1</td>
+          <td><span class="tl-pill pill-done">Cumplido</span></td>
+          <td>Oficial COM(2025)</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2026-02-09</td>
+          <td>Prohibicion destruccion no vendidos textiles grandes empresas</td>
+          <td><span class="tl-pill pill-done">Cumplido</span></td>
+          <td>Oficial OJ</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2027-02-18</td>
+          <td>Battery Passport vinculante (referencia analogica)</td>
+          <td><span class="tl-pill pill-active">En curso</span></td>
+          <td>Oficial OJ</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2027-Q4 <span class="estim">(estim.)</span></td>
+          <td>Adopcion acto delegado textil ESPR</td>
+          <td><span class="tl-pill pill-future">Estimado</span></td>
+          <td>Estimacion</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2027-12-14</td>
+          <td>Reg. UE 2024/3015 trabajo forzoso aplicable</td>
+          <td><span class="tl-pill pill-future">Pendiente</span></td>
+          <td>Oficial OJ</td>
+        </tr>
+        <tr>
+          <td class="tl-date">mid-2028 <span class="estim">(estim.)</span></td>
+          <td>Aplicacion obligatoria DPP textil</td>
+          <td><span class="tl-pill pill-critical">Critico</span></td>
+          <td>Estimacion</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2028-Q3</td>
+          <td>CSDDD primera oleada empresas (>= 5000 emp / 1500M EUR)</td>
+          <td><span class="tl-pill pill-future">Pendiente</span></td>
+          <td>Oficial OJ</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DEMOS -->
+  <div class="section">
+    <h2>Demos navegables</h2>
+    <p class="lead">Implementaciones de referencia construidas sobre productos reales de Ternua. Datos ficticios coherentes con el marco regulatorio. Cada demo materializa un patron distinto del DPP textil.</p>
+    <div class="demos-grid">
+
+      <a href="xenon/" class="demo-card live">
+        <span class="demo-status">Live</span>
+        <h3>XENON Jacket M</h3>
+        <div class="brand">Ternua &middot; Adrenalite Series SS26</div>
+        <div class="meta">
+          Dos prendas hermanas (Jacket M y Hood Jacket M) con herencia de masters comunes. Materializa el patron de las 6 fases del DPP textil.
+        </div>
+        <div class="features">
+          <span>2 SKU hermanas</span>
+          <span>10 clusters</span>
+          <span>JSON-LD &middot; eIDAS QES</span>
+          <span>HTML estatico</span>
+        </div>
+        <div class="cta">Abrir demo &rarr;</div>
+      </a>
+
+      <a href="#" class="demo-card coming-soon">
+        <span class="demo-status">Pendiente</span>
+        <h3>DEMINA Hard Hood W</h3>
+        <div class="brand">Ternua &middot; Trekking Series SS26</div>
+        <div class="meta">
+          Soft-shell con poliester reciclado post-consumer. Materializa el patron item-level con serializacion GS1 AI 21 y eventos post-venta (venta, reparacion, reventa, fin de vida).
+        </div>
+        <div class="features">
+          <span>3 capas (modelo+lote+item)</span>
+          <span>Avery Dennison atma.io</span>
+          <span>3 items simulados</span>
+        </div>
+        <div class="cta">Proximamente</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Implementacion con Trackline</h2>
+    <p class="lead">Trackline es la plataforma de Code Contract que permite operativizar lo que muestran los demos: extraccion estructurada de datos desde documentos fuente, generacion de DPP firmados con eIDAS QES, y mantenimiento del dato a lo largo del ciclo de vida del producto.</p>
+    <div class="cta-steps">
+      <div class="cta-step">
+        <div class="num">1</div>
+        <div class="txt">Mapping de campos DPP aplicables a tu producto - cluster por cluster.</div>
+      </div>
+      <div class="cta-step">
+        <div class="num">2</div>
+        <div class="txt">Recoleccion de documentos fuente (TDS, BoM, certificados, lab reports, ACV).</div>
+      </div>
+      <div class="cta-step">
+        <div class="num">3</div>
+        <div class="txt">Extraccion estructurada con Trackline + IA - generacion JSON-LD canonico.</div>
+      </div>
+      <div class="cta-step">
+        <div class="num">4</div>
+        <div class="txt">Firma eIDAS QES + DataIntegrityProof - emision QR final via GS1 Digital Link.</div>
+      </div>
+    </div>
+    <div class="cta-links">
+      <a href="https://web.codecontractplattform.com/" class="cta-link cta-link-primary" target="_blank">Trackline (plataforma)</a>
+      <a href="mailto:adkady@gmail.com?subject=DPP%20Textil%20-%20consulta%20demo" class="cta-link cta-link-secondary">Solicitar mapping de tu producto</a>
+      <a href="https://codecontract-dpp.github.io/dpp-construccion/" class="cta-link cta-link-secondary" target="_blank">Hoja de ruta DPP Construccion</a>
+      <a href="https://codecontract-dpp.github.io/dpp-validator/" class="cta-link cta-link-secondary" target="_blank">Validador DPP (CIRPASS)</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="sources">
+    <strong>Fuentes oficiales:</strong>
+    <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank">ESPR (UE) 2024/1781</a> &middot;
+    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM:2025:772:FIN" target="_blank">Working Plan ESPR 2025-2030</a> &middot;
+    <a href="https://cirpass2.eu/" target="_blank">CIRPASS-2</a> &middot;
+    <a href="https://standards.cencenelec.eu/" target="_blank">JTC 24 (CEN-CENELEC)</a> &middot;
+    <a href="https://www.gs1.org/standards/gs1-digital-link" target="_blank">GS1 Digital Link</a>
+  </div>
+  Elaborado por Code Contract S.L. &middot; v1.0 &middot; 6 mayo 2026<br>
+  <em style="color: #b0b0b0;">Nota: este documento no constituye asesoramiento juridico. El acto delegado textil no esta adoptado a fecha de publicacion. Consultar siempre el texto oficial del reglamento y los actos delegados vigentes.</em>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>DPP Textil - Demo XENON Ternua | Code Contract</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: #f5f7fa;
+    color: #2d3748;
+    line-height: 1.5;
+  }
+  .app-header {
+    background: linear-gradient(135deg, #0d3b2e 0%, #1a5276 100%);
+    color: #fff;
+    padding: 1.6rem 2rem 1.4rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .app-header h1 { font-size: 1.55rem; font-weight: 600; margin-bottom: .35rem; }
+  .app-header p { font-size: .92rem; opacity: .92; max-width: 980px; }
+  .header-badges { margin-top: .9rem; display: flex; flex-wrap: wrap; gap: .45rem; }
+  .header-badges span {
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.22);
+    color: #fff;
+    padding: .25rem .7rem;
+    border-radius: 12px;
+    font-size: .75rem;
+    backdrop-filter: blur(2px);
+  }
+  .nav-bar {
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: .55rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .nav-links { display: flex; gap: 1.4rem; }
+  .nav-links a {
+    text-decoration: none;
+    color: #4a5568;
+    font-size: .88rem;
+    padding: .35rem 0;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-links a.active { color: #1a5276; border-bottom-color: #1a5276; font-weight: 600; }
+  .json-selector { display: flex; align-items: center; gap: .55rem; }
+  .json-selector label { font-size: .85rem; color: #4a5568; font-weight: 500; }
+  .json-selector select {
+    padding: .4rem .65rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-size: .85rem;
+    background: #fff;
+    color: #2d3748;
+    min-width: 380px;
+    cursor: pointer;
+  }
+  .container { max-width: 1300px; margin: 0 auto; padding: 1.4rem 2rem 3rem; }
+
+  .legend {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: .85rem 1.1rem;
+    margin-bottom: 1.2rem;
+    font-size: .78rem;
+    color: #4a5568;
+  }
+  .legend-grid { display: flex; flex-wrap: wrap; gap: .55rem 1rem; }
+  .legend-block-title {
+    flex-basis: 100%;
+    font-weight: 600;
+    color: #2d3748;
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-bottom: .25rem;
+  }
+  .legend-block-title.second {
+    margin-top: .6rem;
+    border-top: 1px solid #edf2f7;
+    padding-top: .5rem;
+  }
+  .legend-item { display: inline-flex; align-items: center; gap: .35rem; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .dot.confirmed              { background: #38a169; }
+  .dot.confirmed-pending-norm { background: #d69e2e; }
+  .dot.pending                { background: #e53e3e; }
+
+  .reg-timeline {
+    background: #fafbfc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+  }
+  .reg-timeline-title {
+    font-size: 0.85rem;
+    color: #4a5568;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+  }
+  .reg-timeline-track {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    position: relative;
+    padding: 0.5rem 0 1rem;
+    overflow-x: auto;
+  }
+  .reg-timeline-track::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background: linear-gradient(to right, #38a169 0%, #38a169 33%, #d69e2e 33%, #d69e2e 50%, #a0aec0 50%, #a0aec0 100%);
+    z-index: 0;
+  }
+  .reg-milestone {
+    flex: 1;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 0.25rem;
+  }
+  .reg-milestone .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px currentColor;
+    margin-bottom: 0.5rem;
+  }
+  .reg-milestone.done   { color: #38a169; }
+  .reg-milestone.done .dot   { background: #38a169; }
+  .reg-milestone.soon   { color: #d69e2e; }
+  .reg-milestone.soon .dot   { background: #d69e2e; }
+  .reg-milestone.future { color: #a0aec0; }
+  .reg-milestone.future .dot { background: white; }
+  .reg-milestone .date {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #2d3748;
+  }
+  .reg-milestone .label {
+    font-size: 0.7rem;
+    color: #718096;
+    text-align: center;
+    line-height: 1.3;
+    margin-top: 0.15rem;
+  }
+  .reg-timeline-note {
+    font-size: 0.75rem;
+    color: #718096;
+    padding-top: 0.5rem;
+    border-top: 1px solid #e2e8f0;
+    line-height: 1.5;
+  }
+
+  .phase-bar {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: .65rem;
+    margin-bottom: 1.3rem;
+  }
+  .phase-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: .8rem .85rem;
+    text-align: center;
+    border-left: 5px solid #cbd5e0;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .phase-card.is-confirmed              { border-left-color: #38a169; }
+  .phase-card.is-confirmed-pending-norm { border-left-color: #d69e2e; }
+  .phase-card.is-pending                { border-left-color: #e53e3e; }
+  .phase-card .phase-num {
+    font-size: .68rem; color: #718096;
+    text-transform: uppercase; letter-spacing: .04em; font-weight: 600;
+  }
+  .phase-card .phase-name { font-size: .88rem; font-weight: 600; margin-top: .15rem; color: #2d3748; }
+  .phase-card .phase-status { margin-top: .35rem; font-weight: 700; font-size: .82rem; }
+  .phase-card .phase-status.confirmed              { color: #38a169; }
+  .phase-card .phase-status.confirmed-pending-norm { color: #d69e2e; }
+  .phase-card .phase-status.pending                { color: #e53e3e; }
+  .phase-card .phase-freq { font-size: .68rem; color: #a0aec0; margin-top: .2rem; }
+
+  .dpp-dashboard {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1.3rem;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .ring-svg { width: 200px; height: 200px; }
+  .ring-bg { fill: none; stroke: #edf2f7; stroke-width: 14; }
+  .ring-fg {
+    fill: none; stroke: #38a169; stroke-width: 14; stroke-linecap: round;
+    transform: rotate(-90deg); transform-origin: 100px 100px;
+    transition: stroke-dasharray .6s ease, stroke .3s ease;
+  }
+  .ring-fg.warn { stroke: #d69e2e; }
+  .ring-fg.bad  { stroke: #e53e3e; }
+  .ring-text {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    fill: #2d3748;
+    text-anchor: middle;
+  }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; }
+  .kpi {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: .8rem .9rem;
+  }
+  .kpi-label { font-size: .72rem; color: #718096; text-transform: uppercase; letter-spacing: .03em; font-weight: 600; }
+  .kpi-value { font-size: 1.4rem; font-weight: 700; color: #2d3748; margin-top: .15rem; }
+  .kpi-value.confirmed              { color: #38a169; }
+  .kpi-value.confirmed-pending-norm { color: #d69e2e; }
+  .kpi-value.pending                { color: #e53e3e; }
+  .kpi-value.inherited              { color: #6b46c1; }
+
+  .urgent-list {
+    margin-top: .8rem;
+    background: #fff5f5;
+    border: 1px solid #fed7d7;
+    border-radius: 8px;
+    padding: .7rem .9rem;
+    font-size: .8rem;
+    color: #742a2a;
+  }
+  .urgent-list strong { display: block; margin-bottom: .35rem; color: #9b2c2c; }
+  .urgent-list ul { list-style: none; padding: 0; margin: 0; }
+  .urgent-list li { padding: .15rem 0; }
+  .urgent-list li::before { content: "• "; color: #e53e3e; font-weight: 700; }
+
+  .filter-bar {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: .65rem .9rem;
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    align-items: center;
+  }
+  .filter-bar button {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    color: #4a5568;
+    padding: .35rem .8rem;
+    border-radius: 6px;
+    font-size: .8rem;
+    cursor: pointer;
+    transition: all .12s ease;
+  }
+  .filter-bar button:hover { background: #edf2f7; }
+  .filter-bar button.active {
+    background: #1a5276;
+    color: #fff;
+    border-color: #1a5276;
+  }
+
+  .section {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    padding: .9rem 1.2rem;
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .section-icon { font-size: 1.3rem; }
+  .section-title { font-size: 1rem; font-weight: 600; color: #2d3748; }
+  .section-meta { margin-left: auto; font-size: .75rem; color: #718096; }
+  .section-body { padding: .8rem 1.2rem 1rem; }
+  .attribute {
+    display: grid;
+    grid-template-columns: 220px 1fr auto;
+    gap: 1rem;
+    padding: .55rem 0;
+    border-bottom: 1px dashed #edf2f7;
+    align-items: start;
+  }
+  .attribute:last-child { border-bottom: none; }
+  .attr-name { font-size: .82rem; color: #4a5568; font-weight: 600; }
+  .attr-value { font-size: .88rem; color: #2d3748; word-break: break-word; }
+  .attr-value .unit { color: #718096; font-size: .8rem; margin-left: .25rem; }
+  .attr-note { font-size: .76rem; color: #718096; margin-top: .25rem; font-style: italic; }
+  .attr-legal { font-size: .72rem; color: #3182ce; margin-top: .2rem; font-weight: 500; }
+  .attr-legal.proj { color: #805ad5; }
+  .attr-legal.adpend { color: #718096; }
+  .attr-badges { display: flex; flex-direction: column; gap: .25rem; align-items: flex-end; }
+
+  .status-badge {
+    font-size: .7rem;
+    font-weight: 600;
+    padding: .15rem .55rem;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .status-badge.confirmed              { background: #c6f6d5; color: #22543d; }
+  .status-badge.confirmed-pending-norm { background: #fefcbf; color: #744210; }
+  .status-badge.pending                { background: #e53e3e; color: #ffffff; }
+
+  .phase-tag {
+    font-size: .65rem;
+    font-weight: 600;
+    padding: .12rem .45rem;
+    border-radius: 8px;
+    background: #edf2f7;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  .trackline-badge {
+    font-size: .7rem;
+    background: #e9d8fd;
+    color: #44337a;
+    padding: .2rem .5rem;
+    border-radius: 8px;
+    border: 1px solid #d6bcfa;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+  }
+  .trackline-badge.pending-norm {
+    background: #fefcbf;
+    color: #744210;
+    border-color: #f6e05e;
+  }
+  .trackline-badge.inherited {
+    background: #faf5ff;
+    color: #553c9a;
+    border-color: #b794f4;
+  }
+  .trackline-badge.auto { background: #f3e8ff; border: 1px dashed #d6bcfa; }
+  .trackline-detail {
+    font-size: .7rem;
+    color: #6b46c1;
+    margin-top: .2rem;
+    font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
+    word-break: break-all;
+  }
+
+  .firma-chip {
+    display: inline-block;
+    background: #ebf4ff;
+    color: #2c5282;
+    border: 1px solid #90cdf4;
+    padding: 1px 7px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .eidas-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(90deg, #f0f4f8, #faf5ff);
+    border: 1px solid #d6bcfa;
+    border-left: 4px solid #6b46c1;
+    border-radius: 12px;
+    margin: 1rem 0;
+  }
+  .eidas-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .eidas-info { flex: 1; display: flex; flex-direction: column; gap: 0.2rem; }
+  .eidas-info strong { font-size: 1rem; color: #44337a; font-weight: 600; }
+  .eidas-info > span { font-size: 0.82rem; color: #553c9a; }
+  .eidas-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.3rem; font-size: 0.78rem; color: #6b46c1; }
+  .eidas-meta span { display: inline-flex; align-items: center; gap: 0.25rem; }
+  .eidas-status { background: #38a169; color: white; padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.82rem; font-weight: 600; flex-shrink: 0; }
+
+  .inherited-badge {
+    display: inline-block;
+    background: #faf5ff;
+    color: #553c9a;
+    border: 1px solid #d6bcfa;
+    padding: .15rem .55rem;
+    border-radius: 10px;
+    font-size: .7rem;
+    font-weight: 500;
+    margin-top: .25rem;
+  }
+  .pending-msg {
+    display: inline-block;
+    background: #fff5f5;
+    color: #9b2c2c;
+    border: 1px solid #e53e3e;
+    padding: .15rem .55rem;
+    border-radius: 6px;
+    font-size: .76rem;
+    font-style: italic;
+  }
+
+  table.bom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: .5rem;
+    font-size: .82rem;
+  }
+  table.bom-table th, table.bom-table td {
+    padding: .45rem .65rem;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+  }
+  table.bom-table th { background: #f7fafc; font-weight: 600; color: #4a5568; }
+  table.bom-table .empty-row {
+    text-align: center; color: #a0aec0; font-style: italic; padding: 1rem;
+  }
+
+  .registry-chip {
+    display: inline-block;
+    background: #e9d8fd;
+    color: #553c9a;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  footer {
+    margin-top: 2.5rem;
+    padding: 1.5rem 2rem;
+    background: #2d3748;
+    color: #cbd5e0;
+    font-size: .82rem;
+    text-align: center;
+  }
+  footer a { color: #a0aec0; }
+
+  /* === Pipeline stepper Trackline === */
+  .flow-stepper { display: flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1rem; background: linear-gradient(90deg, #f7fafc, #faf5ff); border: 1px solid #e2e8f0; border-radius: 12px; margin: 1rem 0; font-size: 0.85rem; overflow-x: auto; flex-wrap: wrap; }
+  .flow-stepper-title { font-size: 0.7rem; color: #4a5568; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-right: 0.5rem; flex-shrink: 0; }
+  .flow-step { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.7rem; border-radius: 20px; font-size: 0.78rem; flex-shrink: 0; }
+  .flow-step.done { background: #c6f6d5; color: #22543d; }
+  .flow-step.active { background: #fef5e7; color: #744210; border: 2px solid #d69e2e; font-weight: 600; }
+  .flow-step.future { background: #f7fafc; color: #a0aec0; border: 1px dashed #cbd5e0; }
+  .flow-step .num { width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; }
+  .flow-step.done .num { background: #38a169; color: white; }
+  .flow-step.active .num { background: #d69e2e; color: white; }
+  .flow-step.future .num { background: #cbd5e0; color: white; }
+  .flow-arrow { color: #cbd5e0; flex-shrink: 0; font-weight: 700; }
+  .header-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.25rem; }
+  .header-text { flex: 1; }
+  .header-logo { flex-shrink: 0; max-width: 200px; min-width: 120px; align-self: center; }
+  .header-logo img.ternua-logo { max-width: 100%; height: auto; max-height: 50px; display: block; filter: brightness(0) invert(1); opacity: 0.95; }
+  .header-logo-placeholder { font-size: 10px; color: rgba(255,255,255,0.55); text-align: right; padding: 0.3rem 0.4rem; border: 1px dashed rgba(255,255,255,0.25); border-radius: 6px; line-height: 1.3; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div style="background:#fef3c7;border-bottom:1px solid #d97706;color:#92400e;font-family:-apple-system,'Segoe UI',sans-serif;font-size:12px;padding:8px 16px;text-align:center;font-weight:600;">
+&#x26A0;&#xFE0F; Datos demo ficticios. El acto delegado textil ESPR no esta adoptado a fecha de publicacion. <a href="../" style="color:#92400e;text-decoration:underline;">Volver al indice</a>
+</div>
+
+<header class="app-header">
+  <div class="header-row">
+    <div class="header-text">
+      <h1>Demo Ternua &mdash; Trackline &middot; Dataset DPP</h1>
+      <p>DPP de prenda alineado con ESPR (UE) 2024/1781, CIRPASS-2 y GS1 Digital Link &middot; Acto delegado textil pendiente (estimado mid-2028)</p>
+    </div>
+    <div class="header-logo">
+      <img src="assets/ternua-logo.png" alt="Ternua" class="ternua-logo">
+    </div>
+  </div>
+  <div class="header-badges">
+    <span>ESPR (UE) 2024/1781</span>
+    <span>CIRPASS-2 alignment</span>
+    <span>GS1 Digital Link</span>
+    <span>Trackline Evidence (Code Contract)</span>
+    <span>Reuse-Ready - 6 fases</span>
+  </div>
+</header>
+
+<nav class="nav-bar">
+  <div class="nav-links">
+    <a class="active">Visor</a>
+    <a>Validador</a>
+    <a>Mapping Trackline</a>
+    <a>Las 6 fases</a>
+  </div>
+  <div class="json-selector">
+    <label for="productSelect">Producto:</label>
+    <select id="productSelect">
+      <option value="data/xenon-jkt-m.json">XENON Jacket M (1644413-0576)</option>
+      <option value="data/xenon-hood-jkt-m.json">XENON Hood Jacket M (1644412-0577) - heredando masters</option>
+    </select>
+  </div>
+</nav>
+
+<main class="container">
+
+  <div class="legend">
+    <div class="legend-grid">
+      <div class="legend-block-title">Leyenda &mdash; Estado del dato</div>
+      <span class="legend-item" title="Dato correcto, viene de Trackline (PDF ficticio extraido)"><span class="dot confirmed"></span> <strong>Verde &mdash; Confirmado:</strong> dato correcto, viene de Trackline (PDF ficticio extraido)</span>
+      <span class="legend-item" title="Dato disponible, metodo de medicion se cierra cuando UE publique norma armonizada"><span class="dot confirmed-pending-norm"></span> <strong>Amarillo &mdash; Pendiente norma:</strong> dato disponible, metodo de medicion se cierra cuando UE publique norma armonizada</span>
+      <span class="legend-item" title="Sin dato - requiere accion del fabricante"><span class="dot pending"></span> <strong>Rojo &mdash; Pendiente:</strong> sin dato &mdash; requiere accion del fabricante</span>
+
+      <div class="legend-block-title second">Leyenda &mdash; Origen y validez del DPP</div>
+      <span class="legend-item" title="Reg. (UE) 910/2014 - validez legal UE">&#128220; <strong>eIDAS:</strong> el documento DPP completo lleva firma cualificada &mdash; validez legal UE Reg. 910/2014</span>
+      <span class="legend-item" title="Cada dato confirmado lleva hash blockchain inmutable (Code Contract)">&#128737; <strong>Trackline:</strong> cada dato confirmado lleva hash blockchain inmutable (Code Contract)</span>
+      <span class="legend-item" title="Campos criticos con firma cualificada especifica ademas de Trackline">&#128737; <strong>Firma adicional:</strong> campos criticos con firma cualificada especifica ademas de Trackline</span>
+      <span class="legend-item" title="Dato reutilizado desde la prenda hermana">&#8629; <strong>Heredado:</strong> dato reutilizado desde la prenda hermana</span>
+      <span class="legend-item" title="Campo obligatorio para Registro Central UE Art. 13 (ESPR)">&#127963; <strong>Registry:</strong> campo obligatorio para Registro Central UE Art. 13 (ESPR)</span>
+    </div>
+  </div>
+
+  <div id="eidasBannerHost"></div>
+
+  <div class="reg-timeline">
+    <div class="reg-timeline-title">Calendario regulatorio</div>
+    <div class="reg-timeline-track">
+      <div class="reg-milestone done"><span class="dot"></span><span class="date">18-jul-2024</span><span class="label">ESPR en vigor</span></div>
+      <div class="reg-milestone done"><span class="dot"></span><span class="date">16-abr-2025</span><span class="label">Working Plan ESPR<br>2025-2030</span></div>
+      <div class="reg-milestone soon"><span class="dot"></span><span class="date">18-feb-2027</span><span class="label">Baterias<br>obligatorio</span></div>
+      <div class="reg-milestone future"><span class="dot"></span><span class="date">~2027</span><span class="label">Acto delegado<br>textil (estimado)</span></div>
+      <div class="reg-milestone future"><span class="dot"></span><span class="date">~mid-2028</span><span class="label">DPP textil<br>obligatorio (estimado)</span></div>
+      <div class="reg-milestone future"><span class="dot"></span><span class="date">Sin fecha</span><span class="label">Metodos armonizados<br>reparabilidad / reciclabilidad</span></div>
+    </div>
+    <div class="reg-timeline-note">Los datos en amarillo dependen de metodos armonizados que se publicaran con el acto delegado textil. Cuando salgan, esos campos pasan a verde automaticamente. Las fechas con "~" son estimaciones JRC, no oficiales UE.</div>
+  </div>
+
+  <div class="flow-stepper">
+    <span class="flow-stepper-title">Pipeline Trackline</span>
+    <span class="flow-step done"><span class="num">1</span>Fuentes</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-step done"><span class="num">2</span>Trackline</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-step active"><span class="num">3</span>Dataset DPP &middot; est&aacute;s aqu&iacute;</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-step future"><span class="num">4</span>Gobernanza</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-step future"><span class="num">5</span>QR final</span>
+  </div>
+
+  <div class="phase-bar" id="phaseBar"></div>
+
+  <div class="dpp-dashboard">
+    <svg class="ring-svg" viewBox="0 0 200 200" id="ringSvg">
+      <circle class="ring-bg" cx="100" cy="100" r="80"></circle>
+      <circle class="ring-fg" cx="100" cy="100" r="80"
+              stroke-dasharray="0 502" id="ringFg"></circle>
+      <text class="ring-text" x="100" y="98" font-size="38" font-weight="700" id="ringPct">0%</text>
+      <text class="ring-text" x="100" y="122" font-size="11" fill="#718096">DPP completitud</text>
+    </svg>
+    <div>
+      <div class="kpi-grid" id="kpiGrid"></div>
+      <div id="urgentList"></div>
+    </div>
+  </div>
+
+  <div class="filter-bar" id="filterBar">
+    <button data-filter="all" class="active">Todos</button>
+    <button data-filter="confirmed">Confirmados</button>
+    <button data-filter="confirmed-pending-norm">Pendiente norma</button>
+    <button data-filter="pending">Pendientes</button>
+    <span style="margin-left:.6rem;color:#a0aec0">|</span>
+    <button data-filter="phase-1">Fase 1</button>
+    <button data-filter="phase-2">Fase 2</button>
+    <button data-filter="phase-3">Fase 3</button>
+    <button data-filter="phase-4">Fase 4</button>
+    <button data-filter="phase-5">Fase 5</button>
+    <button data-filter="phase-6">Fase 6</button>
+    <span style="margin-left:.6rem;color:#a0aec0">|</span>
+    <button data-filter="inherited">Heredados</button>
+  </div>
+
+  <div id="dpp-root"></div>
+
+</main>
+
+<p style="font-size: 11px; color: #718096; padding: 1rem 0; border-top: 1px solid #e2e8f0; margin: 1rem auto 0; max-width: 1200px; padding-left: 2rem; padding-right: 2rem; text-align: left;"><em>Este demo esta alineado con ESPR (UE) 2024/1781, CIRPASS-2, Battery Regulation (UE) 2023/1542 como modelo analogo y Trace4Value como referencia textil. El acto delegado textil no esta adoptado a fecha de generacion de este demo (estimado mid-2028 segun JRC). Las secciones y campos son propuesta indicativa de Code Contract, no requisitos vinculantes. Los datos son ficticios para fines de demostracion.</em></p>
+<p style="font-size: 11px; color: #718096; margin: 0 auto; max-width: 1200px; padding: 0 2rem 1rem; text-align: left;"><em>Este HTML representa el <strong>Dataset DPP</strong> estructurado y firmado por Trackline (Code Contract), paso 3 del pipeline. Los pasos 1-2 (Fuentes documentales y motor Trackline) se simulan en este demo a partir de PDFs ficticios y JSONs gemelos. Los pasos 4-5 (Gobernanza por roles y exposicion via QR al consumidor) son fases siguientes del flujo Code Contract, fuera del alcance de esta vista.</em></p>
+
+<footer>
+  <div>Code Contract - Demo DPP textil para Ternua - Datos ficticios para fines demostrativos</div>
+  <div style="margin-top:.4rem">Inspirado en <a href="https://codecontract-dpp.github.io/dpp-battery-passport/" target="_blank">Battery Passport</a> - Modelo de 10 clusters DPP textil con reuso de masters entre prendas hermanas</div>
+</footer>
+
+<script>
+const DPP_EMBEDDED = {
+  "data/xenon-jkt-m.json": {
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2",
+      "https://id.codecontract.eu/ctx/textile-v1.jsonld"
+    ],
+    "dpp_uid": "urn:dpp:codecontract:textile:1644413-0576",
+    "dpp_version": "1.0-mock",
+    "created": "2026-05-05",
+    "last_updated": "2026-05-05",
+    "regulation_framework": [
+      "ESPR (UE) 2024/1781 - base regulatoria",
+      "Reglamento DPP textil - pendiente delegated act (estimado mid-2028)",
+      "GS1 Digital Link",
+      "CIRPASS-2 alignment"
+    ],
+    "_meta": {
+      "model": "TextileDPPModel v0.9 (CIRPASS-2 + Battery Pass mapping)",
+      "phases_model": "6-phase Code Contract textile reuse model",
+      "generated_by": "Code Contract demo - 2026-05-05",
+      "product_label": "XENON JKT M",
+      "sku": "1644413-0576"
+    },
+    "responsibleEconomicOperator": {
+      "_icon": "🏢",
+      "_title": "Operador economico responsable",
+      "legalName": {
+        "value": "Ternua Group S.L.",
+        "_status": "confirmed",
+        "_phase": 1,
+        "_evidence": {
+          "blockchainTxHash": "0xd1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6",
+          "tracklineProcessId": "TL-MASTER-EO-001",
+          "registeredDate": "2026-01-15",
+          "registeredBy": "Code Contract Trackline"
+        }
+      },
+      "vatId": {
+        "value": "ESBXXXXXXXX",
+        "_status": "confirmed",
+        "_phase": 1
+      },
+      "lei": {
+        "value": "959800XXXXXXXXXXXXXX",
+        "_status": "confirmed",
+        "_phase": 1
+      },
+      "eori": {
+        "value": "ESBXXXXXXXXX",
+        "_status": "confirmed",
+        "_phase": 1
+      },
+      "headquarters": {
+        "value": "Mondragon, Gipuzkoa, ES",
+        "_status": "confirmed",
+        "_phase": 1
+      },
+      "responsiblePersonEU": {
+        "value": "Ternua Group (UE-establecido)",
+        "_status": "confirmed",
+        "_phase": 1
+      }
+    },
+    "productIdentification": {
+      "_icon": "🆔",
+      "_title": "Identificacion del producto",
+      "modelName": {
+        "value": "XENON JKT M",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_note": "De etiqueta producto Ternua"
+      },
+      "sku": {
+        "value": "1644413-0576",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_registryRequired": true
+      },
+      "gtin": {
+        "value": "08412345006789",
+        "_status": "confirmed",
+        "_phase": 6,
+        "_evidence": {
+          "blockchainTxHash": "0xa1b2c3d4e5f67890aabbccddeeff0011",
+          "tracklineProcessId": "TL-2026-XENON-001",
+          "registeredDate": "2026-04-15",
+          "registeredBy": "Code Contract Trackline"
+        },
+        "_registryRequired": true
+      },
+      "image": {
+        "value": "https://static.ternua.com/media/catalog/product/cache/d24a34bded6d2df740ef66d66d2112c9/1/6/1644413-0576-1-XENON-JKT-M-M.jpg.jpg",
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "brand": {
+        "value": "Ternua",
+        "_status": "confirmed",
+        "_phase": 1
+      },
+      "weight_g": {
+        "value": 860,
+        "unit": "g",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_note": "Talla M, dato Ternua"
+      },
+      "price_eur": {
+        "value": 99.95,
+        "unit": "EUR",
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "fit": {
+        "value": "Slim",
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "sizes": {
+        "value": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "XXL",
+          "3XL"
+        ],
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "color": {
+        "value": "0576",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_note": "Extraido del PDF Cat#3 (Etiqueta interior) - documentacion ficticia del Trackline"
+      },
+      "collection": {
+        "value": "Adrenalite Series SS26",
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "categoryActivity": {
+        "value": [
+          "Trekking 5/5",
+          "Fast Hiking 5/5"
+        ],
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "hood": {
+        "value": false,
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "careInstructions": {
+        "value": "Max 30 C - DX seco - No lejia - No plancha - Secadora baja",
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "modelIdentifier": {
+        "value": "TER-XENON-JKT-M-2026",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_legalBasis": "ESPR Art. registry - PROYECCION",
+        "_registryRequired": true
+      },
+      "registryStatus": {
+        "value": "Pre-registrado en sandbox CIRPASS-2",
+        "_status": "confirmed-pending-norm",
+        "_phase": 6,
+        "_note": "Pendiente acto delegado textil UE - registro central definitivo se abre con la publicacion oficial (estimado mid-2028)",
+        "_registryRequired": true
+      },
+      "qrCarrier": {
+        "value": "GS1 Digital Link / QR persistente en etiqueta interior",
+        "_status": "confirmed",
+        "_phase": 6,
+        "_legalBasis": "GS1 Digital Link 1.3",
+        "_registryRequired": true
+      },
+      "lifecycle": {
+        "placementOnMarketDate": {
+          "value": "2026-04-01",
+          "_status": "confirmed",
+          "_phase": 6,
+          "_legalBasis": "ESPR Art. 12-13 - PROYECCION",
+          "_registryRequired": true
+        },
+        "complianceStatus": {
+          "value": "compliant",
+          "_status": "confirmed",
+          "_phase": 6,
+          "_legalBasis": "ESPR Art. 12-13 - PROYECCION",
+          "_registryRequired": true
+        }
+      },
+      "responsibleOperatorRef": {
+        "value": "urn:dpp:codecontract:operator:ternua-group",
+        "_status": "confirmed",
+        "_phase": 1,
+        "_legalBasis": "ESPR Art. 12-13 - PROYECCION",
+        "_registryRequired": true
+      }
+    },
+    "materialComposition": {
+      "_icon": "⚗",
+      "_title": "Composicion y materiales",
+      "fabricTechnology": {
+        "value": "Dryshell",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_note": "Tejido Ternua: microfibras para extraer sudor, alta transpirabilidad"
+      },
+      "fiberComposition": {
+        "value": "65% poliamida reciclada - 25% poliester reciclado - 10% elastano",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_note": "Extraido del PDF Cat#5 (TDS Dryshell) - documentacion ficticia del Trackline"
+      },
+      "functionalTreatments": {
+        "value": [
+          "Polygiene (control olor, sal de plata, permanente)"
+        ],
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "recycledContentPct": {
+        "value": 87,
+        "unit": "%",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_note": "Calculado desde PDF Cat#6 (BoM lote) - documentacion ficticia del Trackline"
+      },
+      "biodegradableContent": {
+        "value": "Componentes de refuerzo biodegradables",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_note": "Extraido del PDF Cat#5 (TDS) - claim Ternua respaldado en documentacion ficticia del Trackline"
+      },
+      "billOfMaterials": {
+        "_isTable": true,
+        "_status": "confirmed",
+        "_phase": 4,
+        "_columns": [
+          "Componente",
+          "% peso",
+          "Material",
+          "Origen reciclado"
+        ],
+        "_rows": [
+          [
+            "Tela exterior",
+            "78",
+            "Dryshell PA/PES recic",
+            "Si"
+          ],
+          [
+            "Forro",
+            "12",
+            "PES reciclado",
+            "Si"
+          ],
+          [
+            "Cremalleras",
+            "4",
+            "YKK reciclada",
+            "Si"
+          ],
+          [
+            "Cintas/refuerzos",
+            "6",
+            "Reciclado",
+            "Si"
+          ]
+        ]
+      }
+    },
+    "supplyChain": {
+      "_icon": "🔗",
+      "_title": "Cadena de suministro",
+      "tier1Operator": {
+        "value": "Confecciones Atlantico S.A. (FICTICIA)",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_evidence": {
+          "blockchainTxHash": "0xb1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+          "tracklineProcessId": "TL-MASTER-T1-001",
+          "registeredDate": "2026-03-10",
+          "registeredBy": "Code Contract Trackline"
+        }
+      },
+      "tier1Gln": {
+        "value": "5601999911114",
+        "_status": "confirmed",
+        "_phase": 2
+      },
+      "tier1Country": {
+        "value": "Portugal (Vila Nova de Gaia)",
+        "_status": "confirmed",
+        "_phase": 2
+      },
+      "tier2Fabric": {
+        "value": "Tejeduria iberica acreditada bluesign",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_note": "Extraido del PDF Cat#7 (Master proveedor T2, NDA-redacted) - documentacion ficticia del Trackline"
+      },
+      "tier3Fiber": {
+        "value": "Trazabilidad PES reciclado via GRS",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_legalBasis": "GRS 4.0",
+        "_note": "Extraido del PDF Cat#7 (GRS chain-of-custody) - documentacion ficticia del Trackline"
+      },
+      "tier4Raw": {
+        "value": "Pre-consumer + post-consumer PET",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_note": "Extraido del PDF Cat#7 (GRS pre/post-consumer PET) - documentacion ficticia del Trackline"
+      }
+    },
+    "performanceAndDurability": {
+      "_icon": "⚡",
+      "_title": "Durabilidad y prestaciones",
+      "expectedServiceLife": {
+        "value": "5 anos / 60 ciclos lavado",
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "tensileStrengthWarp": {
+        "value": 820,
+        "unit": "N",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_legalBasis": "ISO 13934-1"
+      },
+      "tensileStrengthWeft": {
+        "value": 740,
+        "unit": "N",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_legalBasis": "ISO 13934-1"
+      },
+      "abrasionResistance": {
+        "value": "25.000 ciclos Martindale",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_legalBasis": "ISO 12947"
+      },
+      "pillingResistance": {
+        "value": "Grado 4-5",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_legalBasis": "ISO 12945-2"
+      },
+      "colourFastnessWash": {
+        "value": "Grado 4",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_legalBasis": "ISO 105-C06"
+      },
+      "dimensionalStability": {
+        "value": "<3% tras 5 lavados",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_legalBasis": "ISO 5077"
+      }
+    },
+    "repairability": {
+      "_icon": "🔧",
+      "_title": "Reparabilidad",
+      "repairabilityScore": {
+        "value": "8.2/10",
+        "_status": "confirmed-pending-norm",
+        "_phase": 4,
+        "_note": "Pendiente metodo armonizado UE - JRC working group reparabilidad textil / acto delegado textil (estimado mid-2028)"
+      },
+      "sparesAvailable": {
+        "value": "5 anos desde fin de venta",
+        "_status": "confirmed",
+        "_phase": 4
+      }
+    },
+    "endOfLife": {
+      "_icon": "♻️",
+      "_title": "Fin de vida y reciclabilidad",
+      "recyclabilityPct": {
+        "value": 78,
+        "unit": "%",
+        "_status": "confirmed-pending-norm",
+        "_phase": 4,
+        "_note": "Pendiente metodo armonizado UE de reciclabilidad textil - JRC working group / acto delegado textil (estimado mid-2028)"
+      },
+      "monomateriality": {
+        "value": "Mayoritariamente PA/PES recic - separable",
+        "_status": "confirmed-pending-norm",
+        "_phase": 4,
+        "_note": "Pendiente metodo armonizado UE de reciclabilidad textil - acto delegado textil (estimado mid-2028)"
+      },
+      "eprEs": {
+        "value": "Re-Viste - ES-TX-2026-MOCK-XENON-001",
+        "_status": "confirmed",
+        "_phase": 2
+      },
+      "eprBatchVolume": {
+        "value": 1240,
+        "unit": "unidades",
+        "_status": "confirmed",
+        "_phase": 6,
+        "_note": "Lote Q2-2026"
+      },
+      "takeBackProgram": {
+        "value": "Ternua Komrest - puntos venta + online",
+        "_status": "confirmed",
+        "_phase": 4
+      }
+    },
+    "carbonFootprint": {
+      "_icon": "🌍",
+      "_title": "Huella ambiental",
+      "pcf": {
+        "value": 18.4,
+        "unit": "kg CO2eq",
+        "_status": "confirmed",
+        "_phase": 5,
+        "_legalBasis": "ISO 14067:2018"
+      },
+      "methodology": {
+        "value": "PEFCR Apparel & Footwear v3.1",
+        "_status": "confirmed",
+        "_phase": 5
+      },
+      "lab": {
+        "value": "SCS Global Services",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_note": "Master parcial reutilizable entre prendas"
+      },
+      "waterFootprint": {
+        "value": 41.2,
+        "unit": "L/prenda",
+        "_status": "confirmed-pending-norm",
+        "_phase": 5,
+        "_note": "Pendiente PEFCR Apparel & Footwear version final + metodo armonizado UE de huella hidrica textil"
+      },
+      "eolScenario": {
+        "value": "Reciclaje fibra-a-fibra - 78%",
+        "_status": "confirmed-pending-norm",
+        "_phase": 5,
+        "_note": "Pendiente metodo armonizado UE de reciclabilidad textil - acto delegado textil (estimado mid-2028)"
+      }
+    },
+    "supplyChainDueDiligence": {
+      "_icon": "🔍",
+      "_title": "Diligencia debida (CSDDD)",
+      "csdddPolicy": {
+        "value": "Vigente desde 2025-09",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_legalBasis": "Directiva (UE) 2024/1760 CSDDD"
+      },
+      "dueDiligenceReportBatch": {
+        "value": "Q2-2026 firmado",
+        "_status": "confirmed",
+        "_phase": 6
+      },
+      "forcedLabourAssessment": {
+        "value": "Sin findings",
+        "_status": "confirmed",
+        "_phase": 6,
+        "_legalBasis": "Reg. (UE) 2024/3015"
+      },
+      "socialAuditTier1": {
+        "value": "SA8000 valido hasta 2027-08",
+        "_status": "confirmed",
+        "_phase": 3,
+        "_note": "Master - auditor SGS"
+      }
+    },
+    "complianceLabels": {
+      "_icon": "✅",
+      "_title": "Etiquetas y certificaciones (compliance)",
+      "bluesignFabric": {
+        "value": "Activo - expira 2026-12-15",
+        "_status": "confirmed",
+        "_phase": 3,
+        "_legalBasis": "bluesign system",
+        "_evidence": {
+          "blockchainTxHash": "0xc1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6",
+          "tracklineProcessId": "TL-MASTER-CERT-BLU-001",
+          "registeredDate": "2026-02-01",
+          "registeredBy": "Code Contract Trackline"
+        }
+      },
+      "oekoTex": {
+        "value": "Standard 100 Class II",
+        "_status": "confirmed",
+        "_phase": 3,
+        "_note": "Master reutilizable entre prendas"
+      },
+      "zdhcFacility": {
+        "value": "Aspirational level",
+        "_status": "confirmed",
+        "_phase": 3
+      },
+      "polygiene": {
+        "value": "Permanente",
+        "_status": "confirmed",
+        "_phase": 4
+      }
+    },
+    "block_status": {
+      "phase1": {
+        "confirmed": 8,
+        "confirmed-pending-norm": 0,
+        "pending": 0
+      },
+      "phase4": {
+        "confirmed": 29,
+        "confirmed-pending-norm": 3,
+        "pending": 0
+      },
+      "phase6": {
+        "confirmed": 7,
+        "confirmed-pending-norm": 1,
+        "pending": 0
+      },
+      "phase2": {
+        "confirmed": 9,
+        "confirmed-pending-norm": 0,
+        "pending": 0
+      },
+      "phase5": {
+        "confirmed": 2,
+        "confirmed-pending-norm": 2,
+        "pending": 0
+      },
+      "phase3": {
+        "confirmed": 4,
+        "confirmed-pending-norm": 0,
+        "pending": 0
+      }
+    }
+  },
+  "data/xenon-hood-jkt-m.json": {
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2",
+      "https://id.codecontract.eu/ctx/textile-v1.jsonld"
+    ],
+    "dpp_uid": "urn:dpp:codecontract:textile:1644412-0577",
+    "dpp_version": "1.0-mock",
+    "created": "2026-05-05",
+    "last_updated": "2026-05-05",
+    "regulation_framework": [
+      "ESPR (UE) 2024/1781 - base regulatoria",
+      "Reglamento DPP textil - pendiente delegated act (estimado mid-2028)",
+      "GS1 Digital Link",
+      "CIRPASS-2 alignment"
+    ],
+    "_meta": {
+      "model": "TextileDPPModel v0.9 (CIRPASS-2 + Battery Pass mapping)",
+      "phases_model": "6-phase Code Contract textile reuse model",
+      "generated_by": "Code Contract demo - 2026-05-05",
+      "product_label": "XENON HOOD JKT M",
+      "sku": "1644412-0577",
+      "siblingOf": "1644413-0576",
+      "reuseStrategy": "Hereda fases 1-3 completas + comun de fase 4 desde XENON JKT M; especifico de la capucha pendiente"
+    },
+    "responsibleEconomicOperator": {
+      "_icon": "🏢",
+      "_title": "Operador economico responsable",
+      "legalName": {
+        "value": "Ternua Group S.L.",
+        "_status": "confirmed",
+        "_phase": 1,
+        "_inheritedFrom": "1644413-0576",
+        "_evidence": {
+          "blockchainTxHash": "0xd1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6",
+          "tracklineProcessId": "TL-MASTER-EO-001",
+          "registeredDate": "2026-01-15",
+          "registeredBy": "Code Contract Trackline"
+        }
+      },
+      "vatId": {
+        "value": "ESBXXXXXXXX",
+        "_status": "confirmed",
+        "_phase": 1,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "lei": {
+        "value": "959800XXXXXXXXXXXXXX",
+        "_status": "confirmed",
+        "_phase": 1,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "eori": {
+        "value": "ESBXXXXXXXXX",
+        "_status": "confirmed",
+        "_phase": 1,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "headquarters": {
+        "value": "Mondragon, Gipuzkoa, ES",
+        "_status": "confirmed",
+        "_phase": 1,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "responsiblePersonEU": {
+        "value": "Ternua Group (UE-establecido)",
+        "_status": "confirmed",
+        "_phase": 1,
+        "_inheritedFrom": "1644413-0576"
+      }
+    },
+    "productIdentification": {
+      "_icon": "🆔",
+      "_title": "Identificacion del producto",
+      "modelName": {
+        "value": "XENON HOOD JKT M",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_note": "De etiqueta producto Ternua"
+      },
+      "sku": {
+        "value": "1644412-0577",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_registryRequired": true
+      },
+      "gtin": {
+        "value": "",
+        "_status": "pending",
+        "_phase": 6,
+        "_note": "Pendiente - falta extraer del Trackline de XENON Hood",
+        "_registryRequired": true
+      },
+      "image": {
+        "value": "https://static.ternua.com/media/catalog/product/cache/d24a34bded6d2df740ef66d66d2112c9/1/6/1644412-0577-1-XENON-HOOD-JKT-M-F.jpg",
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "brand": {
+        "value": "Ternua",
+        "_status": "confirmed",
+        "_phase": 1,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "weight_g": {
+        "value": 936,
+        "unit": "g",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_note": "Talla M, dato Ternua - +76 g vs JKT M (capucha)"
+      },
+      "price_eur": {
+        "value": 109.95,
+        "unit": "EUR",
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "fit": {
+        "value": "Slim",
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "sizes": {
+        "value": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "XXL",
+          "3XL"
+        ],
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "color": {
+        "value": "0577",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_note": "Extraido del PDF Cat#3 (Etiqueta interior) - documentacion ficticia del Trackline"
+      },
+      "collection": {
+        "value": "Adrenalite Series SS26",
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "categoryActivity": {
+        "value": [
+          "Trekking 5/5",
+          "Fast Hiking 5/5"
+        ],
+        "_status": "confirmed",
+        "_phase": 4
+      },
+      "hood": {
+        "value": true,
+        "_status": "confirmed",
+        "_phase": 4,
+        "_note": "Diferencia clave vs hermana XENON JKT M"
+      },
+      "careInstructions": {
+        "value": "Max 30 C - DX seco - No lejia - No plancha - Secadora baja",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "modelIdentifier": {
+        "value": "TER-XENON-HOOD-JKT-M-2026",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_legalBasis": "ESPR Art. registry - PROYECCION",
+        "_registryRequired": true
+      },
+      "registryStatus": {
+        "value": "",
+        "_status": "pending",
+        "_phase": 6,
+        "_note": "Pendiente - falta extraer del Trackline de XENON Hood",
+        "_registryRequired": true
+      },
+      "qrCarrier": {
+        "value": "",
+        "_status": "pending",
+        "_phase": 6,
+        "_note": "Pendiente - falta extraer del Trackline de XENON Hood",
+        "_registryRequired": true
+      },
+      "lifecycle": {
+        "placementOnMarketDate": {
+          "value": "2026-05-15",
+          "_status": "confirmed",
+          "_phase": 6,
+          "_legalBasis": "ESPR Art. 12-13 - PROYECCION",
+          "_registryRequired": true
+        },
+        "complianceStatus": {
+          "value": "compliant",
+          "_status": "confirmed",
+          "_phase": 6,
+          "_legalBasis": "ESPR Art. 12-13 - PROYECCION",
+          "_registryRequired": true
+        }
+      },
+      "responsibleOperatorRef": {
+        "value": "urn:dpp:codecontract:operator:ternua-group",
+        "_status": "confirmed",
+        "_phase": 1,
+        "_legalBasis": "ESPR Art. 12-13 - PROYECCION",
+        "_registryRequired": true
+      }
+    },
+    "materialComposition": {
+      "_icon": "⚗",
+      "_title": "Composicion y materiales",
+      "fabricTechnology": {
+        "value": "Dryshell",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_inheritedFrom": "1644413-0576",
+        "_note": "Misma tecnologia de tela que XENON JKT M"
+      },
+      "fiberComposition": {
+        "value": "65% poliamida reciclada - 25% poliester reciclado - 10% elastano",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_inheritedFrom": "1644413-0576",
+        "_note": "Extraido del PDF Cat#5 (TDS Dryshell, identico a hermana) - documentacion ficticia del Trackline"
+      },
+      "functionalTreatments": {
+        "value": [
+          "Polygiene (control olor, sal de plata, permanente)"
+        ],
+        "_status": "confirmed",
+        "_phase": 4,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "recycledContentPct": {
+        "value": "",
+        "_status": "pending",
+        "_phase": 4,
+        "_note": "Pendiente - falta extraer del Trackline de XENON Hood (cambia BoM por capucha)"
+      },
+      "biodegradableContent": {
+        "value": "Componentes de refuerzo biodegradables",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_inheritedFrom": "1644413-0576",
+        "_note": "Extraido del PDF Cat#5 (TDS, heredado de hermana) - documentacion ficticia del Trackline"
+      },
+      "billOfMaterials": {
+        "_isTable": true,
+        "_status": "pending",
+        "_phase": 4,
+        "_note": "Pendiente - BoM especifico de la HOOD (suma componentes de capucha) falta extraer del Trackline",
+        "_columns": [
+          "Componente",
+          "% peso",
+          "Material",
+          "Origen reciclado"
+        ],
+        "_rows": []
+      }
+    },
+    "supplyChain": {
+      "_icon": "🔗",
+      "_title": "Cadena de suministro",
+      "tier1Operator": {
+        "value": "Confecciones Atlantico S.A. (FICTICIA)",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_inheritedFrom": "1644413-0576",
+        "_evidence": {
+          "blockchainTxHash": "0xb1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+          "tracklineProcessId": "TL-MASTER-T1-001",
+          "registeredDate": "2026-03-10",
+          "registeredBy": "Code Contract Trackline"
+        }
+      },
+      "tier1Gln": {
+        "value": "5601999911114",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "tier1Country": {
+        "value": "Portugal (Vila Nova de Gaia)",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "tier2Fabric": {
+        "value": "Tejeduria iberica acreditada bluesign",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_inheritedFrom": "1644413-0576",
+        "_note": "Extraido del PDF Cat#7 (Master proveedor T2, NDA-redacted, heredado) - documentacion ficticia del Trackline"
+      },
+      "tier3Fiber": {
+        "value": "Trazabilidad PES reciclado via GRS",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_inheritedFrom": "1644413-0576",
+        "_legalBasis": "GRS 4.0",
+        "_note": "Extraido del PDF Cat#7 (GRS chain-of-custody, heredado) - documentacion ficticia del Trackline"
+      },
+      "tier4Raw": {
+        "value": "Pre-consumer + post-consumer PET",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_inheritedFrom": "1644413-0576",
+        "_note": "Extraido del PDF Cat#7 (GRS pre/post-consumer PET, heredado) - documentacion ficticia del Trackline"
+      }
+    },
+    "performanceAndDurability": {
+      "_icon": "⚡",
+      "_title": "Durabilidad y prestaciones",
+      "expectedServiceLife": {
+        "value": "",
+        "_status": "pending",
+        "_phase": 4,
+        "_note": "Pendiente - falta extraer del Trackline de XENON Hood (capucha cambia exposicion)"
+      },
+      "tensileStrengthWarp": {
+        "value": "",
+        "unit": "N",
+        "_status": "pending",
+        "_phase": 4,
+        "_note": "Pendiente - falta ensayo especifico de la HOOD"
+      },
+      "tensileStrengthWeft": {
+        "value": "",
+        "unit": "N",
+        "_status": "pending",
+        "_phase": 4,
+        "_note": "Pendiente - falta ensayo especifico de la HOOD"
+      },
+      "abrasionResistance": {
+        "value": "25.000 ciclos Martindale",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_inheritedFrom": "1644413-0576",
+        "_legalBasis": "ISO 12947",
+        "_note": "Tela exterior identica - ensayo reutilizable"
+      },
+      "pillingResistance": {
+        "value": "Grado 4-5",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_inheritedFrom": "1644413-0576",
+        "_legalBasis": "ISO 12945-2"
+      },
+      "colourFastnessWash": {
+        "value": "",
+        "_status": "pending",
+        "_phase": 4,
+        "_note": "Pendiente - color 0577 distinto, ensayo especifico"
+      },
+      "dimensionalStability": {
+        "value": "",
+        "_status": "pending",
+        "_phase": 4,
+        "_note": "Pendiente - falta extraer del Trackline de XENON Hood"
+      }
+    },
+    "repairability": {
+      "_icon": "🔧",
+      "_title": "Reparabilidad",
+      "repairabilityScore": {
+        "value": "",
+        "_status": "pending",
+        "_phase": 4,
+        "_note": "Pendiente - recalcular con capucha (mas componentes)"
+      },
+      "sparesAvailable": {
+        "value": "5 anos desde fin de venta",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_inheritedFrom": "1644413-0576"
+      }
+    },
+    "endOfLife": {
+      "_icon": "♻️",
+      "_title": "Fin de vida y reciclabilidad",
+      "recyclabilityPct": {
+        "value": "",
+        "unit": "%",
+        "_status": "pending",
+        "_phase": 4,
+        "_note": "Pendiente - depende de BoM"
+      },
+      "monomateriality": {
+        "value": "Mayoritariamente PA/PES recic - separable",
+        "_status": "confirmed-pending-norm",
+        "_phase": 4,
+        "_inheritedFrom": "1644413-0576",
+        "_note": "Pendiente metodo armonizado UE de reciclabilidad textil - acto delegado textil (estimado mid-2028)"
+      },
+      "eprEs": {
+        "value": "Re-Viste - ES-TX-2026-MOCK",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "eprBatchVolume": {
+        "value": "",
+        "unit": "unidades",
+        "_status": "pending",
+        "_phase": 6,
+        "_note": "Pendiente - falta cierre del lote Q2-2026 de la HOOD"
+      },
+      "takeBackProgram": {
+        "value": "Ternua Komrest - puntos venta + online",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_inheritedFrom": "1644413-0576"
+      }
+    },
+    "carbonFootprint": {
+      "_icon": "🌍",
+      "_title": "Huella ambiental",
+      "pcf": {
+        "value": "",
+        "unit": "kg CO2eq",
+        "_status": "pending",
+        "_phase": 5,
+        "_note": "Pendiente - PCF nuevo necesario porque cambia BoM (capucha anade peso). No reutilizable de JKT M."
+      },
+      "methodology": {
+        "value": "PEFCR Apparel & Footwear v3.1",
+        "_status": "confirmed",
+        "_phase": 5,
+        "_inheritedFrom": "1644413-0576",
+        "_note": "Metodologia master heredable; el calculo no"
+      },
+      "lab": {
+        "value": "SCS Global Services",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "waterFootprint": {
+        "value": "",
+        "unit": "L/prenda",
+        "_status": "pending",
+        "_phase": 5,
+        "_note": "Pendiente - recalcular con BoM de la HOOD"
+      },
+      "eolScenario": {
+        "value": "",
+        "_status": "pending",
+        "_phase": 5,
+        "_note": "Pendiente - depende de BoM"
+      }
+    },
+    "supplyChainDueDiligence": {
+      "_icon": "🔍",
+      "_title": "Diligencia debida (CSDDD)",
+      "csdddPolicy": {
+        "value": "Vigente desde 2025-09",
+        "_status": "confirmed",
+        "_phase": 2,
+        "_inheritedFrom": "1644413-0576",
+        "_legalBasis": "Directiva (UE) 2024/1760 CSDDD"
+      },
+      "dueDiligenceReportBatch": {
+        "value": "",
+        "_status": "pending",
+        "_phase": 6,
+        "_note": "Pendiente - DD report del lote especifico HOOD Q2-2026"
+      },
+      "forcedLabourAssessment": {
+        "value": "",
+        "_status": "pending",
+        "_phase": 6,
+        "_note": "Pendiente - assessment del lote HOOD",
+        "_legalBasis": "Reg. (UE) 2024/3015"
+      },
+      "socialAuditTier1": {
+        "value": "SA8000 valido hasta 2027-08",
+        "_status": "confirmed",
+        "_phase": 3,
+        "_inheritedFrom": "1644413-0576",
+        "_note": "Master - auditor SGS - misma planta"
+      }
+    },
+    "complianceLabels": {
+      "_icon": "✅",
+      "_title": "Etiquetas y certificaciones (compliance)",
+      "bluesignFabric": {
+        "value": "Activo - expira 2026-12-15",
+        "_status": "confirmed",
+        "_phase": 3,
+        "_inheritedFrom": "1644413-0576",
+        "_legalBasis": "bluesign system",
+        "_evidence": {
+          "blockchainTxHash": "0xc1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6",
+          "tracklineProcessId": "TL-MASTER-CERT-BLU-001",
+          "registeredDate": "2026-02-01",
+          "registeredBy": "Code Contract Trackline"
+        }
+      },
+      "oekoTex": {
+        "value": "Standard 100 Class II",
+        "_status": "confirmed",
+        "_phase": 3,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "zdhcFacility": {
+        "value": "Aspirational level",
+        "_status": "confirmed",
+        "_phase": 3,
+        "_inheritedFrom": "1644413-0576"
+      },
+      "polygiene": {
+        "value": "Permanente",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_inheritedFrom": "1644413-0576"
+      }
+    },
+    "block_status": {
+      "phase1": {
+        "confirmed": 8,
+        "confirmed-pending-norm": 0,
+        "pending": 0
+      },
+      "phase4": {
+        "confirmed": 22,
+        "confirmed-pending-norm": 1,
+        "pending": 9
+      },
+      "phase6": {
+        "confirmed": 2,
+        "confirmed-pending-norm": 0,
+        "pending": 6
+      },
+      "phase2": {
+        "confirmed": 9,
+        "confirmed-pending-norm": 0,
+        "pending": 0
+      },
+      "phase5": {
+        "confirmed": 1,
+        "confirmed-pending-norm": 0,
+        "pending": 3
+      },
+      "phase3": {
+        "confirmed": 4,
+        "confirmed-pending-norm": 0,
+        "pending": 0
+      }
+    }
+  }
+};
+
+const PHASE_NAMES = {
+  1: { name: "Tu empresa",        freq: "una vez" },
+  2: { name: "Cadena suministro", freq: "anual" },
+  3: { name: "Certificaciones",   freq: "por validez" },
+  4: { name: "Diseno producto",   freq: "por modelo" },
+  5: { name: "Huella ambiental",  freq: "por modelo" },
+  6: { name: "Produccion lote",   freq: "por lote" }
+};
+
+const SECTION_ORDER = [
+  "responsibleEconomicOperator",
+  "productIdentification",
+  "materialComposition",
+  "supplyChain",
+  "performanceAndDurability",
+  "repairability",
+  "endOfLife",
+  "carbonFootprint",
+  "supplyChainDueDiligence",
+  "complianceLabels"
+];
+
+let CURRENT_DATA = null;
+let CURRENT_FILTER = "all";
+
+function isAttrObj(o) {
+  return o && typeof o === "object" && !Array.isArray(o)
+         && ("_status" in o || "value" in o);
+}
+
+function escapeHtml(s) {
+  if (s === null || s === undefined) return "";
+  return String(s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+function formatValue(attr) {
+  const v = attr.value;
+  if (v === null || v === undefined || v === "") return "";
+  if (Array.isArray(v)) return v.map(escapeHtml).join(" - ");
+  if (typeof v === "boolean") return v ? "Si" : "No";
+  return escapeHtml(v);
+}
+
+function renderStatusBadge(status) {
+  const labels = {
+    "confirmed": "Confirmado",
+    "confirmed-pending-norm": "Pendiente norma",
+    "pending": "Pendiente"
+  };
+  const label = labels[status] || status;
+  return `<span class="status-badge ${status}">${label}</span>`;
+}
+
+function renderPhaseTag(phase) {
+  if (!phase) return "";
+  return `<span class="phase-tag">Fase ${phase}</span>`;
+}
+
+function computeAutoHash(seed) {
+  let h1 = 0xdeadbeef ^ 0;
+  let h2 = 0x41c6ce57 ^ 0;
+  for (let i = 0; i < seed.length; i++) {
+    const ch = seed.charCodeAt(i);
+    h1 = Math.imul(h1 ^ ch, 2654435761);
+    h2 = Math.imul(h2 ^ ch, 1597334677);
+  }
+  h1 = (Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909)) >>> 0;
+  h2 = (Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909)) >>> 0;
+  const part1 = h1.toString(16).padStart(8, "0");
+  const part2 = h2.toString(16).padStart(8, "0");
+  return "0x" + (part1 + part2).slice(0, 16);
+}
+
+function buildAutoEvidence(sectionKey, fieldPath, parentUidOverride) {
+  const uid = parentUidOverride || (CURRENT_DATA && CURRENT_DATA.dpp_uid) || "urn:dpp:unknown";
+  const date = (CURRENT_DATA && (CURRENT_DATA.last_updated || CURRENT_DATA.created)) || "2026-05-05";
+  const seed = uid + "|" + sectionKey + "|" + fieldPath;
+  const sectSlug = (sectionKey || "section").toUpperCase().slice(0, 4);
+  return {
+    blockchainTxHash: computeAutoHash(seed),
+    tracklineProcessId: "TL-CODECONTRACT-XENON-2026-Q2-" + sectSlug,
+    registeredDate: date,
+    registeredBy: "Code Contract Trackline"
+  };
+}
+
+function renderTracklineBadge(ev, opts) {
+  if (!ev) return "";
+  opts = opts || {};
+  const variant = opts.variant || "strong";
+  const inheritedSku = opts.inheritedSku || null;
+  const hash = ev.blockchainTxHash || "";
+  const shortHash = hash ? hash.slice(0, 10) + "..." + hash.slice(-4) : "";
+
+  let cls = "trackline-badge";
+  let label = "[TL] " + (ev.tracklineProcessId || "");
+  let title = "Registrado en Trackline (Code Contract)";
+  let asterisk = "";
+
+  if (variant === "auto") {
+    cls += " auto";
+    title = "Dato anclado en Trackline (hash automatico Code Contract)";
+  } else if (variant === "pending-norm") {
+    cls += " pending-norm";
+    title = "Dato registrado en Trackline - metodo de medicion pendiente de norma armonizada UE";
+    asterisk = "*";
+  }
+  if (inheritedSku) {
+    title += " - heredado de XENON JKT M";
+    label += " (heredado de XENON JKT M)";
+  }
+  const labelText = "Trackline registrado" + asterisk + " " + label;
+  return `
+    <span class="${cls}" title="${escapeHtml(title)}">&#128737; ${escapeHtml(labelText)}</span>
+    <div class="trackline-detail">tx ${escapeHtml(shortHash)} - ${escapeHtml(ev.registeredDate || "")}</div>
+  `;
+}
+
+function renderInheritedBadge(sku) {
+  return `<span class="inherited-badge">&#8629; Heredado de XENON JKT M (${escapeHtml(sku)})</span>`;
+}
+
+function renderLegalBasis(lb) {
+  if (!lb) return "";
+  let cls = "attr-legal";
+  if (/PROYECCION|PROYECCIoN/i.test(lb)) cls += " proj";
+  else if (/PENDIENTE AD|AD pendiente/i.test(lb)) cls += " adpend";
+  return `<div class="${cls}">${escapeHtml(lb)}</div>`;
+}
+
+function renderTable(attr) {
+  const cols = attr._columns || [];
+  const rows = attr._rows || [];
+  let html = '<table class="bom-table"><thead><tr>';
+  cols.forEach(c => html += `<th>${escapeHtml(c)}</th>`);
+  html += "</tr></thead><tbody>";
+  if (rows.length === 0) {
+    html += `<tr><td class="empty-row" colspan="${cols.length}">Sin filas - pendiente de extraccion</td></tr>`;
+  } else {
+    rows.forEach(r => {
+      html += "<tr>";
+      r.forEach(cell => html += `<td>${escapeHtml(cell)}</td>`);
+      html += "</tr>";
+    });
+  }
+  html += "</tbody></table>";
+  return html;
+}
+
+function renderAttribute(name, attr, sectionKey) {
+  const status = attr._status || "pending";
+  const phase = attr._phase || null;
+  const inherited = attr._inheritedFrom || null;
+  const dataAttrs = [
+    `data-status="${status}"`,
+    phase ? `data-phase="${phase}"` : "",
+    inherited ? `data-inherited="true"` : ""
+  ].join(" ");
+
+  let valueHtml = "";
+  if (attr._isTable) {
+    valueHtml = renderTable(attr);
+  } else {
+    const v = formatValue(attr);
+    if (v === "" && status === "pending") {
+      valueHtml = `<span class="pending-msg">Pendiente - falta extraer del Trackline de esta prenda</span>`;
+    } else if (v === "") {
+      valueHtml = `<span style="color:#a0aec0;font-style:italic">-</span>`;
+    } else {
+      valueHtml = v;
+      if (attr.unit) valueHtml += `<span class="unit">${escapeHtml(attr.unit)}</span>`;
+    }
+  }
+
+  // Firma adicional chip - cuando hay _evidence con blockchainTxHash explicito
+  if (attr._evidence && attr._evidence.blockchainTxHash) {
+    valueHtml += ` <span class="firma-chip" title="Campo con firma cualificada adicional, no solo Trackline">&#128737; Firma adicional</span>`;
+  }
+
+  if (attr._registryRequired) {
+    valueHtml += ` <span class="registry-chip" title="Campo obligatorio para Registro Central UE Art. 13">&#127963; Registry</span>`;
+  }
+
+  let extras = "";
+  if (attr._note) extras += `<div class="attr-note">${escapeHtml(attr._note)}</div>`;
+  if (attr._legalBasis) extras += renderLegalBasis(attr._legalBasis);
+  if (inherited) extras += `<div>${renderInheritedBadge(inherited)}</div>`;
+
+  // Trackline badge:
+  // - confirmed con _evidence -> badge fuerte
+  // - confirmed sin _evidence -> badge soft "auto"
+  // - confirmed-pending-norm -> badge variante pending-norm
+  // - pending -> sin badge
+  if (status !== "pending") {
+    const fieldPath = (sectionKey || "section") + "." + name;
+    const parentUid = inherited ? "urn:dpp:codecontract:textile:" + inherited : null;
+    if (attr._evidence) {
+      extras += `<div style="margin-top:.3rem">${renderTracklineBadge(attr._evidence, { variant: "strong", inheritedSku: inherited })}</div>`;
+    } else if (status === "confirmed") {
+      const ev = buildAutoEvidence(sectionKey, fieldPath, parentUid);
+      extras += `<div style="margin-top:.3rem">${renderTracklineBadge(ev, { variant: "auto", inheritedSku: inherited })}</div>`;
+    } else if (status === "confirmed-pending-norm") {
+      const ev = buildAutoEvidence(sectionKey, fieldPath, parentUid);
+      extras += `<div style="margin-top:.3rem">${renderTracklineBadge(ev, { variant: "pending-norm", inheritedSku: inherited })}</div>`;
+    }
+  }
+
+  const badges = `
+    ${renderStatusBadge(status)}
+    ${renderPhaseTag(phase)}
+  `;
+
+  return `
+    <div class="attribute" ${dataAttrs}>
+      <div class="attr-name">${humanizeKey(name)}</div>
+      <div class="attr-value">${valueHtml}${extras}</div>
+      <div class="attr-badges">${badges}</div>
+    </div>
+  `;
+}
+
+function humanizeKey(k) {
+  return k.replace(/([A-Z])/g, " $1")
+          .replace(/^./, c => c.toUpperCase())
+          .trim();
+}
+
+function renderSection(key, section) {
+  if (!section || typeof section !== "object") return "";
+  const icon = section._icon || "";
+  const title = section._title || humanizeKey(key);
+  let attrsHtml = "";
+  let attrCount = 0;
+  Object.keys(section).forEach(k => {
+    if (k.startsWith("_")) return;
+    const attr = section[k];
+    if (isAttrObj(attr)) {
+      attrsHtml += renderAttribute(k, attr, key);
+      attrCount++;
+    } else if (attr && typeof attr === "object" && !Array.isArray(attr)) {
+      Object.keys(attr).forEach(sk => {
+        if (sk.startsWith("_")) return;
+        const sub = attr[sk];
+        if (isAttrObj(sub)) {
+          attrsHtml += renderAttribute(k + "." + sk, sub, key);
+          attrCount++;
+        }
+      });
+    }
+  });
+  if (attrCount === 0) return "";
+  return `
+    <section class="section" data-section="${key}">
+      <div class="section-header">
+        <span class="section-icon">${escapeHtml(icon)}</span>
+        <span class="section-title">${escapeHtml(title)}</span>
+        <span class="section-meta">${attrCount} campos</span>
+      </div>
+      <div class="section-body">${attrsHtml}</div>
+    </section>
+  `;
+}
+
+function collectAllAttrs(data) {
+  const out = [];
+  Object.keys(data || {}).forEach(sk => {
+    if (sk.startsWith("_")) return;
+    const sec = data[sk];
+    if (!sec || typeof sec !== "object") return;
+    Object.keys(sec).forEach(fk => {
+      if (fk.startsWith("_")) return;
+      const fld = sec[fk];
+      if (!fld || typeof fld !== "object") return;
+      if (isAttrObj(fld)) {
+        out.push({ section: sk, name: fk, attr: fld });
+      } else {
+        Object.keys(fld).forEach(ssk => {
+          if (ssk.startsWith("_")) return;
+          const sub = fld[ssk];
+          if (isAttrObj(sub)) out.push({ section: sk, name: fk + "." + ssk, attr: sub });
+        });
+      }
+    });
+  });
+  return out;
+}
+
+function renderEidasBanner(data) {
+  const total = collectAllAttrs(data).length;
+  const html = `
+    <div class="eidas-banner">
+      <div class="eidas-icon">&#128220;</div>
+      <div class="eidas-info">
+        <strong>Documento DPP firmado con eIDAS - validez legal UE</strong>
+        <span>Firma cualificada Reg. (UE) 910/2014 - Code Contract QTSP</span>
+        <div class="eidas-meta">
+          <span>&#128737; Trackline integrado en cada campo confirmado</span>
+          <span>&#128202; ${total} campos en este DPP</span>
+          <span>&#128197; Generado: ${escapeHtml(data.created || "2026-05-05")}</span>
+        </div>
+      </div>
+      <div class="eidas-status">VALIDO</div>
+    </div>
+  `;
+  document.getElementById("eidasBannerHost").innerHTML = html;
+}
+
+function renderPhaseBar(data) {
+  const bs = data.block_status || {};
+  let html = "";
+  for (let p = 1; p <= 6; p++) {
+    const k = "phase" + p;
+    const stats = bs[k] || {};
+    const conf = stats.confirmed || 0;
+    const ynorm = stats["confirmed-pending-norm"] || 0;
+    const pend = stats.pending || 0;
+    const total = conf + ynorm + pend;
+    let cls = "is-confirmed", scls = "confirmed";
+    if (pend > 0) { cls = "is-pending"; scls = "pending"; }
+    else if (ynorm > 0) { cls = "is-confirmed-pending-norm"; scls = "confirmed-pending-norm"; }
+    const meta = PHASE_NAMES[p] || { name: "Fase " + p, freq: "" };
+    html += `
+      <div class="phase-card ${cls}" data-phase="${p}">
+        <div class="phase-num">Fase ${p}</div>
+        <div class="phase-name">${meta.name}</div>
+        <div class="phase-status ${scls}">${conf}/${total}</div>
+        <div class="phase-freq">${meta.freq}</div>
+      </div>
+    `;
+  }
+  document.getElementById("phaseBar").innerHTML = html;
+}
+
+function renderDashboard(data) {
+  const all = collectAllAttrs(data);
+  let conf = 0, ynorm = 0, pend = 0, inh = 0;
+  const urgent = [];
+  all.forEach(({ section, name, attr }) => {
+    const st = attr._status || "pending";
+    if (st === "confirmed") conf++;
+    else if (st === "confirmed-pending-norm") ynorm++;
+    else if (st === "pending") {
+      pend++;
+      urgent.push({ section, name });
+    }
+    if (attr._inheritedFrom) inh++;
+  });
+  const total = conf + ynorm + pend;
+  const denom = conf + ynorm; // no-pending
+  const pct = denom === 0 ? 0 : Math.round((conf / denom) * 100);
+
+  // Anillo
+  const circumference = 2 * Math.PI * 80;
+  const filled = (pct / 100) * circumference;
+  const ringFg = document.getElementById("ringFg");
+  ringFg.setAttribute("stroke-dasharray", filled.toFixed(1) + " " + circumference.toFixed(1));
+  ringFg.classList.remove("warn", "bad");
+  if (pct < 50) ringFg.classList.add("bad");
+  else if (pct < 90) ringFg.classList.add("warn");
+  document.getElementById("ringPct").textContent = pct + "%";
+
+  // KPIs
+  const kpiHtml = `
+    <div class="kpi"><div class="kpi-label">Confirmados</div><div class="kpi-value confirmed">${conf}</div></div>
+    <div class="kpi"><div class="kpi-label">Pendiente norma</div><div class="kpi-value confirmed-pending-norm">${ynorm}</div></div>
+    <div class="kpi"><div class="kpi-label">Pendientes</div><div class="kpi-value pending">${pend}</div></div>
+    <div class="kpi"><div class="kpi-label">Heredados</div><div class="kpi-value inherited">${inh}</div></div>
+  `;
+  document.getElementById("kpiGrid").innerHTML = kpiHtml;
+
+  // Urgent (rojos)
+  const urgentHost = document.getElementById("urgentList");
+  if (urgent.length === 0) {
+    urgentHost.innerHTML = "";
+  } else {
+    const items = urgent.slice(0, 8).map(u =>
+      `<li><strong>${escapeHtml(humanizeKey(u.name))}</strong> <span style="color:#a0aec0">(${escapeHtml(u.section)})</span></li>`
+    ).join("");
+    urgentHost.innerHTML = `
+      <div class="urgent-list">
+        <strong>Items urgentes (${urgent.length} pendientes - requieren accion)</strong>
+        <ul>${items}</ul>
+      </div>
+    `;
+  }
+}
+
+function renderAll(data) {
+  CURRENT_DATA = data;
+  renderEidasBanner(data);
+  renderPhaseBar(data);
+  renderDashboard(data);
+
+  let html = "";
+  SECTION_ORDER.forEach(k => {
+    if (data[k]) html += renderSection(k, data[k]);
+  });
+  Object.keys(data).forEach(k => {
+    if (k.startsWith("_")) return;
+    if (SECTION_ORDER.includes(k)) return;
+    if (typeof data[k] !== "object" || Array.isArray(data[k])) return;
+    if (k === "block_status") return;
+    html += renderSection(k, data[k]);
+  });
+  document.getElementById("dpp-root").innerHTML = html;
+  applyFilter(CURRENT_FILTER);
+}
+
+function applyFilter(f) {
+  CURRENT_FILTER = f;
+  document.querySelectorAll(".filter-bar button").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.filter === f);
+  });
+  const all = document.querySelectorAll(".attribute");
+  all.forEach(el => {
+    let show = true;
+    if (f === "all") {
+      show = true;
+    } else if (f === "confirmed" || f === "confirmed-pending-norm" || f === "pending") {
+      show = el.dataset.status === f;
+    } else if (f === "inherited") {
+      show = el.dataset.inherited === "true";
+    } else if (f.startsWith("phase-")) {
+      const ph = f.split("-")[1];
+      show = el.dataset.phase === ph;
+    }
+    el.classList.toggle("hidden", !show);
+  });
+  // Hide empty sections
+  document.querySelectorAll(".section").forEach(sec => {
+    const visible = sec.querySelectorAll(".attribute:not(.hidden)").length;
+    sec.classList.toggle("hidden", visible === 0);
+  });
+}
+
+function loadProduct(path) {
+  const data = DPP_EMBEDDED[path];
+  if (!data) {
+    document.getElementById("dpp-root").innerHTML =
+      `<div style="background:#fff5f5;border:1px solid #fed7d7;color:#9b2c2c;padding:1rem;border-radius:8px">No se encontro el producto: ${escapeHtml(path)}</div>`;
+    return;
+  }
+  renderAll(data);
+}
+
+document.getElementById("productSelect").addEventListener("change", e => {
+  loadProduct(e.target.value);
+});
+document.getElementById("filterBar").addEventListener("click", e => {
+  if (e.target.tagName === "BUTTON" && e.target.dataset.filter) {
+    applyFilter(e.target.dataset.filter);
+  }
+});
+
+// Init
+loadProduct(document.getElementById("productSelect").value);
+</script>
+</body>
+</html>

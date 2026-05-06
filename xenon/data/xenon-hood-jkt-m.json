@@ -1,0 +1,551 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://id.codecontract.eu/ctx/textile-v1.jsonld"
+  ],
+  "dpp_uid": "urn:dpp:codecontract:textile:1644412-0577",
+  "dpp_version": "1.0-mock",
+  "created": "2026-05-05",
+  "last_updated": "2026-05-05",
+  "regulation_framework": [
+    "ESPR (UE) 2024/1781 - base regulatoria",
+    "Reglamento DPP textil - pendiente delegated act (estimado mid-2028)",
+    "GS1 Digital Link",
+    "CIRPASS-2 alignment"
+  ],
+  "_meta": {
+    "model": "TextileDPPModel v0.9 (CIRPASS-2 + Battery Pass mapping)",
+    "phases_model": "6-phase Code Contract textile reuse model",
+    "generated_by": "Code Contract demo - 2026-05-05",
+    "product_label": "XENON HOOD JKT M",
+    "sku": "1644412-0577",
+    "siblingOf": "1644413-0576",
+    "reuseStrategy": "Hereda fases 1-3 completas + comun de fase 4 desde XENON JKT M; especifico de la capucha pendiente"
+  },
+  "responsibleEconomicOperator": {
+    "_icon": "🏢",
+    "_title": "Operador economico responsable",
+    "legalName": {
+      "value": "Ternua Group S.L.",
+      "_status": "confirmed",
+      "_phase": 1,
+      "_inheritedFrom": "1644413-0576",
+      "_evidence": {
+        "blockchainTxHash": "0xd1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6",
+        "tracklineProcessId": "TL-MASTER-EO-001",
+        "registeredDate": "2026-01-15",
+        "registeredBy": "Code Contract Trackline"
+      }
+    },
+    "vatId": {
+      "value": "ESBXXXXXXXX",
+      "_status": "confirmed",
+      "_phase": 1,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "lei": {
+      "value": "959800XXXXXXXXXXXXXX",
+      "_status": "confirmed",
+      "_phase": 1,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "eori": {
+      "value": "ESBXXXXXXXXX",
+      "_status": "confirmed",
+      "_phase": 1,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "headquarters": {
+      "value": "Mondragon, Gipuzkoa, ES",
+      "_status": "confirmed",
+      "_phase": 1,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "responsiblePersonEU": {
+      "value": "Ternua Group (UE-establecido)",
+      "_status": "confirmed",
+      "_phase": 1,
+      "_inheritedFrom": "1644413-0576"
+    }
+  },
+  "productIdentification": {
+    "_icon": "🆔",
+    "_title": "Identificacion del producto",
+    "modelName": {
+      "value": "XENON HOOD JKT M",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_note": "De etiqueta producto Ternua"
+    },
+    "sku": {
+      "value": "1644412-0577",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_registryRequired": true
+    },
+    "gtin": {
+      "value": "",
+      "_status": "pending",
+      "_phase": 6,
+      "_note": "Pendiente - falta extraer del Trackline de XENON Hood",
+      "_registryRequired": true
+    },
+    "image": {
+      "value": "https://static.ternua.com/media/catalog/product/cache/d24a34bded6d2df740ef66d66d2112c9/1/6/1644412-0577-1-XENON-HOOD-JKT-M-F.jpg",
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "brand": {
+      "value": "Ternua",
+      "_status": "confirmed",
+      "_phase": 1,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "weight_g": {
+      "value": 936,
+      "unit": "g",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_note": "Talla M, dato Ternua - +76 g vs JKT M (capucha)"
+    },
+    "price_eur": {
+      "value": 109.95,
+      "unit": "EUR",
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "fit": {
+      "value": "Slim",
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "sizes": {
+      "value": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL",
+        "3XL"
+      ],
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "color": {
+      "value": "0577",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_note": "Extraido del PDF Cat#3 (Etiqueta interior) - documentacion ficticia del Trackline"
+    },
+    "collection": {
+      "value": "Adrenalite Series SS26",
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "categoryActivity": {
+      "value": [
+        "Trekking 5/5",
+        "Fast Hiking 5/5"
+      ],
+      "_status": "confirmed",
+      "_phase": 4
+    },
+    "hood": {
+      "value": true,
+      "_status": "confirmed",
+      "_phase": 4,
+      "_note": "Diferencia clave vs hermana XENON JKT M"
+    },
+    "careInstructions": {
+      "value": "Max 30 C - DX seco - No lejia - No plancha - Secadora baja",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "modelIdentifier": {
+      "value": "TER-XENON-HOOD-JKT-M-2026",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_legalBasis": "ESPR Art. registry - PROYECCION",
+      "_registryRequired": true
+    },
+    "registryStatus": {
+      "value": "",
+      "_status": "pending",
+      "_phase": 6,
+      "_note": "Pendiente - falta extraer del Trackline de XENON Hood",
+      "_registryRequired": true
+    },
+    "qrCarrier": {
+      "value": "",
+      "_status": "pending",
+      "_phase": 6,
+      "_note": "Pendiente - falta extraer del Trackline de XENON Hood",
+      "_registryRequired": true
+    },
+    "lifecycle": {
+      "placementOnMarketDate": {
+        "value": "2026-05-15",
+        "_status": "confirmed",
+        "_phase": 6,
+        "_legalBasis": "ESPR Art. 12-13 - PROYECCION",
+        "_registryRequired": true
+      },
+      "complianceStatus": {
+        "value": "compliant",
+        "_status": "confirmed",
+        "_phase": 6,
+        "_legalBasis": "ESPR Art. 12-13 - PROYECCION",
+        "_registryRequired": true
+      }
+    },
+    "responsibleOperatorRef": {
+      "value": "urn:dpp:codecontract:operator:ternua-group",
+      "_status": "confirmed",
+      "_phase": 1,
+      "_legalBasis": "ESPR Art. 12-13 - PROYECCION",
+      "_registryRequired": true
+    }
+  },
+  "materialComposition": {
+    "_icon": "⚗",
+    "_title": "Composicion y materiales",
+    "fabricTechnology": {
+      "value": "Dryshell",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_inheritedFrom": "1644413-0576",
+      "_note": "Misma tecnologia de tela que XENON JKT M"
+    },
+    "fiberComposition": {
+      "value": "65% poliamida reciclada - 25% poliester reciclado - 10% elastano",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_inheritedFrom": "1644413-0576",
+      "_note": "Extraido del PDF Cat#5 (TDS Dryshell, identico a hermana) - documentacion ficticia del Trackline"
+    },
+    "functionalTreatments": {
+      "value": [
+        "Polygiene (control olor, sal de plata, permanente)"
+      ],
+      "_status": "confirmed",
+      "_phase": 4,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "recycledContentPct": {
+      "value": "",
+      "_status": "pending",
+      "_phase": 4,
+      "_note": "Pendiente - falta extraer del Trackline de XENON Hood (cambia BoM por capucha)"
+    },
+    "biodegradableContent": {
+      "value": "Componentes de refuerzo biodegradables",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_inheritedFrom": "1644413-0576",
+      "_note": "Extraido del PDF Cat#5 (TDS, heredado de hermana) - documentacion ficticia del Trackline"
+    },
+    "billOfMaterials": {
+      "_isTable": true,
+      "_status": "pending",
+      "_phase": 4,
+      "_note": "Pendiente - BoM especifico de la HOOD (suma componentes de capucha) falta extraer del Trackline",
+      "_columns": [
+        "Componente",
+        "% peso",
+        "Material",
+        "Origen reciclado"
+      ],
+      "_rows": []
+    }
+  },
+  "supplyChain": {
+    "_icon": "🔗",
+    "_title": "Cadena de suministro",
+    "tier1Operator": {
+      "value": "Confecciones Atlantico S.A. (FICTICIA)",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_inheritedFrom": "1644413-0576",
+      "_evidence": {
+        "blockchainTxHash": "0xb1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+        "tracklineProcessId": "TL-MASTER-T1-001",
+        "registeredDate": "2026-03-10",
+        "registeredBy": "Code Contract Trackline"
+      }
+    },
+    "tier1Gln": {
+      "value": "5601999911114",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "tier1Country": {
+      "value": "Portugal (Vila Nova de Gaia)",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "tier2Fabric": {
+      "value": "Tejeduria iberica acreditada bluesign",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_inheritedFrom": "1644413-0576",
+      "_note": "Extraido del PDF Cat#7 (Master proveedor T2, NDA-redacted, heredado) - documentacion ficticia del Trackline"
+    },
+    "tier3Fiber": {
+      "value": "Trazabilidad PES reciclado via GRS",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_inheritedFrom": "1644413-0576",
+      "_legalBasis": "GRS 4.0",
+      "_note": "Extraido del PDF Cat#7 (GRS chain-of-custody, heredado) - documentacion ficticia del Trackline"
+    },
+    "tier4Raw": {
+      "value": "Pre-consumer + post-consumer PET",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_inheritedFrom": "1644413-0576",
+      "_note": "Extraido del PDF Cat#7 (GRS pre/post-consumer PET, heredado) - documentacion ficticia del Trackline"
+    }
+  },
+  "performanceAndDurability": {
+    "_icon": "⚡",
+    "_title": "Durabilidad y prestaciones",
+    "expectedServiceLife": {
+      "value": "",
+      "_status": "pending",
+      "_phase": 4,
+      "_note": "Pendiente - falta extraer del Trackline de XENON Hood (capucha cambia exposicion)"
+    },
+    "tensileStrengthWarp": {
+      "value": "",
+      "unit": "N",
+      "_status": "pending",
+      "_phase": 4,
+      "_note": "Pendiente - falta ensayo especifico de la HOOD"
+    },
+    "tensileStrengthWeft": {
+      "value": "",
+      "unit": "N",
+      "_status": "pending",
+      "_phase": 4,
+      "_note": "Pendiente - falta ensayo especifico de la HOOD"
+    },
+    "abrasionResistance": {
+      "value": "25.000 ciclos Martindale",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_inheritedFrom": "1644413-0576",
+      "_legalBasis": "ISO 12947",
+      "_note": "Tela exterior identica - ensayo reutilizable"
+    },
+    "pillingResistance": {
+      "value": "Grado 4-5",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_inheritedFrom": "1644413-0576",
+      "_legalBasis": "ISO 12945-2"
+    },
+    "colourFastnessWash": {
+      "value": "",
+      "_status": "pending",
+      "_phase": 4,
+      "_note": "Pendiente - color 0577 distinto, ensayo especifico"
+    },
+    "dimensionalStability": {
+      "value": "",
+      "_status": "pending",
+      "_phase": 4,
+      "_note": "Pendiente - falta extraer del Trackline de XENON Hood"
+    }
+  },
+  "repairability": {
+    "_icon": "🔧",
+    "_title": "Reparabilidad",
+    "repairabilityScore": {
+      "value": "",
+      "_status": "pending",
+      "_phase": 4,
+      "_note": "Pendiente - recalcular con capucha (mas componentes)"
+    },
+    "sparesAvailable": {
+      "value": "5 anos desde fin de venta",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_inheritedFrom": "1644413-0576"
+    }
+  },
+  "endOfLife": {
+    "_icon": "♻️",
+    "_title": "Fin de vida y reciclabilidad",
+    "recyclabilityPct": {
+      "value": "",
+      "unit": "%",
+      "_status": "pending",
+      "_phase": 4,
+      "_note": "Pendiente - depende de BoM"
+    },
+    "monomateriality": {
+      "value": "Mayoritariamente PA/PES recic - separable",
+      "_status": "confirmed-pending-norm",
+      "_phase": 4,
+      "_inheritedFrom": "1644413-0576",
+      "_note": "Pendiente metodo armonizado UE de reciclabilidad textil - acto delegado textil (estimado mid-2028)"
+    },
+    "eprEs": {
+      "value": "Re-Viste - ES-TX-2026-MOCK",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "eprBatchVolume": {
+      "value": "",
+      "unit": "unidades",
+      "_status": "pending",
+      "_phase": 6,
+      "_note": "Pendiente - falta cierre del lote Q2-2026 de la HOOD"
+    },
+    "takeBackProgram": {
+      "value": "Ternua Komrest - puntos venta + online",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_inheritedFrom": "1644413-0576"
+    }
+  },
+  "carbonFootprint": {
+    "_icon": "🌍",
+    "_title": "Huella ambiental",
+    "pcf": {
+      "value": "",
+      "unit": "kg CO2eq",
+      "_status": "pending",
+      "_phase": 5,
+      "_note": "Pendiente - PCF nuevo necesario porque cambia BoM (capucha anade peso). No reutilizable de JKT M."
+    },
+    "methodology": {
+      "value": "PEFCR Apparel & Footwear v3.1",
+      "_status": "confirmed",
+      "_phase": 5,
+      "_inheritedFrom": "1644413-0576",
+      "_note": "Metodologia master heredable; el calculo no"
+    },
+    "lab": {
+      "value": "SCS Global Services",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "waterFootprint": {
+      "value": "",
+      "unit": "L/prenda",
+      "_status": "pending",
+      "_phase": 5,
+      "_note": "Pendiente - recalcular con BoM de la HOOD"
+    },
+    "eolScenario": {
+      "value": "",
+      "_status": "pending",
+      "_phase": 5,
+      "_note": "Pendiente - depende de BoM"
+    }
+  },
+  "supplyChainDueDiligence": {
+    "_icon": "🔍",
+    "_title": "Diligencia debida (CSDDD)",
+    "csdddPolicy": {
+      "value": "Vigente desde 2025-09",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_inheritedFrom": "1644413-0576",
+      "_legalBasis": "Directiva (UE) 2024/1760 CSDDD"
+    },
+    "dueDiligenceReportBatch": {
+      "value": "",
+      "_status": "pending",
+      "_phase": 6,
+      "_note": "Pendiente - DD report del lote especifico HOOD Q2-2026"
+    },
+    "forcedLabourAssessment": {
+      "value": "",
+      "_status": "pending",
+      "_phase": 6,
+      "_note": "Pendiente - assessment del lote HOOD",
+      "_legalBasis": "Reg. (UE) 2024/3015"
+    },
+    "socialAuditTier1": {
+      "value": "SA8000 valido hasta 2027-08",
+      "_status": "confirmed",
+      "_phase": 3,
+      "_inheritedFrom": "1644413-0576",
+      "_note": "Master - auditor SGS - misma planta"
+    }
+  },
+  "complianceLabels": {
+    "_icon": "✅",
+    "_title": "Etiquetas y certificaciones (compliance)",
+    "bluesignFabric": {
+      "value": "Activo - expira 2026-12-15",
+      "_status": "confirmed",
+      "_phase": 3,
+      "_inheritedFrom": "1644413-0576",
+      "_legalBasis": "bluesign system",
+      "_evidence": {
+        "blockchainTxHash": "0xc1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6",
+        "tracklineProcessId": "TL-MASTER-CERT-BLU-001",
+        "registeredDate": "2026-02-01",
+        "registeredBy": "Code Contract Trackline"
+      }
+    },
+    "oekoTex": {
+      "value": "Standard 100 Class II",
+      "_status": "confirmed",
+      "_phase": 3,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "zdhcFacility": {
+      "value": "Aspirational level",
+      "_status": "confirmed",
+      "_phase": 3,
+      "_inheritedFrom": "1644413-0576"
+    },
+    "polygiene": {
+      "value": "Permanente",
+      "_status": "confirmed",
+      "_phase": 4,
+      "_inheritedFrom": "1644413-0576"
+    }
+  },
+  "block_status": {
+    "phase1": {
+      "confirmed": 8,
+      "confirmed-pending-norm": 0,
+      "pending": 0
+    },
+    "phase4": {
+      "confirmed": 22,
+      "confirmed-pending-norm": 1,
+      "pending": 9
+    },
+    "phase6": {
+      "confirmed": 2,
+      "confirmed-pending-norm": 0,
+      "pending": 6
+    },
+    "phase2": {
+      "confirmed": 9,
+      "confirmed-pending-norm": 0,
+      "pending": 0
+    },
+    "phase5": {
+      "confirmed": 1,
+      "confirmed-pending-norm": 0,
+      "pending": 3
+    },
+    "phase3": {
+      "confirmed": 4,
+      "confirmed-pending-norm": 0,
+      "pending": 0
+    }
+  }
+}

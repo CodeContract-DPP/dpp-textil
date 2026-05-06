@@ -1,0 +1,30 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# Editor
+.vscode/
+.idea/
+*.iml
+
+# Internal project artifacts (should not be deployed)
+.touch_*
+*.tmp
+*.bak
+node_modules/
+
+# Local Python tooling (if any helper scripts run locally)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Sensitive files (never commit)
+.env
+.env.local
+secrets.json
+*.key
+*.pem
