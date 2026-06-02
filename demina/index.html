@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPP - Demina Hard Hood Jkt W - Ternua (item-level) - Code Contract</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e1a24;
+    --ink-soft: #2c3e4f;
+    --paper: #f4f0e8;
+    --paper-soft: #ebe5d8;
+    --line: #cdc4b0;
+    --accent: #c66e2c;       /* ámbar ártico */
+    --accent-soft: #f5d4af;
+    --moss: #2f4a3a;          /* verde montaña */
+    --water: #2a4d6e;         /* azul ártico */
+    --alert: #a83232;
+    --ok: #3e6a4b;
+    --item: #5b3a82;
+    --item-soft: #ddd0eb;
+  }
+  .item-bar {
+    background: var(--ink); color: var(--paper);
+    padding: 10px 24px; display: flex; flex-wrap: wrap;
+    align-items: center; gap: 12px;
+    border-bottom: 1px solid var(--line);
+    font-size: 12px; font-family: 'JetBrains Mono', monospace;
+    position: sticky; top: 56px; z-index: 9;
+  }
+  .item-bar-label { color: var(--accent-soft); text-transform: uppercase; letter-spacing: 0.1em; font-size: 10px; }
+  .item-pill {
+    padding: 5px 12px; background: rgba(255,255,255,0.08); color: var(--paper);
+    border: 1px solid rgba(255,255,255,0.2); cursor: pointer;
+    font-family: inherit; font-size: 11px; letter-spacing: 0.05em;
+  }
+  .item-pill:hover { background: rgba(255,255,255,0.16); }
+  .item-pill.active { background: var(--accent); color: var(--ink); border-color: var(--accent); font-weight: 600; }
+  .item-lifecycle {
+    background: linear-gradient(180deg, var(--item-soft) 0%, var(--paper) 60%);
+    padding: 40px 24px; border-bottom: 1px solid var(--line); display: none;
+  }
+  .item-lifecycle.visible { display: block; }
+  .item-lifecycle .eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--item); margin-bottom: 12px;
+  }
+  .item-lifecycle h2 {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: clamp(28px, 4vw, 40px); line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 8px;
+  }
+  .item-lifecycle .lead { font-size: 15px; color: var(--ink-soft); margin-bottom: 28px; }
+  .item-meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 24px; }
+  .item-meta-cell { background: rgba(255,255,255,0.6); border: 1px solid var(--line); padding: 14px 16px; }
+  .item-meta-cell .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin-bottom: 4px;
+  }
+  .item-meta-cell .value { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ink); }
+  .item-url {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-soft);
+    background: rgba(255,255,255,0.7); padding: 12px 14px;
+    border: 1px dashed var(--line); word-break: break-all; margin-bottom: 28px;
+  }
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 1px; background: var(--item); }
+  .timeline-event { position: relative; margin-bottom: 24px; padding-bottom: 16px; }
+  .timeline-event::before {
+    content: ''; position: absolute; left: -27px; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%; background: var(--item); border: 3px solid var(--paper);
+  }
+  .timeline-event .date {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--item); margin-bottom: 4px;
+  }
+  .timeline-event .title { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 500; margin-bottom: 6px; }
+  .timeline-event .detail { font-size: 14px; color: var(--ink-soft); margin-bottom: 6px; }
+  .timeline-event .proof {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent);
+    background: rgba(198,110,44,0.08); padding: 6px 10px; display: inline-block; margin-top: 4px;
+  }
+  .item-status-badge {
+    display: inline-block; padding: 5px 14px; background: var(--item); color: var(--paper);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .item-systems-strip {
+    background: rgba(91,58,130,0.06); padding: 14px 18px; margin-top: 24px;
+    border-left: 3px solid var(--item); font-size: 12px; color: var(--ink-soft);
+  }
+  .item-systems-strip strong { color: var(--ink); }
+  @media (max-width: 600px) { .item-meta-grid { grid-template-columns: 1fr; } }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter Tight', -apple-system, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* ─── Background texture ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(198,110,44,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(42,77,110,0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── Header band ─── */
+  header.brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    background: rgba(244, 240, 232, 0.92);
+  }
+  .brand-mark {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+  .brand-mark span { color: var(--accent); }
+  .brand-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── Hero ─── */
+  .hero {
+    padding: 56px 24px 40px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(38px, 6vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--water);
+  }
+  .hero-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+  .hero-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+  .hero-row .cell {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+  .hero-row .cell .label {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+    opacity: 0.7;
+  }
+  .hero-row .cell .value {
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ─── Talla selector ─── */
+  .size-selector {
+    margin-top: 32px;
+    padding: 20px 24px;
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+  .size-selector .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .size-selector .hint {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 10px;
+    opacity: 0.7;
+  }
+  .size-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .size-btn {
+    flex: 1;
+    min-width: 56px;
+    padding: 12px 8px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    border-radius: 2px;
+  }
+  .size-btn:hover {
+    border-color: var(--ink);
+  }
+  .size-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .size-btn .weight {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.6;
+  }
+
+  /* ─── Sections ─── */
+  section.block {
+    padding: 48px 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .block-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .block-title {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .block-lead {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin-bottom: 28px;
+    max-width: 56ch;
+  }
+
+  /* ─── Composición visual ─── */
+  .fiber-bar {
+    display: flex;
+    height: 56px;
+    border: 1px solid var(--line);
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .fiber-bar > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    transition: flex 0.4s ease;
+  }
+  .fiber-bar > div .lab {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+  .fiber-poly {
+    flex: 88;
+    background: linear-gradient(135deg, var(--water) 0%, #1f3a52 100%);
+  }
+  .fiber-elas {
+    flex: 12;
+    background: var(--accent);
+    color: var(--ink) !important;
+  }
+  .fiber-detail {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .fiber-detail .item {
+    padding: 8px 0;
+    border-top: 1px dashed var(--line);
+  }
+  .fiber-detail .item:first-child { border-top: none; }
+  .fiber-detail .item strong { color: var(--ink); margin-right: 6px; }
+
+  /* ─── Carbon stat ─── */
+  .stat-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    align-items: end;
+    padding: 28px;
+    background: var(--ink);
+    color: var(--paper);
+    margin-bottom: 24px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    right: -20%;
+    top: -50%;
+    width: 80%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(198,110,44,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .stat-value {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--accent-soft);
+  }
+  .stat-value .unit {
+    font-size: 16px;
+    letter-spacing: 0;
+    color: var(--paper);
+    opacity: 0.6;
+    font-family: 'JetBrains Mono', monospace;
+    margin-left: 6px;
+    font-weight: 400;
+  }
+  .stat-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+  .stat-meta strong { color: var(--accent-soft); }
+
+  .stage-bars {
+    display: grid;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .stage-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 50px;
+    gap: 12px;
+    align-items: center;
+    font-size: 13px;
+  }
+  .stage-row .name {
+    font-family: 'Inter Tight', sans-serif;
+    color: var(--ink-soft);
+  }
+  .stage-row .bar {
+    height: 8px;
+    background: var(--paper-soft);
+    overflow: hidden;
+    border-radius: 1px;
+  }
+  .stage-row .bar > span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--moss), var(--water));
+  }
+  .stage-row .pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-align: right;
+  }
+
+  /* ─── Supply chain ─── */
+  .tier-list {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .tier {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .tier-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+  }
+  .tier-name {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .tier-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .tier-meta .flag {
+    display: inline-block;
+    padding: 1px 6px;
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    margin-right: 6px;
+  }
+
+  /* ─── Durability table ─── */
+  .durability-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .dur-cell {
+    background: var(--paper);
+    padding: 18px;
+  }
+  .dur-cell .test {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .dur-cell .name {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .dur-cell .val {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--moss);
+  }
+  .dur-cell .val .small {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-left: 4px;
+  }
+
+  /* ─── Repair ─── */
+  .repair-score {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+    margin-bottom: 24px;
+  }
+  .repair-circle {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    background: conic-gradient(var(--moss) 0% 72%, var(--paper) 72% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .repair-circle::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    background: var(--paper-soft);
+    border-radius: 50%;
+  }
+  .repair-circle span {
+    position: relative;
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+  }
+  .repair-text strong {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .repair-text p {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .spare-list {
+    list-style: none;
+  }
+  .spare-list li {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    align-items: baseline;
+    font-size: 14px;
+  }
+  .spare-list li:first-child { border-top: none; }
+  .spare-list .sku {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+    display: block;
+    margin-top: 2px;
+  }
+  .spare-list .price {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+  }
+  .spare-list .avail {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+
+  /* ─── Compliance / certs ─── */
+  .cert-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .cert {
+    border: 1px solid var(--line);
+    padding: 16px;
+    background: var(--paper);
+  }
+  .cert .name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .cert .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+    word-break: break-all;
+    margin-bottom: 8px;
+  }
+  .cert .valid {
+    font-size: 11px;
+    color: var(--ok);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cert .valid::before {
+    content: '●';
+    color: var(--ok);
+  }
+
+  /* ─── Claims ─── */
+  .claims {
+    display: grid;
+    gap: 6px;
+  }
+  .claim {
+    display: grid;
+    grid-template-columns: 24px 1fr auto;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+    align-items: center;
+    font-size: 13px;
+  }
+  .claim.unverified {
+    background: rgba(168, 50, 50, 0.06);
+    border-color: rgba(168, 50, 50, 0.3);
+  }
+  .claim .check {
+    color: var(--ok);
+    font-weight: 700;
+  }
+  .claim.unverified .check {
+    color: var(--alert);
+  }
+  .claim .ev {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+  }
+
+  /* ─── Footer ─── */
+  footer.legal {
+    padding: 40px 24px 60px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  footer.legal .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+  footer.legal h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-soft);
+    margin-bottom: 12px;
+  }
+  footer.legal .id {
+    font-family: 'JetBrains Mono', monospace;
+    word-break: break-all;
+    opacity: 0.85;
+  }
+  footer.legal .signature {
+    border-top: 1px solid rgba(244,240,232,0.15);
+    padding-top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    opacity: 0.7;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer.legal .badge-cc {
+    color: var(--accent-soft);
+    font-weight: 600;
+  }
+
+  /* ─── Regulatory note banner ─── */
+  .reg-note {
+    background: rgba(198, 110, 44, 0.12);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    margin: 24px 24px 0;
+    font-size: 12px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .reg-note strong { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .hero-row { grid-template-columns: 1fr; }
+    .stat-card { grid-template-columns: 1fr; }
+    .stage-row { grid-template-columns: 100px 1fr 40px; font-size: 11px; }
+    .durability-grid { grid-template-columns: 1fr; }
+    .stat-value { font-size: 48px; }
+    footer.legal .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="brand">
+    <div class="brand-mark">TER<span>·</span>NUA</div>
+    <div class="brand-meta">DPP v2 · ESCANEO 22 ABR 2026 · 14:32</div>
+  </header>
+
+  <div class="item-bar">
+    <span class="item-bar-label">Vista</span>
+    <button class="item-pill active" data-item="lote">Lote (600 unid.)</button>
+    <button class="item-pill" data-item="000001">Item 000001</button>
+    <button class="item-pill" data-item="000147">Item 000147</button>
+    <button class="item-pill" data-item="000388">Item 000388</button>
+    <span style="margin-left: auto; opacity: 0.7; font-size: 10px;">3 capas - GTIN + lot + serial</span>
+  </div>
+
+  <section class="item-lifecycle" id="item-lifecycle">
+    <div class="eyebrow">Vista item-level - GS1 Application Identifier 21</div>
+    <h2>Item <em id="item-serial-h2">000147</em></h2>
+    <p class="lead" id="item-lead">Esta es una unidad concreta del lote, con su propia historia. La capa modelo (composicion, durabilidad, certificaciones) y la capa lote (origen real, huella, cadena) se heredan del passport principal.</p>
+    <div class="item-meta-grid">
+      <div class="item-meta-cell"><div class="label">Serial</div><div class="value" id="item-serial">000147</div></div>
+      <div class="item-meta-cell"><div class="label">Fabricado</div><div class="value" id="item-mfg">15 abr 2026 - 16:48</div></div>
+      <div class="item-meta-cell"><div class="label">Estado actual</div><div class="value"><span class="item-status-badge" id="item-status">In use after repair</span></div></div>
+    </div>
+    <div class="item-url" id="item-url">https://id.gs1.org/01/08412345678035/10/B2026Q2DEMIN0042/21/000147</div>
+    <div class="timeline" id="item-timeline"></div>
+    <div class="item-systems-strip"><strong>Asignacion del serial:</strong> el QR variable lo imprime <strong>Avery Dennison</strong> en la etiqueta de cuidado, via la plataforma <strong>atma.io</strong>. La trazabilidad se reconcilia con <strong>Centric C8 (PLM)</strong> y <strong>Microsoft Dynamics 365 Business Central (ERP)</strong>. Cada evento post-venta queda sellado con hash <strong>SHA-256</strong> por Code Contract (Trackline); la firma eIDAS QES es una capacidad prevista (anclaje blockchain preparado, <strong>local-stub-v1</strong>).</div>
+  </section>
+
+  <div class="reg-note">
+    <strong>Pasaporte digital anticipado.</strong> El acto delegado ESPR para textil aún no está adoptado. Esta declaración es voluntaria y se actualizará con la regulación final. Los datos llevan <strong>sello de integridad SHA-256</strong> (Code Contract · Trackline); la firma <strong>eIDAS QES es una capacidad prevista</strong> (requiere QTSP/HSM). Modelo alineado con la metodología <strong>JRC145830</strong> (22 alineados · 0 parciales · 1 hueco externo: el registro central UE, aún no abierto a textil).
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Trekking Series · Color 2101 · Azul ártico</div>
+    <h1>Demina <em>Hard Hood</em> Jkt&nbsp;W</h1>
+    <p class="hero-sub">Hecha con botellas de plástico recogidas en las costas. Reparable. Trazable hasta el Tier 4.</p>
+
+    <div class="hero-row">
+      <div class="cell">
+        <div class="label">Lote</div>
+        <div class="value">B2026Q2-DEMIN-0042</div>
+      </div>
+      <div class="cell">
+        <div class="label">Fabricado en</div>
+        <div class="value">🇵🇹 Vila Nova de Gaia, Portugal</div>
+      </div>
+      <div class="cell">
+        <div class="label">Composición</div>
+        <div class="value">88% PES reciclado · 12% Elastano</div>
+      </div>
+      <div class="cell">
+        <div class="label">Tu prenda pesa</div>
+        <div class="value" id="weight-display">430 g · talla M</div>
+      </div>
+    </div>
+
+    <div class="size-selector">
+      <div class="label">
+        <span>Selecciona tu talla</span>
+        <span class="hint">los datos del DPP se ajustan a tu talla real</span>
+      </div>
+      <div class="size-buttons" id="size-buttons">
+        <button class="size-btn" data-size="S"   data-weight="395">S<span class="weight">395 g</span></button>
+        <button class="size-btn active" data-size="M"   data-weight="430">M<span class="weight">430 g</span></button>
+        <button class="size-btn" data-size="L"   data-weight="465">L<span class="weight">465 g</span></button>
+        <button class="size-btn" data-size="XL"  data-weight="500">XL<span class="weight">500 g</span></button>
+        <button class="size-btn" data-size="XXL" data-weight="535">XXL<span class="weight">535 g</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 01 COMPOSICIÓN ─── -->
+  <section class="block">
+    <div class="block-num">01 / Composición</div>
+    <h2 class="block-title">De qué está hecha</h2>
+    <p class="block-lead">Soft-shell técnico Shellstretch + STORMFLEECE Pro. La fibra principal viene de botellas PET post-consumer recogidas en costa atlántica.</p>
+
+    <div class="fiber-bar">
+      <div class="fiber-poly">
+        88,0%
+        <span class="lab">Polyester reciclado</span>
+      </div>
+      <div class="fiber-elas">
+        12,0%
+        <span class="lab">Elastane</span>
+      </div>
+    </div>
+
+    <div class="fiber-detail">
+      <div class="item"><strong>Polyester 88,0%</strong> origen: post-consumer PET reciclado · Supplier Declaration SUP-DEC-MOCK-2026-DEMIN-001 · Tier 3: Synthetic Yarns Iberia (ES)</div>
+      <div class="item"><strong>Elastane 12,0%</strong> origen: sintético virgen</div>
+      <div class="item"><strong>Tratamiento DWR</strong> PFC Free · C0 poliuretano dendrítico · Bluesign-approved</div>
+      <div class="item"><strong>~16 botellas PET</strong> equivalentes por chaqueta (cálculo basado en 430 g de tela y 65% rendimiento)</div>
+      <div class="item"><strong>Sustancias (SCIP / REACH)</strong> ninguna SVHC &gt; 0,1% declarada · ref. SCIP SCIP-DEMIN-2026-0042 (ECHA · lista candidatas v2025-06) · instrucciones de uso seguro públicas</div>
+      <div class="item"><strong>Microfibras</strong> liberación de micro/nanoplásticos evaluada (fabricación · uso · fin de vida) · método de ensayo TMC armonizado UE pendiente · mitigación: acabado de baja liberación + lavado en bolsa filtrante <em>(ESPR Anexo I — pendiente de norma)</em></div>
+    </div>
+  </section>
+
+  <!-- ─── 02 HUELLA ─── -->
+  <section class="block">
+    <div class="block-num">02 / Huella ambiental</div>
+    <h2 class="block-title">Cuánto pesa en el planeta</h2>
+    <p class="block-lead">Estudio ACV según PEFCR Apparel &amp; Footwear v3.1, verificado por tercero. Datos primarios 62%. Para tu talla seleccionada se ajusta proporcionalmente a la masa real.</p>
+
+    <div class="stat-card">
+      <div class="stat-value" id="cf-per-use">88,5<span class="unit">g CO₂-eq · uso</span></div>
+      <div class="stat-meta">
+        <strong>Por prenda completa:</strong> <span id="cf-per-garment">17 700</span> g CO₂-eq<br>
+        <strong>Vida útil esperada:</strong> 200 usos · 50 ciclos de lavado<br>
+        <strong>Talla referencia:</strong> M (430 g) · escalado mass-proportional<br>
+        <strong>Verificador:</strong> ACV Verify Atlántica · 15 abr 2026
+      </div>
+    </div>
+
+    <div class="stage-bars">
+      <div class="stage-row"><span class="name">Fibra (PET reciclado)</span><div class="bar"><span style="width:32%"></span></div><span class="pct">32%</span></div>
+      <div class="stage-row"><span class="name">Tintado y acabado</span><div class="bar"><span style="width:26%"></span></div><span class="pct">26%</span></div>
+      <div class="stage-row"><span class="name">Hilatura y tejeduría</span><div class="bar"><span style="width:17%"></span></div><span class="pct">17%</span></div>
+      <div class="stage-row"><span class="name">Uso (200 usos)</span><div class="bar"><span style="width:10%"></span></div><span class="pct">10%</span></div>
+      <div class="stage-row"><span class="name">Confección + logística</span><div class="bar"><span style="width:9%"></span></div><span class="pct">9%</span></div>
+      <div class="stage-row"><span class="name">Distribución y retail</span><div class="bar"><span style="width:4%"></span></div><span class="pct">4%</span></div>
+      <div class="stage-row"><span class="name">Fin de vida</span><div class="bar"><span style="width:2%"></span></div><span class="pct">2%</span></div>
+    </div>
+  </section>
+
+  <!-- ─── 03 CADENA DE SUMINISTRO ─── -->
+  <section class="block">
+    <div class="block-num">03 / Cadena de suministro</div>
+    <h2 class="block-title">De dónde viene cada parte</h2>
+    <p class="block-lead">Trazabilidad completa Tier 1 → Tier 4. Cada planta tiene su GLN registrado en GS1.</p>
+
+    <div class="tier-list">
+      <div class="tier">
+        <div class="tier-tag">Tier 1</div>
+        <div>
+          <div class="tier-name">Confecciones Atlántico S.A.</div>
+          <div class="tier-meta"><span class="flag">🇵🇹 PT</span> Vila Nova de Gaia · GLN 5601999911114 · confección final</div>
+        </div>
+      </div>
+      <div class="tier">
+        <div class="tier-tag">Tier 2 ·a</div>
+        <div>
+          <div class="tier-name">Têxtil Norte Lda.</div>
+          <div class="tier-meta"><span class="flag">🇵🇹 PT</span> tejeduría · GLN 5601999922224 · Bluesign approved</div>
+        </div>
+      </div>
+      <div class="tier">
+        <div class="tier-tag">Tier 2 ·b</div>
+        <div>
+          <div class="tier-name">Tinturaria Cávado S.A.</div>
+          <div class="tier-meta"><span class="flag">🇵🇹 PT</span> tintura y acabado DWR · GLN 5601999933334 · ZDHC Progressive · OEKO-TEX 100</div>
+        </div>
+      </div>
+      <div class="tier">
+        <div class="tier-tag">Tier 3</div>
+        <div>
+          <div class="tier-name">Synthetic Yarns Iberia S.L.</div>
+          <div class="tier-meta"><span class="flag">🇪🇸 ES</span> extrusión PES reciclado · GLN 5601999955554</div>
+        </div>
+      </div>
+      <div class="tier">
+        <div class="tier-tag">Tier 4</div>
+        <div>
+          <div class="tier-name">EcoPET Atlántica</div>
+          <div class="tier-meta"><span class="flag">🇵🇹 PT</span> reciclaje botellas PET post-consumer · trazabilidad upstream en plan de mejora Q4-2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 04 DURABILIDAD ─── -->
+  <section class="block">
+    <div class="block-num">04 / Durabilidad</div>
+    <h2 class="block-title">Cuánto va a aguantar</h2>
+    <p class="block-lead">Ensayos en laboratorio acreditado ISO/IEC 17025. Informe ITL-2026-04-MOCK-DEMIN-0918.</p>
+
+    <div class="durability-grid">
+      <div class="dur-cell">
+        <div class="test">ISO 13934-1 · Tracción</div>
+        <div class="name">Resistencia urdimbre / trama</div>
+        <div class="val">540 / 470<span class="small">N</span></div>
+      </div>
+      <div class="dur-cell">
+        <div class="test">ISO 12947-2 · Martindale</div>
+        <div class="name">Resistencia a la abrasión</div>
+        <div class="val">28 000<span class="small">ciclos</span></div>
+      </div>
+      <div class="dur-cell">
+        <div class="test">ISO 6330 / 5077</div>
+        <div class="name">Estabilidad dimensional</div>
+        <div class="val">−2,4 / −1,6<span class="small">% (warp/weft)</span></div>
+      </div>
+      <div class="dur-cell">
+        <div class="test">ISO 105-C06 / X12</div>
+        <div class="name">Solidez color (lavado / frote)</div>
+        <div class="val">4 / 4,5<span class="small">/ 5</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 05 REPARABILIDAD ─── -->
+  <section class="block">
+    <div class="block-num">05 / Reparabilidad</div>
+    <h2 class="block-title">Cómo arreglarla cuando se rompa</h2>
+    <p class="block-lead">Cinco repuestos disponibles 7-10 años. Talleres oficiales con garantía post-reparación de 6 meses.</p>
+
+    <div class="repair-score">
+      <div class="repair-circle"><span>7,2</span></div>
+      <div class="repair-text">
+        <strong>Score reparabilidad: media-alta</strong>
+        <p>Cremalleras y cordón removibles con herramienta básica. La membrana laminada al tejido NO es separable.</p>
+      </div>
+    </div>
+
+    <ul class="spare-list">
+      <li>
+        <span>Cremallera frontal con capucha<span class="sku">DEMIN-SP-ZIP-FRONT-001</span></span>
+        <span class="price">21,50 €</span>
+        <span class="avail">7 años</span>
+      </li>
+      <li>
+        <span>Cremallera bolsillo pecho/manga<span class="sku">DEMIN-SP-ZIP-CHEST-001</span></span>
+        <span class="price">9,90 €</span>
+        <span class="avail">7 años</span>
+      </li>
+      <li>
+        <span>Cordón ajuste capucha + cintura<span class="sku">DEMIN-SP-DRAW-001</span></span>
+        <span class="price">5,50 €</span>
+        <span class="avail">10 años</span>
+      </li>
+      <li>
+        <span>Parche reparación tela soft-shell (kit 5)<span class="sku">DEMIN-SP-PATCH-001</span></span>
+        <span class="price">9,90 €</span>
+        <span class="avail">10 años</span>
+      </li>
+      <li>
+        <span>Spray reactivación DWR PFC-free 250 ml<span class="sku">DEMIN-SP-DWR-001</span></span>
+        <span class="price">14,00 €</span>
+        <span class="avail">permanente</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ─── 06 CERTIFICACIONES Y CLAIMS ─── -->
+  <section class="block">
+    <div class="block-num">06 / Certificaciones</div>
+    <h2 class="block-title">Lo que está auditado</h2>
+    <p class="block-lead">Certificaciones activas verificadas a fecha de emisión.</p>
+
+    <div class="cert-row">
+      <div class="cert">
+        <div class="name">Bluesign approved fabric</div>
+        <div class="num">BS-MOCK-PT-2026-DEMIN-7421</div>
+        <div class="valid">válido hasta 31 ene 2027</div>
+      </div>
+      <div class="cert">
+        <div class="name">OEKO-TEX 100 · Class II</div>
+        <div class="num">26.OTX.MOCK.IB.74129</div>
+        <div class="valid">válido hasta 02 feb 2027</div>
+      </div>
+      <div class="cert">
+        <div class="name">ZDHC MRSL Progressive</div>
+        <div class="num">Tinturaria Cávado · 2026-Q1</div>
+        <div class="valid">vigente</div>
+      </div>
+    </div>
+
+    <h3 style="font-family: 'Fraunces', serif; font-weight: 500; margin: 36px 0 16px; font-size: 18px;">Claims publicados — 7 de 8 con evidencia</h3>
+    <div class="claims">
+      <div class="claim"><span class="check">✓</span><span>Hecha con botellas PET recicladas (proyecto limpieza de costas)</span><span class="ev">SUP-DEC-2026-001</span></div>
+      <div class="claim"><span class="check">✓</span><span>Tratamiento DWR PFC Free</span><span class="ev">Bluesign + ZDHC</span></div>
+      <div class="claim"><span class="check">✓</span><span>Tejido Bluesign approved</span><span class="ev">BS-MOCK-7421</span></div>
+      <div class="claim"><span class="check">✓</span><span>Producida en Europa (Portugal)</span><span class="ev">Tier 1-3 PT/ES</span></div>
+      <div class="claim"><span class="check">✓</span><span>88,5 g CO₂-eq por uso (talla M)</span><span class="ev">ACV PEFCR v3.1</span></div>
+      <div class="claim"><span class="check">✓</span><span>~16 botellas PET por chaqueta</span><span class="ev">Cálculo trazado</span></div>
+      <div class="claim"><span class="check">✓</span><span>Talleres con auditoría social</span><span class="ev">Plan SMETA Q4-26</span></div>
+      <div class="claim unverified"><span class="check">!</span><span>Reparable en taller oficial</span><span class="ev">sin evidencia</span></div>
+    </div>
+  </section>
+
+  <!-- ─── 07 FIN DE VIDA ─── -->
+  <section class="block">
+    <div class="block-num">07 / Fin de vida</div>
+    <h2 class="block-title">Cuando ya no la quieras</h2>
+    <p class="block-lead">Devuélvela al programa <strong>Loop Your Wear / Redcycle</strong> de Ternua, o deposítala en un contenedor textil. No la tires a residuos generales.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px;">
+      <div style="padding: 18px; background: var(--paper-soft); border: 1px solid var(--line);">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px;">Reciclabilidad</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 32px; font-weight: 500; color: var(--moss);">6,9<span style="font-size: 14px; color: var(--ink-soft); margin-left: 4px;">/ 10</span></div>
+        <div style="font-size: 12px; color: var(--ink-soft); margin-top: 4px;">Mono-material 88% · accesorios removibles</div>
+      </div>
+      <div style="padding: 18px; background: var(--paper-soft); border: 1px solid var(--line);">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px;">EPR registro</div>
+        <div style="font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500;">Re-Viste España</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-soft); margin-top: 4px;">ES-TX-2026-MOCK-DEMIN-001234</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="legal">
+    <div class="grid">
+      <div>
+        <h4>Identificación del producto · UPI / UFI</h4>
+        <div class="id">URN: urn:dpp:ternua:1643585-2101:B2026Q2-DEMIN-0042</div>
+        <div class="id" style="margin-top: 6px;">GTIN-14 (AI 01): 08412345678035 · check digit válido</div>
+        <div class="id" style="margin-top: 6px;">UPI (GS1 Digital Link): id.ternua.com/01/08412345678035/10/B2026Q2DEMIN0042/21/&lt;serie&gt;</div>
+        <div class="id" style="margin-top: 6px;">UFI instalaciones: GLN por tier (T1 5601999911114 … T3 5601999955554)</div>
+        <div class="id" style="margin-top: 6px;">Capas: modelo + lote + item (AI 21) - 600 unid. en lote - 3 items demo</div>
+        <div class="id" style="margin-top: 6px;">Tag: Avery Dennison atma.io - ERP: Dynamics 365 BC - PLM: Centric C8</div>
+      </div>
+      <div>
+        <h4>Operador económico · UOI</h4>
+        <div>Ternua Group S.L.</div>
+        <div class="id" style="margin-top: 6px;">UOI (UNTP Party): LEI 5493001MOCKDEMOTER42 (GLEIF)</div>
+        <div class="id" style="margin-top: 6px;">EORI ESA00001234001-MOCK</div>
+        <div style="margin-top: 6px; opacity: 0.7;">Polígono Industrial Demo s/n, Álava</div>
+      </div>
+    </div>
+    <div class="signature">
+      <span>Sellado por <strong class="badge-cc">Code Contract S.L.</strong> · SHA-256 DataIntegrityProof (anclaje local-stub-v1) · firma eIDAS QES <em>prevista</em> · 22 abr 2026 10:00 CET</span>
+      <span>Cert MOCK-CERT-CC-2026-001</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Talla selector — recalcula peso y huella mass-proportional
+  const REF_WEIGHT = 430; // M
+  const REF_CF_USE = 88.5;
+  const REF_CF_GARMENT = 17700;
+
+  const buttons = document.querySelectorAll('.size-btn');
+  const weightDisplay = document.getElementById('weight-display');
+  const cfPerUse = document.getElementById('cf-per-use');
+  const cfPerGarment = document.getElementById('cf-per-garment');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const size = btn.dataset.size;
+      const weight = parseInt(btn.dataset.weight);
+      const ratio = weight / REF_WEIGHT;
+
+      const newCfUse = (REF_CF_USE * ratio).toFixed(1).replace('.', ',');
+      const newCfGarment = Math.round(REF_CF_GARMENT * ratio).toLocaleString('es-ES');
+
+      weightDisplay.textContent = `${weight} g · talla ${size}`;
+      cfPerUse.innerHTML = `${newCfUse}<span class="unit">g CO₂-eq · uso</span>`;
+      cfPerGarment.textContent = newCfGarment;
+    });
+  });
+
+  var ITEMS = {
+    "000001": {
+      mfg: "15 abr 2026 - 14:23",
+      status: "In use consumer",
+      lead: "Unidad numero 1 del lote - vendida en tienda fisica, sin eventos posteriores. Es el caso tipico (la mayoria de las 600 unidades estaran en este estado).",
+      events: [
+        {date: "12 sep 2026", title: "Vendida en tienda Bilbao Gran Via", detail: "Order TER-RET-2026-009124 - canal retail fisico", proof: "Code Contract sello SHA-256 - SAL-DEMIN-000001-2026-009"}
+      ]
+    },
+    "000147": {
+      mfg: "15 abr 2026 - 16:48",
+      status: "In use after repair",
+      lead: "Unidad numero 147 del lote - vendida online y reparada en taller oficial 5 meses despues. La trazabilidad item-level permite registrar la intervencion sobre esta prenda concreta, no sobre el lote.",
+      events: [
+        {date: "3 oct 2026", title: "Vendida en ternua.com", detail: "Order TER-EC-2026-022417 - canal e-commerce", proof: "Code Contract sello SHA-256 - SAL-DEMIN-000147-2026-010"},
+        {date: "12 mar 2027", title: "Cremallera frontal sustituida", detail: "Taller Oficial Ternua Mondragon - DEMIN-SP-ZIP-FRONT-001 - 39,50 euros - garantia extendida +6 meses", proof: "Code Contract sello SHA-256 - REP-DEMIN-000147-2027-003"}
+      ]
+    },
+    "000388": {
+      mfg: "16 abr 2026 - 09:14",
+      status: "Recycled",
+      lead: "Unidad numero 388 del lote - ciclo completo cerrado: vendida, revendida en segunda mano, y reciclada. Cada evento queda anclado al serial 000388 con firma eIDAS QES individual.",
+      events: [
+        {date: "18 nov 2026", title: "Vendida en tienda Vitoria", detail: "Order TER-RET-2026-014998 - 200 euros PVP", proof: "Code Contract sello SHA-256 - SAL-DEMIN-000388-2026-011"},
+        {date: "22 abr 2029", title: "Revendida en Loop Your Wear", detail: "Plataforma reventa Ternua - grado B+ - 78 euros - cambio de propietario registrado", proof: "Code Contract sello SHA-256 - RES-DEMIN-000388-2029-004"},
+        {date: "2 sep 2034", title: "Reciclada", detail: "Contenedor Re-Viste Vitoria-Gasteiz, EcoPET Atlantica (PT) - linea recuperacion mono-PES - 405 g recuperados (87% yield)", proof: "Code Contract sello SHA-256 - EOL-DEMIN-000388-2034-009"}
+      ]
+    }
+  };
+
+  var itemPills = document.querySelectorAll('.item-pill');
+  var itemBlock = document.getElementById('item-lifecycle');
+  var itemSerialH2 = document.getElementById('item-serial-h2');
+  var itemSerial = document.getElementById('item-serial');
+  var itemMfg = document.getElementById('item-mfg');
+  var itemStatus = document.getElementById('item-status');
+  var itemLead = document.getElementById('item-lead');
+  var itemUrl = document.getElementById('item-url');
+  var itemTimeline = document.getElementById('item-timeline');
+
+  itemPills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      itemPills.forEach(function(p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      var id = pill.dataset.item;
+      if (id === 'lote') {
+        itemBlock.classList.remove('visible');
+        return;
+      }
+      var data = ITEMS[id];
+      itemSerialH2.textContent = id;
+      itemSerial.textContent = id;
+      itemMfg.textContent = data.mfg;
+      itemStatus.textContent = data.status;
+      itemLead.textContent = data.lead;
+      itemUrl.textContent = 'https://id.gs1.org/01/08412345678035/10/B2026Q2DEMIN0042/21/' + id;
+      var html = '';
+      data.events.forEach(function(e) {
+        html += '<div class="timeline-event">';
+        html += '<div class="date">' + e.date + '</div>';
+        html += '<div class="title">' + e.title + '</div>';
+        html += '<div class="detail">' + e.detail + '</div>';
+        html += '<div class="proof">' + e.proof + '</div>';
+        html += '</div>';
+      });
+      itemTimeline.innerHTML = html;
+      itemBlock.classList.add('visible');
+      itemBlock.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  });
+
+</script>
+</body>
+</html>
