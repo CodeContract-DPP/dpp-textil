@@ -335,6 +335,91 @@
   .footer a { color: var(--blue); text-decoration: none; }
   .footer .sources { margin-bottom: 10px; }
 
+  /* Capabilities grid */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .cap-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .cap-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cap-card h4 .tag {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    background: var(--teal-light);
+    color: var(--teal);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .cap-card p { font-size: 12px; line-height: 1.5; color: #4b5563; }
+  .cap-meta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    background: var(--green-light);
+    border: 1px solid #b7e4c7;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 8px;
+  }
+  .cap-meta .stat { font-size: 12px; color: var(--green); }
+  .cap-meta .stat strong { font-size: 16px; font-weight: 800; display: block; line-height: 1.1; }
+
+  /* JRC badge */
+  .jrc-badge {
+    background: linear-gradient(90deg, #eff6ff, #f5f3ff);
+    border: 1px solid #c7d2fe;
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .jrc-badge .seal {
+    background: white;
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    border-radius: 50%;
+    width: 78px;
+    height: 78px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    flex-shrink: 0;
+  }
+  .jrc-badge .seal strong { font-size: 20px; font-weight: 800; }
+  .jrc-badge .jrc-body { flex: 1; min-width: 260px; }
+  .jrc-badge .jrc-body h3 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+  .jrc-badge .jrc-body p { font-size: 13px; color: #374151; }
+  .jrc-stats { display: flex; gap: 14px; flex-wrap: wrap; }
+  .jrc-stats .s { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; text-align: center; min-width: 76px; }
+  .jrc-stats .s strong { display: block; font-size: 20px; font-weight: 800; color: var(--blue); line-height: 1; }
+  .jrc-stats .s span { font-size: 10px; text-transform: uppercase; letter-spacing: 0.4px; color: var(--gray); }
+
   /* Responsive */
   @media (max-width: 640px) {
     .header h1 { font-size: 22px; }
@@ -363,7 +448,7 @@
     <strong>Estado del documento</strong>
     Datos demo ficticios. Acto delegado textil aun no adoptado a fecha de publicacion. Posicionamiento de preparacion temprana.
   </div>
-  <span class="stamp">v1.0 &middot; 6 may 2026</span>
+  <span class="stamp">v2.0 &middot; junio 2026</span>
 </div>
 
 <div class="container">
@@ -393,15 +478,79 @@
       </div>
       <div class="h-level h-solucion">
         <h3>Solucion Code Contract</h3>
-        <p><strong>Trackline</strong> + DPP item-level con firma <strong>eIDAS QES</strong>. Validez legal del dato certificado. Mappings textiles + plantillas JSON-LD por producto.</p>
+        <p><strong>Trackline</strong> + DPP modelo / lote / item con firma <strong>eIDAS QES</strong>. Modelo canonico v2 alineado a JRC145830, identificadores UPI/UOI/UFI, resolver GS1 Digital Link y sello de integridad SHA-256 por lote.</p>
       </div>
+    </div>
+  </div>
+
+  <!-- ESTADO IMPLEMENTACION -->
+  <div class="section">
+    <h2>Estado de la implementacion</h2>
+    <p class="lead">Lo que ya esta construido en el demo <code>dpp-demo-textil</code> de Code Contract. Production-grade en estructura. Datos demo ficticios; el acto delegado textil no esta adoptado.</p>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <h4>Modelo canonico v2 <span class="tag">DATA</span></h4>
+        <p>Piramide de herencia de 5 capas (empresa &rarr; modelo &rarr; variante &rarr; produccion &rarr; unidad). Granularidad modelo/lote/item.</p>
+      </div>
+      <div class="cap-card">
+        <h4>DPP Studio <span class="tag">UI</span></h4>
+        <p>Un solo HTML (wizard de 6 pasos) que produce el bundle por lote. Importador desde exportaciones Trackline &rarr; DPP v2.</p>
+      </div>
+      <div class="cap-card">
+        <h4>Gobernanza por actor <span class="tag">ACCESS</span></h4>
+        <p>Framing de 6 actores (PUB / REP / REC / OL / AUT / COM) con permiso campo a campo. Principio &ldquo;need-to-know&rdquo; del JRC.</p>
+      </div>
+      <div class="cap-card">
+        <h4>Identificadores UPI / UOI / UFI <span class="tag">ID</span></h4>
+        <p>UID conforme a ISO/IEC 15459 via GS1 Digital Link, con check digit. Operador (UOI) e instalacion (UFI) en formato UNTP (UN/CEFACT).</p>
+      </div>
+      <div class="cap-card">
+        <h4>Sello de integridad <span class="tag">TRUST</span></h4>
+        <p>Hash SHA-256 por lote + verificador de bundle (detecta manipulacion) + ledger de anclaje (estructura preparada para Hyperledger Fabric).</p>
+      </div>
+      <div class="cap-card">
+        <h4>Resolver GS1 Digital Link <span class="tag">QR</span></h4>
+        <p>Escaneo del QR &rarr; DPP. Vista publica (HTML) o JSON-LD por actor, segun gobernanza.</p>
+      </div>
+      <div class="cap-card">
+        <h4>Sustancias y microplasticos <span class="tag">REGS</span></h4>
+        <p>Sustancias de preocupacion alineadas a ECHA SCIP. Microplasticos por etapas del ciclo de vida (ESPR Anexo I).</p>
+      </div>
+      <div class="cap-card">
+        <h4>Capa semantica <span class="tag">VOCAB</span></h4>
+        <p>Crosswalk de las rutas del modelo a schema.org / GS1 / UNTP / EN 455xx / SCIP, <code>@context</code> JSON-LD y unidades por UN/CEFACT Rec.20 / ISO 4217.</p>
+      </div>
+    </div>
+    <div class="cap-meta">
+      <div class="stat"><strong>167</strong>pruebas automaticas en verde</div>
+      <div class="stat"><strong>22 / 23</strong>requisitos JRC145830 alineados</div>
+      <div class="stat"><strong>6</strong>actores con permiso campo a campo</div>
+      <div class="stat"><strong>3</strong>capas de granularidad (modelo / lote / item)</div>
+    </div>
+  </div>
+
+  <!-- JRC BADGE -->
+  <div class="jrc-badge">
+    <div class="seal">
+      <span>Alineado</span>
+      <strong>JRC</strong>
+      <span>145830</span>
+    </div>
+    <div class="jrc-body">
+      <h3>Alineado con la metodologia del JRC</h3>
+      <p>El modelo canonico v2 se contrasto contra <strong>JRC145830 (2026) - &ldquo;Methodology for defining data requirements for the DPP under the ESPR&rdquo;</strong>. Sin huecos de contenido: granularidad (Anexo 7), gobernanza por actor (Anexo 8), x-obligation, identificadores UPI/UOI/UFI, vocabulario y unidades. Unico hueco restante: conexion al registro central UE (externo, ~2027).</p>
+    </div>
+    <div class="jrc-stats">
+      <div class="s"><strong>22</strong><span>Alineados</span></div>
+      <div class="s"><strong>0</strong><span>Parciales</span></div>
+      <div class="s"><strong>1</strong><span>Hueco externo</span></div>
     </div>
   </div>
 
   <!-- TIMELINE -->
   <div class="section">
     <h2>Calendario regulatorio</h2>
-    <p class="lead">Hitos publicos vinculantes y estimaciones sectoriales. Las fechas oficiales se distinguen de las estimadas.</p>
+    <p class="lead">Hitos publicos vinculantes y estimaciones sectoriales (verificado junio 2026). Las fechas oficiales llevan referencia OJ / COM; las estimadas estan etiquetadas y dependen de cuando la Comision adopte el acto delegado textil.</p>
     <table class="tl-table">
       <thead>
         <tr>
@@ -414,15 +563,39 @@
       <tbody>
         <tr>
           <td class="tl-date">2024-07-18</td>
-          <td>ESPR Reg. UE 2024/1781 entra en vigor</td>
+          <td>ESPR Reg. (UE) 2024/1781 entra en vigor (marco del DPP)</td>
+          <td><span class="tl-pill pill-done">Cumplido</span></td>
+          <td>Oficial OJ</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2024-12</td>
+          <td>PEFCR Apparel &amp; Footwear v3.0 publicada</td>
+          <td><span class="tl-pill pill-done">Cumplido</span></td>
+          <td>Metodo PEF</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2024-12-13</td>
+          <td>Reg. (UE) 2024/3015 trabajo forzoso entra en vigor</td>
           <td><span class="tl-pill pill-done">Cumplido</span></td>
           <td>Oficial OJ</td>
         </tr>
         <tr>
           <td class="tl-date">2025-04-16</td>
-          <td>Working Plan ESPR 2025-2030 publicado - textil prioridad 1</td>
+          <td>Working Plan ESPR 2025-2030 (COM(2025) 187) - textil prioritario</td>
           <td><span class="tl-pill pill-done">Cumplido</span></td>
-          <td>Oficial COM(2025)</td>
+          <td>Oficial COM</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2025-04</td>
+          <td>PEFCR Apparel &amp; Footwear v3.1 publicada</td>
+          <td><span class="tl-pill pill-done">Cumplido</span></td>
+          <td>Metodo PEF</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2025-10-16</td>
+          <td>Directiva Marco de Residuos revisada en vigor - RAP textil</td>
+          <td><span class="tl-pill pill-done">Cumplido</span></td>
+          <td>Oficial OJ</td>
         </tr>
         <tr>
           <td class="tl-date">2026-02-09</td>
@@ -431,37 +604,82 @@
           <td>Oficial OJ</td>
         </tr>
         <tr>
-          <td class="tl-date">2027-02-18</td>
-          <td>Battery Passport vinculante (referencia analogica)</td>
+          <td class="tl-date">2026</td>
+          <td>Norma CEN EN 18220 (DPP data carrier) publicada</td>
           <td><span class="tl-pill pill-active">En curso</span></td>
+          <td>Estandar EN</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2026-06</td>
+          <td>Guias de la Comision sobre trabajo forzoso</td>
+          <td><span class="tl-pill pill-active">Pendiente</span></td>
+          <td>Oficial</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2026-09 <span class="estim">(aprox.)</span></td>
+          <td>EmpCo: prohibicion de alegaciones verdes genericas</td>
+          <td><span class="tl-pill pill-future">Pendiente</span></td>
           <td>Oficial OJ</td>
         </tr>
         <tr>
-          <td class="tl-date">2027-Q4 <span class="estim">(estim.)</span></td>
-          <td>Adopcion acto delegado textil ESPR</td>
+          <td class="tl-date">2026-12</td>
+          <td>EUDI Wallet disponible en los 27 EM (eIDAS 2.0)</td>
+          <td><span class="tl-pill pill-future">Pendiente</span></td>
+          <td>Oficial OJ</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2027-02-18</td>
+          <td>Battery Passport vinculante (referencia analogica)</td>
+          <td><span class="tl-pill pill-future">Pendiente</span></td>
+          <td>Oficial OJ</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2027 <span class="estim">(estim. Q2)</span></td>
+          <td>Adopcion del acto delegado textil ESPR</td>
           <td><span class="tl-pill pill-future">Estimado</span></td>
           <td>Estimacion</td>
         </tr>
         <tr>
-          <td class="tl-date">2027-12-14</td>
-          <td>Reg. UE 2024/3015 trabajo forzoso aplicable</td>
+          <td class="tl-date">2027-06 <span class="estim">(aprox.)</span></td>
+          <td>RAP textil: transposicion a derecho nacional</td>
           <td><span class="tl-pill pill-future">Pendiente</span></td>
           <td>Oficial OJ</td>
         </tr>
         <tr>
-          <td class="tl-date">mid-2028 <span class="estim">(estim.)</span></td>
-          <td>Aplicacion obligatoria DPP textil</td>
+          <td class="tl-date">2027-12-14</td>
+          <td>Reg. (UE) 2024/3015 trabajo forzoso aplicable</td>
+          <td><span class="tl-pill pill-future">Pendiente</span></td>
+          <td>Oficial OJ</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2028 <span class="estim">(aprox., +18m tras acto)</span></td>
+          <td><strong>Aplicacion obligatoria del DPP textil</strong></td>
           <td><span class="tl-pill pill-critical">Critico</span></td>
           <td>Estimacion</td>
         </tr>
         <tr>
-          <td class="tl-date">2028-Q3</td>
-          <td>CSDDD primera oleada empresas (>= 5000 emp / 1500M EUR)</td>
+          <td class="tl-date">2028-04 <span class="estim">(aprox.)</span></td>
+          <td>RAP textil: esquemas EPR operativos en la UE</td>
           <td><span class="tl-pill pill-future">Pendiente</span></td>
           <td>Oficial OJ</td>
         </tr>
+        <tr>
+          <td class="tl-date">2028-Q3</td>
+          <td>CSDDD primera oleada empresas (&ge; 5000 emp / 1500M EUR)</td>
+          <td><span class="tl-pill pill-future">Pendiente</span></td>
+          <td>Oficial OJ</td>
+        </tr>
+        <tr>
+          <td class="tl-date">2028</td>
+          <td>ESPR: revision intermedia del Working Plan</td>
+          <td><span class="tl-pill pill-future">Pendiente</span></td>
+          <td>Oficial</td>
+        </tr>
       </tbody>
     </table>
+    <p style="margin-top: 16px; font-size: 12px; color: var(--gray); line-height: 1.6;">
+      <strong>Notas:</strong> La <em>Green Claims Directive</em> esta en <strong>pausa / suspendida</strong> (jun-jul 2025); estado incierto - no es hito vinculante. <code>prEN 18246</code> (autenticacion / integridad del DPP, CEN/JTC 24) esta en borrador y mapea al sello SHA-256 que ya implementa el demo.
+    </p>
   </div>
 
   <!-- DEMOS -->
@@ -540,12 +758,18 @@
   <div class="sources">
     <strong>Fuentes oficiales:</strong>
     <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank">ESPR (UE) 2024/1781</a> &middot;
-    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM:2025:772:FIN" target="_blank">Working Plan ESPR 2025-2030</a> &middot;
-    <a href="https://cirpass2.eu/" target="_blank">CIRPASS-2</a> &middot;
+    <a href="https://green-forum.ec.europa.eu/news/2025-2030-working-plan-2025-07-11_en" target="_blank">Working Plan ESPR 2025-2030</a> &middot;
+    <a href="https://environment.ec.europa.eu/news/revised-waste-framework-directive-enters-force-2025-10-16_en" target="_blank">WFD revisada / RAP textil</a> &middot;
+    <a href="https://single-market-economy.ec.europa.eu/single-market/goods/forced-labour-regulation_en" target="_blank">Reg. Trabajo Forzoso (UE) 2024/3015</a> &middot;
+    <a href="https://digital-strategy.ec.europa.eu/en/policies/eudi-regulation" target="_blank">eIDAS 2.0 / EUDI Wallet</a> &middot;
     <a href="https://standards.cencenelec.eu/" target="_blank">JTC 24 (CEN-CENELEC)</a> &middot;
-    <a href="https://www.gs1.org/standards/gs1-digital-link" target="_blank">GS1 Digital Link</a>
+    <a href="https://environment.ec.europa.eu/news/new-eu-rules-measuring-environmental-impact-clothes-and-shoes-2025-06-25_en" target="_blank">PEFCR Apparel &amp; Footwear</a> &middot;
+    <a href="https://cirpass2.eu/" target="_blank">CIRPASS-2</a> &middot;
+    <a href="https://www.gs1.org/standards/gs1-digital-link" target="_blank">GS1 Digital Link</a> &middot;
+    <a href="https://untp.unece.org/" target="_blank">UNTP (UN/CEFACT)</a> &middot;
+    <a href="https://www.lw.com/en/insights/european-commission-announces-intention-to-withdraw-eu-green-claims-directive-proposal" target="_blank">Green Claims (pausa)</a>
   </div>
-  Elaborado por Code Contract S.L. &middot; v1.0 &middot; 6 mayo 2026<br>
+  Elaborado por Code Contract S.L. &middot; v2.0 &middot; junio 2026<br>
   <em style="color: #b0b0b0;">Nota: este documento no constituye asesoramiento juridico. El acto delegado textil no esta adoptado a fecha de publicacion. Consultar siempre el texto oficial del reglamento y los actos delegados vigentes.</em>
 </div>
 

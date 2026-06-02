@@ -426,6 +426,17 @@
     font-style: italic;
   }
 
+  /* v1.1 fix - reducir ruido visual en HOOD (campos heredados y pending) */
+  .attribute[data-inherited="true"] .inherited-badge { display: none; }
+  .attribute[data-inherited="true"] .attr-name::before {
+    content: "\21A9\FE0E  ";
+    color: #a78bfa;
+    font-weight: 400;
+    margin-right: 2px;
+  }
+  .attribute[data-status="pending"] .attr-note { display: none; }
+  .attribute[data-status="pending"] .pending-msg { font-style: normal; }
+
   table.bom-table {
     width: 100%;
     border-collapse: collapse;
@@ -2062,8 +2073,9 @@ function renderDashboard(data) {
     if (attr._inheritedFrom) inh++;
   });
   const total = conf + ynorm + pend;
-  const denom = conf + ynorm; // no-pending
-  const pct = denom === 0 ? 0 : Math.round((conf / denom) * 100);
+  // Fix: el denominador debe incluir los pending; antes solo era conf+ynorm
+  // y eso hacia que HOOD (con muchos pending) saliera mas completo que JKT M
+  const pct = total === 0 ? 0 : Math.round((conf / total) * 100);
 
   // Anillo
   const circumference = 2 * Math.PI * 80;
@@ -2153,23 +2165,4 @@ function loadProduct(path) {
   const data = DPP_EMBEDDED[path];
   if (!data) {
     document.getElementById("dpp-root").innerHTML =
-      `<div style="background:#fff5f5;border:1px solid #fed7d7;color:#9b2c2c;padding:1rem;border-radius:8px">No se encontro el producto: ${escapeHtml(path)}</div>`;
-    return;
-  }
-  renderAll(data);
-}
-
-document.getElementById("productSelect").addEventListener("change", e => {
-  loadProduct(e.target.value);
-});
-document.getElementById("filterBar").addEventListener("click", e => {
-  if (e.target.tagName === "BUTTON" && e.target.dataset.filter) {
-    applyFilter(e.target.dataset.filter);
-  }
-});
-
-// Init
-loadProduct(document.getElementById("productSelect").value);
-</script>
-</body>
-</html>
+      `<div style="background:#fff5f5;bo
