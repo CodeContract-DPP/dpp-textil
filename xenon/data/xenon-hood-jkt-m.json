@@ -4,34 +4,66 @@
     "https://id.codecontract.eu/ctx/textile-v1.jsonld"
   ],
   "dpp_uid": "urn:dpp:codecontract:textile:1644412-0577",
-  "dpp_version": "1.0-mock",
-  "created": "2026-05-05",
-  "last_updated": "2026-05-05",
+  "dpp_version": "2.0-mock",
+  "created": "2026-06-02",
+  "last_updated": "2026-06-02",
   "regulation_framework": [
     "ESPR (UE) 2024/1781 - base regulatoria",
-    "Reglamento DPP textil - pendiente delegated act (estimado mid-2028)",
+    "Reglamento DPP textil - pendiente delegated act (aplicacion estimada ~2028, no oficial)",
     "GS1 Digital Link",
     "CIRPASS-2 alignment"
   ],
   "_meta": {
-    "model": "TextileDPPModel v0.9 (CIRPASS-2 + Battery Pass mapping)",
+    "model": "TextileDPPModel v2.0 (CIRPASS-2 + Battery Pass mapping + UNTP)",
     "phases_model": "6-phase Code Contract textile reuse model",
-    "generated_by": "Code Contract demo - 2026-05-05",
+    "generated_by": "Code Contract demo - 2026-06-02",
     "product_label": "XENON HOOD JKT M",
     "sku": "1644412-0577",
     "siblingOf": "1644413-0576",
     "reuseStrategy": "Hereda fases 1-3 completas + comun de fase 4 desde XENON JKT M; especifico de la capucha pendiente"
   },
+  "_identifiers": {
+    "upi": {
+      "value": "",
+      "_note": "Pendiente: la HOOD aun no tiene GTIN asignado (falta serializar/extraer del Trackline). El UPI se construira como GS1 Digital Link cuando el GTIN este disponible."
+    },
+    "uoi": {
+      "id": "https://id.ternua.com/party/ternua-group",
+      "registeredId": "959800XXXXXXXXXXXXXX",
+      "idScheme": {
+        "id": "https://www.gleif.org/lei",
+        "name": "LEI (GLEIF)"
+      }
+    },
+    "ufi": {
+      "id": "https://id.ternua.com/facility/5601999911114",
+      "registeredId": "5601999911114",
+      "idScheme": {
+        "id": "https://gs1.org/voc/gln",
+        "name": "GLN (GS1)"
+      }
+    }
+  },
   "responsibleEconomicOperator": {
     "_icon": "🏢",
     "_title": "Operador economico responsable",
+    "operatorId": {
+      "value": "https://id.ternua.com/party/ternua-group",
+      "_status": "confirmed",
+      "_phase": 1,
+      "_obligation": "M",
+      "_inheritedFrom": "1644413-0576",
+      "_note": "UOI - forma UNTP Party (LEI via GLEIF). Heredado del operador comun.",
+      "_registryRequired": true
+    },
     "legalName": {
       "value": "Ternua Group S.L.",
       "_status": "confirmed",
       "_phase": 1,
       "_inheritedFrom": "1644413-0576",
       "_evidence": {
-        "blockchainTxHash": "0xd1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6",
+        "integrityHashSha256": "0xd1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6",
+        "anchorStatus": "local-stub-v1",
         "tracklineProcessId": "TL-MASTER-EO-001",
         "registeredDate": "2026-01-15",
         "registeredBy": "Code Contract Trackline"
@@ -221,6 +253,7 @@
       "value": "65% poliamida reciclada - 25% poliester reciclado - 10% elastano",
       "_status": "confirmed",
       "_phase": 4,
+      "_obligation": "M",
       "_inheritedFrom": "1644413-0576",
       "_note": "Extraido del PDF Cat#5 (TDS Dryshell, identico a hermana) - documentacion ficticia del Trackline"
     },
@@ -257,18 +290,107 @@
         "Origen reciclado"
       ],
       "_rows": []
+    },
+    "svhcDeclarations": {
+      "_isTable": true,
+      "_status": "confirmed",
+      "_phase": 4,
+      "_obligation": "M",
+      "_inheritedFrom": "1644413-0576",
+      "_legalBasis": "REACH Art. 33 / base de datos SCIP (ECHA)",
+      "_access": "REP/AUT",
+      "_note": "Declaracion a nivel de tejido, heredada de la hermana (mismo Dryshell). La declaracion a nivel de articulo se confirma al cerrar la BoM de la HOOD.",
+      "_columns": [
+        "SCIP ID",
+        "Sustancia",
+        "CAS",
+        "EC",
+        "Conc. %",
+        "Ubicacion",
+        "Lista candidatas",
+        "Uso seguro"
+      ],
+      "_rows": [
+        [
+          "SCIP-XEN-2026-0042",
+          "Ninguna SVHC > 0,1% declarada (tejido)",
+          "-",
+          "-",
+          "<0,1",
+          "Tejido exterior/forro",
+          "v2025-06 (ECHA)",
+          "https://ternua.com/dpp/safe-use/xenon"
+        ]
+      ]
+    },
+    "microplasticRelease": {
+      "_icon": "🧫",
+      "_title": "Liberacion de micro/nanoplasticos",
+      "assessedStages": {
+        "value": [
+          "fabricacion",
+          "uso",
+          "fin de vida"
+        ],
+        "_status": "confirmed-pending-norm",
+        "_phase": 4,
+        "_obligation": "R",
+        "_inheritedFrom": "1644413-0576",
+        "_legalBasis": "ESPR Anexo I",
+        "_note": "Heredado (mismo tejido). Metodo TMC armonizado aun no cerrado."
+      },
+      "testMethod": {
+        "value": "Pendiente metodo TMC armonizado UE (provisional: ISO/TR 4484 series)",
+        "_status": "confirmed-pending-norm",
+        "_phase": 4,
+        "_obligation": "R",
+        "_inheritedFrom": "1644413-0576",
+        "_legalBasis": "ESPR Anexo I"
+      },
+      "releaseDuringUseMgPerKg": {
+        "value": "",
+        "unit": "mg/kg",
+        "_status": "pending",
+        "_phase": 4,
+        "_obligation": "R",
+        "_note": "Pendiente - recalcular a nivel de articulo con la BoM de la HOOD."
+      },
+      "nanoplasticAssessed": {
+        "value": false,
+        "_status": "confirmed-pending-norm",
+        "_phase": 4,
+        "_obligation": "O",
+        "_inheritedFrom": "1644413-0576"
+      },
+      "mitigationMeasures": {
+        "value": "Acabado de baja liberacion + recomendacion de lavado en bolsa filtrante",
+        "_status": "confirmed",
+        "_phase": 4,
+        "_obligation": "R",
+        "_inheritedFrom": "1644413-0576"
+      }
     }
   },
   "supplyChain": {
     "_icon": "🔗",
     "_title": "Cadena de suministro",
+    "facilityIdTier1": {
+      "value": "https://id.ternua.com/facility/5601999911114",
+      "_status": "confirmed",
+      "_phase": 2,
+      "_obligation": "M",
+      "_inheritedFrom": "1644413-0576",
+      "_note": "UFI - forma UNTP Digital Facility Record (GLN). Misma planta que la hermana.",
+      "_registryRequired": true
+    },
     "tier1Operator": {
       "value": "Confecciones Atlantico S.A. (FICTICIA)",
       "_status": "confirmed",
       "_phase": 2,
       "_inheritedFrom": "1644413-0576",
       "_evidence": {
-        "blockchainTxHash": "0xb1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+        "integrityHashSha256": "0xb1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6",
+        "anchorStatus": "local-stub-v1",
         "tracklineProcessId": "TL-MASTER-T1-001",
         "registeredDate": "2026-03-10",
         "registeredBy": "Code Contract Trackline"
@@ -491,7 +613,8 @@
       "_inheritedFrom": "1644413-0576",
       "_legalBasis": "bluesign system",
       "_evidence": {
-        "blockchainTxHash": "0xc1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6",
+        "integrityHashSha256": "0xc1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6",
+        "anchorStatus": "local-stub-v1",
         "tracklineProcessId": "TL-MASTER-CERT-BLU-001",
         "registeredDate": "2026-02-01",
         "registeredBy": "Code Contract Trackline"
