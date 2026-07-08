@@ -17,7 +17,7 @@
     --accent: #c66e2c;       /* ámbar ártico */
     --accent-soft: #f5d4af;
     --moss: #2f4a3a;          /* verde montaña */
-    --water: #2a4d6e;         /* azul ártico */
+    --water: #2a4d6e;         /* Variante 2222 */
     --alert: #a83232;
     --ok: #3e6a4b;
     --item: #5b3a82;
@@ -728,6 +728,17 @@
 </style>
 </head>
 <body>
+<!-- Code Contract chrome (piel comun: marca + conmutador de vistas + aviso honestidad) -->
+<div style="background:#0d3b2e;color:#fff;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 18px;font-size:13px;">
+  <a href="../" style="color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px;"><strong style="letter-spacing:.02em;">Code Contract</strong><span style="opacity:.65;font-size:12px;">&middot; DPP textil</span></a>
+  <nav style="display:flex;gap:6px;flex-wrap:wrap;font-size:12px;align-items:center;">
+    <span style="opacity:.6;font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-right:2px;">Vistas del mismo DPP:</span>
+    <a href="../xenon/" title="Vista tecnica: dataset DPP estructurado (B2B)" style="color:#cfe3da;text-decoration:none;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);">T&eacute;cnica &middot; Dataset</a>
+    <a href="../demina/" title="Vista consumidor: lo que se ve al escanear el QR de la prenda" style="color:#cfe3da;text-decoration:none;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:#c66e2c;color:#fff;border-color:#c66e2c;font-weight:600;">Consumidor &middot; QR</a>
+    <a href="../" style="color:#cfe3da;text-decoration:none;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);">&Iacute;ndice</a>
+  </nav>
+</div>
+<div style="background:#fef3c7;border-bottom:1px solid #d97706;color:#92400e;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:12px;padding:8px 16px;text-align:center;font-weight:600;">&#x26A0;&#xFE0F; Demo &middot; datos ficticios &middot; acto delegado textil ESPR no adoptado &middot; firma eIDAS y anclaje blockchain previstos, no realizados.</div>
 <div class="container">
 
   <header class="brand">
@@ -764,7 +775,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-eyebrow">Trekking Series · Color 2101 · Azul ártico</div>
+    <div class="hero-eyebrow">Trekking Series · Color 2222 · Variante 2222</div>
     <h1>Demina <em>Hard Hood</em> Jkt&nbsp;W</h1>
     <p class="hero-sub">Hecha con botellas de plástico recogidas en las costas. Reparable. Trazable hasta el Tier 4.</p>
 
@@ -783,7 +794,7 @@
       </div>
       <div class="cell">
         <div class="label">Tu prenda pesa</div>
-        <div class="value" id="weight-display">430 g · talla M</div>
+        <div class="value" id="weight-display">415 g · talla M</div>
       </div>
     </div>
 
@@ -794,7 +805,7 @@
       </div>
       <div class="size-buttons" id="size-buttons">
         <button class="size-btn" data-size="S"   data-weight="395">S<span class="weight">395 g</span></button>
-        <button class="size-btn active" data-size="M"   data-weight="430">M<span class="weight">430 g</span></button>
+        <button class="size-btn active" data-size="M"   data-weight="430">M<span class="weight">415 g</span></button>
         <button class="size-btn" data-size="L"   data-weight="465">L<span class="weight">465 g</span></button>
         <button class="size-btn" data-size="XL"  data-weight="500">XL<span class="weight">500 g</span></button>
         <button class="size-btn" data-size="XXL" data-weight="535">XXL<span class="weight">535 g</span></button>
@@ -823,7 +834,7 @@
       <div class="item"><strong>Polyester 88,0%</strong> origen: post-consumer PET reciclado · Supplier Declaration SUP-DEC-MOCK-2026-DEMIN-001 · Tier 3: Synthetic Yarns Iberia (ES)</div>
       <div class="item"><strong>Elastane 12,0%</strong> origen: sintético virgen</div>
       <div class="item"><strong>Tratamiento DWR</strong> PFC Free · C0 poliuretano dendrítico · Bluesign-approved</div>
-      <div class="item"><strong>~16 botellas PET</strong> equivalentes por chaqueta (cálculo basado en 430 g de tela y 65% rendimiento)</div>
+      <div class="item"><strong>~16 botellas PET</strong> equivalentes por chaqueta (cálculo basado en 415 g de tela y 65% rendimiento)</div>
       <div class="item"><strong>Sustancias (SCIP / REACH)</strong> ninguna SVHC &gt; 0,1% declarada · ref. SCIP SCIP-DEMIN-2026-0042 (ECHA · lista candidatas v2025-06) · instrucciones de uso seguro públicas</div>
       <div class="item"><strong>Microfibras</strong> liberación de micro/nanoplásticos evaluada (fabricación · uso · fin de vida) · método de ensayo TMC armonizado UE pendiente · mitigación: acabado de baja liberación + lavado en bolsa filtrante <em>(ESPR Anexo I — pendiente de norma)</em></div>
     </div>
@@ -840,7 +851,7 @@
       <div class="stat-meta">
         <strong>Por prenda completa:</strong> <span id="cf-per-garment">17 700</span> g CO₂-eq<br>
         <strong>Vida útil esperada:</strong> 200 usos · 50 ciclos de lavado<br>
-        <strong>Talla referencia:</strong> M (430 g) · escalado mass-proportional<br>
+        <strong>Talla referencia:</strong> M (415 g) · escalado mass-proportional<br>
         <strong>Verificador:</strong> ACV Verify Atlántica · 15 abr 2026
       </div>
     </div>
@@ -1036,7 +1047,7 @@
     <div class="grid">
       <div>
         <h4>Identificación del producto · UPI / UFI</h4>
-        <div class="id">URN: urn:dpp:ternua:1643585-2101:B2026Q2-DEMIN-0042</div>
+        <div class="id">URN: urn:dpp:ternua:1643586-2222:B2026Q2-DEMIN-0042</div>
         <div class="id" style="margin-top: 6px;">GTIN-14 (AI 01): 08412345678035 · check digit válido</div>
         <div class="id" style="margin-top: 6px;">UPI (GS1 Digital Link): id.ternua.com/01/08412345678035/10/B2026Q2DEMIN0042/21/&lt;serie&gt;</div>
         <div class="id" style="margin-top: 6px;">UFI instalaciones: GLN por tier (T1 5601999911114 … T3 5601999955554)</div>
