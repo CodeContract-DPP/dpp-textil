@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruta DPP Textil — Guia para fabricantes y marcas</title>
+<meta name="description" content="Guia paso a paso para implantar el Pasaporte Digital de Producto (DPP) en fabricantes y marcas textiles. ESPR 2024/1781, Working Plan 2025-2030 (textil prioridad 1), informe JRC de mayo 2026, normas JTC 24. Por Code Contract.">
+<meta name="keywords" content="DPP, pasaporte digital producto, textil, moda, apparel, ESPR 2024/1781, Working Plan 2025-2030, JRC, CIRPASS-2, JTC 24, GS1 Digital Link, PEFCR Apparel Footwear, contenido reciclado, trabajo forzoso, RAP textil">
+<meta name="author" content="Code Contract S.L.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://codecontract-dpp.github.io/dpp-textil/guia-textil.html">
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://codecontract-dpp.github.io/dpp-textil/guia-textil.html">
+<meta property="og:title" content="Ruta DPP Textil — Guia para fabricantes y marcas">
+<meta property="og:description" content="Guia practica para implantar el Pasaporte Digital de Producto en textil. ESPR Working Plan 2025-2030, 49 data points del JRC, 266 campos en 10 clusters, checklist y FAQ.">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="Code Contract - DPP Textil">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ruta DPP Textil — Guia para fabricantes y marcas">
+<meta name="twitter:description" content="Guia practica para implantar el Pasaporte Digital de Producto en textil. ESPR Working Plan 2025-2030, informe JRC may-2026, checklist y FAQ.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F455;</text></svg>">
+
+<style>
+:root {
+  --dark: #1a1a2e;
+  --green: #2e7d4f;
+  --green-light: #e8f5ee;
+  --blue: #2563eb;
+  --blue-light: #eff6ff;
+  --amber: #d97706;
+  --amber-light: #fffbeb;
+  --red: #dc2626;
+  --red-light: #fef2f2;
+  --purple: #7c3aed;
+  --purple-light: #f5f3ff;
+  --teal: #0d9488;
+  --teal-light: #f0fdfa;
+  --steel: #475569;
+  --steel-light: #f1f5f9;
+  --gray: #6b7280;
+  --border: #e5e7eb;
+  --bg: #f8fafc;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: #1f2937; line-height: 1.6; }
+
+.header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #475569 100%);
+  color: white; padding: 40px 20px 32px; text-align: center;
+}
+.header h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.header p { font-size: 15px; opacity: 0.85; max-width: 760px; margin: 0 auto; }
+.header .reg-badge {
+  display: inline-block; margin-top: 16px;
+  background: rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 20px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+}
+
+.doc-status-bar { max-width: 1100px; margin: 4px auto 0; padding: 0 20px; position: relative; z-index: 2; }
+.doc-status {
+  background: white; border: 2px solid var(--amber); border-radius: 12px;
+  padding: 16px 20px; display: flex; align-items: center; gap: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.doc-status-icon {
+  width: 44px; height: 44px; border-radius: 10px; background: var(--amber-light);
+  display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
+}
+.doc-status-text { flex: 1; }
+.doc-status-text h3 { font-size: 14px; font-weight: 700; color: var(--amber); }
+.doc-status-text p { font-size: 12px; color: var(--gray); margin-top: 2px; }
+.doc-status-version { font-size: 11px; color: var(--gray); text-align: right; white-space: nowrap; }
+.doc-status-version strong { color: #1f2937; display: block; font-size: 12px; }
+
+.deadline-banner {
+  background: linear-gradient(90deg, #1a1a2e, #475569);
+  color: white; text-align: center; padding: 14px 20px;
+  font-size: 15px; font-weight: 600; margin-top: 20px;
+}
+.deadline-banner span { font-size: 20px; margin-right: 8px; }
+
+.hierarchy-box { max-width: 1100px; margin: 24px auto 0; padding: 0 20px; }
+.hierarchy {
+  background: white; border-radius: 14px; border: 1px solid var(--border);
+  padding: 20px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.hierarchy h3 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 14px; text-align: center; }
+.hierarchy-levels { display: flex; gap: 0; align-items: stretch; }
+.h-level { flex: 1; padding: 14px 16px; text-align: center; position: relative; }
+.h-level:not(:last-child)::after {
+  content: ''; position: absolute; right: 0; top: 20%; height: 60%;
+  width: 1px; background: var(--border);
+}
+.h-level-icon { font-size: 24px; margin-bottom: 6px; }
+.h-level-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.h-level-desc { font-size: 11px; color: var(--gray); line-height: 1.4; }
+.h-level-badge {
+  display: inline-block; margin-top: 8px; font-size: 10px; font-weight: 700;
+  padding: 3px 10px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.h-ley .h-level-title { color: #1d4ed8; }
+.h-ley .h-level-badge { background: #dbeafe; color: #1d4ed8; }
+.h-guia .h-level-title { color: #065f46; }
+.h-guia .h-level-badge { background: #d1fae5; color: #065f46; }
+.h-solucion .h-level-title { color: #92400e; }
+.h-solucion .h-level-badge { background: #fef3c7; color: #92400e; }
+.hierarchy-arrow {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 4px; font-size: 18px; color: var(--border);
+}
+.hierarchy-note {
+  margin-top: 12px; padding-top: 12px; border-top: 1px solid #f3f4f6;
+  font-size: 11px; color: var(--gray); text-align: center; line-height: 1.5;
+}
+
+.impl-timeline { max-width: 1100px; margin: 24px auto 0; padding: 0 20px; }
+.impl-timeline-box {
+  background: white; border-radius: 14px; border: 1px solid var(--border);
+  padding: 20px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.impl-timeline-box h3 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 16px; text-align: center; }
+.tl-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.tl-table th {
+  text-align: left; padding: 8px 10px; font-weight: 700; color: var(--gray);
+  border-bottom: 2px solid var(--border); font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.tl-table td { padding: 10px; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+.tl-table tr:last-child td { border-bottom: none; }
+.tl-date-cell { font-weight: 700; white-space: nowrap; }
+.tl-milestone { font-weight: 600; color: #1f2937; }
+.tl-publisher { color: var(--gray); font-size: 11px; }
+.tl-status-badge {
+  display: inline-block; font-size: 9px; font-weight: 700; padding: 2px 8px;
+  border-radius: 8px; text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap;
+}
+.tl-past { background: var(--green-light); color: var(--green); }
+.tl-upcoming { background: var(--amber-light); color: var(--amber); }
+.tl-future { background: var(--red-light); color: var(--red); }
+.tl-da-note { font-size: 10px; color: var(--amber); font-style: italic; margin-top: 2px; }
+.impl-timeline-note {
+  margin-top: 12px; padding-top: 12px; border-top: 1px solid #f3f4f6;
+  font-size: 11px; color: var(--gray); text-align: center; line-height: 1.5;
+}
+
+/* CATEGORIAS JRC (slot sectorial G6) */
+.routes-box { max-width: 1100px; margin: 24px auto 0; padding: 0 20px; }
+.routes {
+  background: white; border-radius: 14px; border: 1px solid var(--border);
+  padding: 20px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.routes h3 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 6px; text-align: center; }
+.routes > p.routes-sub { font-size: 12px; color: var(--gray); text-align: center; margin-bottom: 16px; }
+.routes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.route-card {
+  border-radius: 12px; padding: 16px; border: 1px solid var(--border);
+  text-align: center;
+}
+.route-card h4 { font-size: 14px; font-weight: 800; margin-bottom: 4px; }
+.route-card .route-co2 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+.route-card .route-unit { font-size: 10px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.route-card p { font-size: 11px; color: var(--gray); line-height: 1.4; }
+.route-1 { background: var(--blue-light); } .route-1 h4, .route-1 .route-co2 { color: var(--blue); }
+.route-2 { background: var(--teal-light); } .route-2 h4, .route-2 .route-co2 { color: var(--teal); }
+.route-3 { background: var(--amber-light); } .route-3 h4, .route-3 .route-co2 { color: var(--amber); }
+.route-4 { background: var(--purple-light); } .route-4 h4, .route-4 .route-co2 { color: var(--purple); }
+
+/* GRANULARIDAD (slot sectorial) */
+.products-box { max-width: 1100px; margin: 24px auto 0; padding: 0 20px; }
+.products {
+  background: white; border-radius: 14px; border: 1px solid var(--border);
+  padding: 20px 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.products h3 { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 6px; text-align: center; }
+.products > p { font-size: 12px; color: var(--gray); text-align: center; margin-bottom: 16px; }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.prod-card {
+  border-radius: 10px; padding: 14px; border: 1px solid var(--border);
+  cursor: pointer; transition: all 0.15s; position: relative; background: white;
+}
+.prod-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); transform: translateY(-1px); }
+.prod-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.prod-card .prod-code { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; display: inline-block; margin-bottom: 6px; background: var(--steel-light); color: var(--steel); }
+.prod-card .prod-cf { font-size: 11px; color: #1f2937; font-weight: 600; margin-bottom: 4px; }
+.prod-card .prod-route { font-size: 11px; color: var(--gray); }
+.prod-card .prod-detail { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid #f3f4f6; font-size: 11px; color: #4b5563; line-height: 1.5; }
+.prod-card.expanded .prod-detail { display: block; }
+.prod-card .prod-expand { font-size: 10px; color: var(--blue); font-weight: 600; margin-top: 6px; }
+
+.legend {
+  max-width: 1100px; margin: 20px auto 0; padding: 0 20px;
+  display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+}
+.legend-item {
+  display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray);
+  background: white; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--border);
+}
+.legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+
+.phase {
+  margin-bottom: 32px; background: white; border-radius: 16px;
+  border: 1px solid var(--border); overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.phase-header { padding: 20px 24px; display: flex; align-items: center; gap: 16px; cursor: pointer; user-select: none; }
+.phase-header:hover { background: #fafbfc; }
+.phase-number {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 800; color: white; flex-shrink: 0;
+}
+.phase-info { flex: 1; }
+.phase-info h2 { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.phase-info p { font-size: 13px; color: var(--gray); margin-top: 2px; }
+.phase-deadline { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; white-space: nowrap; }
+.phase-chevron { font-size: 14px; color: var(--gray); transition: transform 0.2s; }
+.phase-header.collapsed .phase-chevron { transform: rotate(-90deg); }
+.phase-body { border-top: 1px solid var(--border); }
+.phase-body.hidden { display: none; }
+
+.phase-green .phase-number { background: var(--green); }
+.phase-green .phase-deadline { background: var(--green-light); color: var(--green); }
+.phase-blue .phase-number { background: var(--blue); }
+.phase-blue .phase-deadline { background: var(--blue-light); color: var(--blue); }
+.phase-amber .phase-number { background: var(--amber); }
+.phase-amber .phase-deadline { background: var(--amber-light); color: var(--amber); }
+.phase-red .phase-number { background: var(--red); }
+.phase-red .phase-deadline { background: var(--red-light); color: var(--red); }
+.phase-purple .phase-number { background: var(--purple); }
+.phase-purple .phase-deadline { background: var(--purple-light); color: var(--purple); }
+
+.step { padding: 16px 24px; border-bottom: 1px solid #f3f4f6; display: flex; align-items: flex-start; gap: 16px; }
+.step:last-child { border-bottom: none; }
+.step-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0; background: #f9fafb; border: 1px solid var(--border);
+}
+.step-content { flex: 1; min-width: 0; }
+.step-content h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.step-content p { font-size: 13px; color: #4b5563; }
+
+.doc-group { margin-top: 10px; }
+.doc-group-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 4px; padding-left: 2px;
+}
+.dg-ley { color: #1d4ed8; }
+.dg-guia { color: #065f46; }
+.dg-solucion { color: #92400e; }
+.dg-external { color: #6b21a8; }
+.doc-group-links { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.doc-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 600; padding: 4px 10px;
+  border-radius: 6px; text-decoration: none; transition: all 0.15s;
+}
+.doc-link:hover { filter: brightness(0.95); transform: translateY(-1px); }
+.doc-normativa { background: #dbeafe; color: #1d4ed8; }
+.doc-guia { background: #d1fae5; color: #065f46; }
+.doc-interno { background: #fef3c7; color: #92400e; }
+.doc-external { background: #e9d5ff; color: #6b21a8; }
+
+/* CHECKLIST TABLE */
+.checklist-section { max-width: 1100px; margin: 0 auto 32px; padding: 0 20px; }
+.checklist-box {
+  background: white; border-radius: 16px; border: 1px solid var(--border);
+  padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.checklist-box h2 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+.checklist-box > p.cl-sub { font-size: 13px; color: var(--gray); margin-bottom: 16px; }
+.cl-table-wrap { overflow-x: auto; }
+.cl-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 900px; }
+.cl-table th {
+  text-align: left; padding: 8px 10px; font-weight: 700; color: var(--gray);
+  border-bottom: 2px solid var(--border); font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;
+  background: #f9fafb;
+}
+.cl-table td { padding: 10px; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+.cl-table tr:hover td { background: #fafbfc; }
+.cl-code { font-family: 'SF Mono', Menlo, monospace; font-size: 11px; background: var(--steel-light); color: var(--steel); padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
+.cl-doc { font-weight: 600; color: #1f2937; }
+.cl-art { font-size: 11px; color: var(--gray); }
+.cl-badge { display: inline-block; font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap; }
+.cl-red { background: var(--red-light); color: var(--red); }
+.cl-amber { background: var(--amber-light); color: var(--amber); }
+.cl-blue { background: var(--blue-light); color: var(--blue); }
+.cl-green { background: var(--green-light); color: var(--green); }
+.checklist-legend {
+  margin-top: 16px; padding-top: 16px; border-top: 1px solid #f3f4f6;
+  font-size: 12px; color: #4b5563; line-height: 1.6;
+}
+.checklist-legend strong { color: #1f2937; }
+
+/* DATA ATTRIBUTES OVERVIEW */
+.attrs-section { max-width: 1100px; margin: 0 auto 32px; padding: 0 20px; }
+.attrs-box {
+  background: white; border-radius: 16px; border: 1px solid var(--border);
+  padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.attrs-box h2 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+.attrs-box > p.attrs-sub { font-size: 13px; color: var(--gray); margin-bottom: 16px; }
+.attrs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.attr-card { background: var(--bg); border-radius: 10px; padding: 14px; border: 1px solid var(--border); }
+.attr-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 8px; color: var(--dark); display: flex; align-items: center; gap: 6px; }
+.attr-card .attr-count { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 8px; background: var(--steel); color: white; }
+.attr-card ul { list-style: none; padding: 0; margin: 0; }
+.attr-card li { font-size: 11px; color: #4b5563; padding: 2px 0; }
+
+/* RESULT BOX */
+.result-box {
+  background: linear-gradient(135deg, #1a1a2e 0%, #475569 100%);
+  color: white; border-radius: 16px; padding: 32px;
+  text-align: center; margin-top: 8px;
+}
+.result-box h2 { font-size: 22px; margin-bottom: 8px; }
+.result-box p { font-size: 14px; opacity: 0.9; max-width: 660px; margin: 0 auto 20px; }
+.result-items { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.result-item {
+  background: rgba(255,255,255,0.15); padding: 10px 18px;
+  border-radius: 10px; font-size: 13px; font-weight: 600;
+}
+
+/* CTA */
+.cta-section { max-width: 1100px; margin: 0 auto; padding: 0 20px 32px; }
+.cta-box {
+  background: white; border-radius: 16px; border: 2px solid var(--steel);
+  padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.cta-box h2 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+.cta-box > p { font-size: 14px; color: #4b5563; margin-bottom: 20px; max-width: 760px; }
+.cta-steps {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px; margin-bottom: 20px;
+}
+.cta-step { background: var(--bg); border-radius: 12px; padding: 16px; border: 1px solid var(--border); }
+.cta-step-num {
+  font-size: 11px; font-weight: 700; color: var(--steel);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+}
+.cta-step h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.cta-step p { font-size: 12px; color: var(--gray); }
+.cta-links {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.cta-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; padding: 8px 16px;
+  border-radius: 8px; text-decoration: none; transition: all 0.15s;
+}
+.cta-link:hover { filter: brightness(0.95); transform: translateY(-1px); }
+.cta-link-primary { background: var(--steel); color: white; }
+.cta-link-secondary { background: var(--steel-light); color: var(--steel); }
+
+/* FAQ */
+.faq-box { max-width: 1100px; margin: 0 auto; padding: 0 20px 32px; }
+.faq {
+  background: white; border-radius: 16px; border: 1px solid var(--border);
+  overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.faq-title {
+  padding: 20px 24px; font-size: 18px; font-weight: 700; color: var(--dark);
+  text-align: center; border-bottom: 1px solid var(--border);
+}
+.faq-item { border-bottom: 1px solid #f3f4f6; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  padding: 16px 24px; display: flex; align-items: center; gap: 12px;
+  cursor: pointer; user-select: none; font-size: 14px; font-weight: 600; color: #1f2937;
+}
+.faq-q:hover { background: #fafbfc; }
+.faq-q .faq-icon { font-size: 18px; color: var(--steel); flex-shrink: 0; }
+.faq-q .faq-chevron { margin-left: auto; font-size: 12px; color: var(--gray); transition: transform 0.2s; }
+.faq-q.collapsed .faq-chevron { transform: rotate(-90deg); }
+.faq-a { padding: 0 24px 16px 54px; font-size: 13px; color: #4b5563; line-height: 1.6; }
+.faq-a.hidden { display: none; }
+
+.footer { text-align: center; padding: 24px 20px 40px; font-size: 12px; color: var(--gray); }
+.footer a { color: var(--blue); text-decoration: none; }
+
+@media (max-width: 640px) {
+  .header h1 { font-size: 22px; }
+  .phase-header { flex-wrap: wrap; }
+  .step { flex-direction: column; }
+  .hierarchy-levels { flex-direction: column; gap: 12px; }
+  .h-level:not(:last-child)::after { display: none; }
+  .hierarchy-arrow { transform: rotate(90deg); }
+  .doc-status { flex-wrap: wrap; }
+  .tl-table { font-size: 11px; }
+  .cta-steps { grid-template-columns: 1fr; }
+  .routes-grid { grid-template-columns: 1fr 1fr; }
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .attrs-grid { grid-template-columns: 1fr; }
+  .pack-nav { margin: -10px auto 20px; }
+}
+
+/* === SPEC-PACK-DPP R1: nav del pack === */
+.pack-nav {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; align-items: center;
+  background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 10px 16px;
+  max-width: 880px; margin: -16px auto 24px; box-shadow: 0 2px 6px rgba(0,0,0,.07);
+  position: relative; z-index: 3;
+}
+.pack-nav .pn-label { font-size: 11px; font-weight: 700; color: #94a3b8; letter-spacing: .07em; text-transform: uppercase; margin-right: 6px; }
+.pack-nav a { font-size: 13px; font-weight: 600; color: #475569; text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: all .15s; }
+.pack-nav a:hover { background: #f1f5f9; }
+.pack-nav a.active { background: var(--dark); color: #fff; }
+
+/* === SPEC-PACK-DPP R3: tarjeta-puente al mapping === */
+.bridge-card {
+  display: block; background: linear-gradient(135deg, #eff6ff, #f5f3ff);
+  border: 2px solid var(--blue); border-radius: 12px; padding: 18px 24px;
+  margin: 0 auto 24px; max-width: 1060px; text-decoration: none; transition: box-shadow .15s;
+}
+.bridge-card:hover { box-shadow: 0 6px 16px rgba(37,99,235,.18); }
+.bridge-card .bc-title { font-size: 15px; font-weight: 700; color: #1d4ed8; }
+.bridge-card .bc-sub { font-size: 13px; color: #475569; margin-top: 4px; }
+</style>
+</head>
+<body>
+<!-- Code Contract chrome (piel comun del pack textil) -->
+<div style="background:#0d3b2e;color:#fff;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 18px;font-size:13px;">
+  <a href="./" style="color:#fff;text-decoration:none;display:flex;align-items:center;gap:8px;"><strong style="letter-spacing:.02em;">Code Contract</strong><span style="opacity:.65;font-size:12px;">&middot; DPP textil</span></a>
+  <nav style="display:flex;gap:6px;flex-wrap:wrap;font-size:12px;align-items:center;">
+    <a href="./" style="color:#cfe3da;text-decoration:none;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);">&Iacute;ndice</a>
+    <a href="xenon/" title="Vista tecnica: dataset DPP estructurado (B2B)" style="color:#cfe3da;text-decoration:none;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);">T&eacute;cnica &middot; Dataset</a>
+    <a href="demina/" title="Vista consumidor: lo que se ve al escanear el QR de la prenda" style="color:#cfe3da;text-decoration:none;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);">Consumidor &middot; QR</a>
+    <a href="https://codecontract-dpp.github.io/dpp-validator/" title="Validador de estructura DPP (CIRPASS)" style="color:#cfe3da;text-decoration:none;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.18);">Validador</a>
+  </nav>
+</div>
+
+<div class="header">
+  <h1>Ruta hacia el DPP Textil</h1>
+  <p>Guia paso a paso para que un fabricante o una marca de textil y confeccion se prepare para cumplir con el Reglamento ESPR 2024/1781 y tener su Pasaporte Digital de Producto operativo. El detalle sectorial dependera del acto delegado textil, aun no adoptado. El textil (con foco en apparel) es la prioridad n.&ordm; 1 del Working Plan ESPR 2025-2030.</p>
+  <div class="reg-badge">ESPR (UE) 2024/1781 &middot; Working Plan 2025-2030 &middot; Reg. 1007/2011 etiquetado &middot; Reg. 2024/3015 trabajo forzoso &middot; RAP textil</div>
+</div>
+
+<!-- SPEC-PACK-DPP R1: nav del pack -->
+<div class="pack-nav">
+  <span class="pn-label">Pack DPP Textil</span>
+  <a href="guia-textil.html" class="active">&#x1F4D8; Guia</a>
+  <a href="mapping-textil.html">&#x1F5FA;&#xFE0F; Mapping</a>
+  <a href="xenon/">&#x1F441;&#xFE0F; Visor XENON</a>
+  <a href="demina/">&#x1F441;&#xFE0F; Visor DEMINA</a>
+  <a href="https://codecontract-dpp.github.io/dpp-validator/">&#x2705; Validador</a>
+</div>
+
+<!-- DOCUMENT STATUS (G2) -->
+<div class="doc-status-bar">
+  <div class="doc-status">
+    <div class="doc-status-icon">&#x1F7E1;</div>
+    <div class="doc-status-text">
+      <h3>Estado del documento: VIGENTE &mdash; revision continua</h3>
+      <p>Alineado con el ESPR 2024/1781, el Working Plan ESPR 2025-2030 (COM(2025) 187, adoptado 16 abril 2025), el informe JRC sobre contenido del DPP textil apparel (13 mayo 2026, 49 data points), las 6 normas EN del DPP citadas en el DOUE por la Decision de Ejecucion (UE) 2026/1736 (14 julio 2026) y la metodologia JRC145830, a agosto de 2026. El detalle sectorial sigue pendiente del acto delegado textil, aun no adoptado.</p>
+    </div>
+    <div class="doc-status-version">
+      <strong>v1.1</strong>
+      25 agosto 2026
+    </div>
+  </div>
+</div>
+
+<!-- DEADLINE BANNER (G3) -->
+<div class="deadline-banner">
+  <span>&#x23F0;</span> Calendario indicativo: el Working Plan ESPR 2025-2030 fija <strong>2027</strong> como fecha indicativa de adopcion del acto delegado textil (Art. 4 ESPR). La aplicacion no suele ser anterior a <strong>18 meses</strong> desde su entrada en vigor &mdash; horizonte estimado <strong>2028-2029</strong>. Una vez aplicable, los productos textiles incluidos en su ambito no podran introducirse en el mercado de la UE sin DPP conforme. Antes de eso ya hay obligaciones vigentes: la prohibicion de destruir textil no vendido aplica a grandes empresas desde el <strong>19 de julio de 2026</strong>.
+</div>
+
+<!-- HIERARCHY (G4) -->
+<div class="hierarchy-box">
+  <div class="hierarchy">
+    <h3>Tres niveles de documentacion (de mayor a menor rango)</h3>
+    <div class="hierarchy-levels">
+      <div class="h-level h-ley">
+        <div class="h-level-icon">&#x2696;&#xFE0F;</div>
+        <div class="h-level-title">Nivel 1: LEY</div>
+        <div class="h-level-desc">ESPR (UE) 2024/1781, Reg. (UE) 1007/2011 (etiquetado de fibras), REACH, Reg. (UE) 2024/3015 (trabajo forzoso), Directiva Marco de Residuos revisada (RAP textil). Obligatorio, publicado en el DOUE. La CSDDD forma parte del marco pero aplica de forma <strong>condicionada</strong> (umbrales de tamano tras el Omnibus I; ver Paso 3).</div>
+        <div class="h-level-badge">Obligatorio</div>
+      </div>
+      <div class="hierarchy-arrow">&#x2192;</div>
+      <div class="h-level h-guia">
+        <div class="h-level-icon">&#x1F4D0;</div>
+        <div class="h-level-title">Nivel 2: GUIA TECNICA</div>
+        <div class="h-level-desc">Informe JRC sobre contenido del DPP textil (may 2026, 49 data points), metodologia JRC145830, deliverables CIRPASS-2, las 6 normas EN armonizadas del DPP citadas en el DOUE (EN 18216, 18219, 18220, 18221, 18222 y 18223; JTC 24), GS1 Digital Link, PEFCR Apparel &amp; Footwear v3.1, Trace4Value como piloto de referencia. Referencia de facto, no vinculante.</div>
+        <div class="h-level-badge">Recomendado</div>
+      </div>
+      <div class="hierarchy-arrow">&#x2192;</div>
+      <div class="h-level h-solucion">
+        <div class="h-level-icon">&#x1F6E0;&#xFE0F;</div>
+        <div class="h-level-title">Nivel 3: SOLUCION PROPIA</div>
+        <div class="h-level-desc">Trackline, modelo canonico v2 de 266 campos en 10 clusters, DPP modelo / lote / item con firma eIDAS QES, identificadores GS1 Digital Link (AI 01/10/21), sello de integridad SHA-256, visores XENON y DEMINA. Propuesta de Code Contract.</div>
+        <div class="h-level-badge">Implementacion</div>
+      </div>
+    </div>
+    <div class="hierarchy-note">
+      Cada documento enlazado esta marcado con su nivel: <span style="color:#1d4ed8;font-weight:700">LEY</span> (azul), <span style="color:#065f46;font-weight:700">GUIA</span> (verde), <span style="color:#92400e;font-weight:700">SOLUCION</span> (amarillo). Los enlaces morados son recursos externos de terceros; los grises, documentos internos del pack Code Contract.
+    </div>
+  </div>
+</div>
+
+<!-- SPEC-PACK-DPP G4: leyenda completa (junto al bloque de tres niveles) -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#dbeafe"></div>&#x2696;&#xFE0F; LEY: Normativa oficial (ESPR, 1007/2011, REACH, 2024/3015)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#d1fae5"></div>&#x1F4D0; GUIA TECNICA: Referencia (JRC, CIRPASS-2, EN 18xxx, GS1)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#fef3c7"></div>&#x1F6E0;&#xFE0F; SOLUCION PROPIA: Implementacion Code Contract</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#e9d5ff"></div>&#x1F517; Recurso externo (terceros)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#e5e7eb"></div>&#x1F4CA; Documento interno del pack</div>
+</div>
+
+<!-- IMPLEMENTATION TIMELINE (G5) -->
+<div class="impl-timeline">
+  <div class="impl-timeline-box">
+    <h3>Calendario de implementacion del DPP Textil</h3>
+    <table class="tl-table">
+      <thead>
+        <tr><th>Fecha</th><th>Hito</th><th>Quien publica / actua</th><th>Estado</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tl-date-cell" style="color:#2e7d4f">Jun-Jul 2024</td>
+          <td>
+            <div class="tl-milestone">ESPR (UE) 2024/1781: publicado en el DOUE el 28 jun 2024; entrada en vigor el 18 jul 2024</div>
+            <div class="tl-publisher">Arts. 9-13 — marco general DPP horizontal; Art. 25 — destruccion de no vendidos</div>
+          </td>
+          <td class="tl-publisher">Parlamento Europeo y Consejo</td>
+          <td><span class="tl-status-badge tl-past">En vigor</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#2e7d4f">Dic 2024</td>
+          <td>
+            <div class="tl-milestone">Reg. (UE) 2024/3015 sobre prohibicion de productos con trabajo forzoso: entrada en vigor (13 dic)</div>
+            <div class="tl-publisher">Aplicable desde el 14 dic 2027. El textil es sector de alto riesgo señalado en los trabajos preparatorios</div>
+          </td>
+          <td class="tl-publisher">Parlamento Europeo y Consejo</td>
+          <td><span class="tl-status-badge tl-past">En vigor</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#2e7d4f">Abr 2025</td>
+          <td>
+            <div class="tl-milestone">Adopcion del Working Plan ESPR 2025-2030 (COM(2025) 187, 16 abril)</div>
+            <div class="tl-publisher">Textil (con foco en apparel) identificado como <strong>prioridad n.&ordm; 1</strong> entre los productos finales (Art. 18 ESPR). Fecha indicativa del acto delegado textil: 2027</div>
+          </td>
+          <td class="tl-publisher">Comision Europea</td>
+          <td><span class="tl-status-badge tl-past">Publicado</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#2e7d4f">Abr 2025</td>
+          <td>
+            <div class="tl-milestone">PEFCR Apparel &amp; Footwear v3.1 publicada</div>
+            <div class="tl-publisher">Reglas de categoria para la huella ambiental de ropa y calzado (metodo PEF). Base previsible de la capa ambiental del DPP textil</div>
+          </td>
+          <td class="tl-publisher">Secretaria tecnica PEFCR (CE)</td>
+          <td><span class="tl-status-badge tl-past">Publicado</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#2e7d4f">Oct 2025</td>
+          <td>
+            <div class="tl-milestone">Directiva Marco de Residuos revisada en vigor (16 oct): RAP textil armonizada</div>
+            <div class="tl-publisher">Responsabilidad ampliada del productor para textiles en toda la UE. Transposicion nacional ~jun 2027; esquemas EPR operativos ~abr 2028</div>
+          </td>
+          <td class="tl-publisher">Parlamento Europeo y Consejo</td>
+          <td><span class="tl-status-badge tl-past">En vigor</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#2e7d4f">9 feb 2026</td>
+          <td>
+            <div class="tl-milestone">La Comision adopta los actos sobre destruccion y disclosure de productos no vendidos</div>
+            <div class="tl-publisher">Acto delegado con excepciones a la prohibicion (Art. 25 ESPR) + acto de ejecucion con el formato de disclosure (Art. 24)</div>
+          </td>
+          <td class="tl-publisher">Comision Europea</td>
+          <td><span class="tl-status-badge tl-past">Publicado</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#2e7d4f">13 may 2026</td>
+          <td>
+            <div class="tl-milestone">JRC publica el estudio de contenido del DPP para textil apparel: 49 data points</div>
+            <div class="tl-publisher">Primera especificacion completa del contenido del DPP textil, en 4 categorias: identificacion de producto, identificacion de productor, informacion de producto y documentacion de conformidad. Base tecnica (no vinculante) del futuro acto delegado</div>
+          </td>
+          <td class="tl-publisher">JRC Sevilla (Comision Europea)</td>
+          <td><span class="tl-status-badge tl-past">Publicado</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#2e7d4f">27 may 2026</td>
+          <td>
+            <div class="tl-milestone">CEN-CENELEC publica las 6 primeras normas EN del DPP (JTC 24)</div>
+            <div class="tl-publisher">EN 18216 (intercambio de datos), EN 18219 (identificadores unicos), EN 18220 (data carriers), EN 18221 (almacenamiento), EN 18222 (APIs), EN 18223 (interoperabilidad). EN 18239 y EN 18246 cerraron votacion formal el 16 jul 2026; publicacion esperada ~sept 2026</div>
+          </td>
+          <td class="tl-publisher">CEN-CENELEC (JTC 24)</td>
+          <td><span class="tl-status-badge tl-past">Publicado</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#2e7d4f">15 jul 2026</td>
+          <td>
+            <div class="tl-milestone">Las 6 normas EN del DPP se citan en el DOUE — presuncion de conformidad</div>
+            <div class="tl-publisher">Decision de Ejecucion (UE) 2026/1736, de 14 jul 2026, en vigor el 15 jul. Aplicar EN 18216, 18219, 18220, 18221, 18222 y 18223 da presuncion de conformidad con los Arts. 10 y 11 del ESPR. EN 18239 y EN 18246 aun no citadas</div>
+          </td>
+          <td class="tl-publisher">Comision Europea (DOUE)</td>
+          <td><span class="tl-status-badge tl-past">Publicado</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#2e7d4f">19 jul 2026</td>
+          <td>
+            <div class="tl-milestone">Prohibicion de destruir textil y calzado no vendido — grandes empresas</div>
+            <div class="tl-publisher">Art. 25 ESPR + acto delegado de excepciones (feb 2026). Ya en vigor. Medianas empresas: 2030. Obligacion de disclosure de no vendidos ya activa (Art. 24)</div>
+          </td>
+          <td class="tl-publisher">Marcas y fabricantes (grandes empresas)</td>
+          <td><span class="tl-status-badge tl-past">En vigor</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#2e7d4f">19 jul 2026</td>
+          <td>
+            <div class="tl-milestone">Registro DPP de la Comision operativo (horizontal ESPR)</div>
+            <div class="tl-publisher">Art. 13 ESPR. Almacena identificadores unicos y punteros al DPP, no el contenido completo. Reglas fijadas por el Reglamento de Ejecucion (UE) 2026/1778 (16 jul 2026); entorno de pruebas abierto desde el 20 jul 2026. El registro no acepta aun DPPs textiles (llegaran con el acto delegado)</div>
+          </td>
+          <td class="tl-publisher">Comision Europea</td>
+          <td><span class="tl-status-badge tl-past">Operativo</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#d97706">Dic 2026</td>
+          <td>
+            <div class="tl-milestone">EUDI Wallet disponible en los 27 Estados miembros (eIDAS 2.0)</div>
+            <div class="tl-publisher">Reg. (UE) 2024/1183. Infraestructura de identidad y credenciales verificables que puede apoyar el acceso por roles al DPP</div>
+          </td>
+          <td class="tl-publisher">Estados miembros</td>
+          <td><span class="tl-status-badge tl-upcoming">Proximo</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#d97706">18 feb 2027</td>
+          <td>
+            <div class="tl-milestone">Battery Passport vinculante (referencia analogica, no textil)</div>
+            <div class="tl-publisher">Reg. (UE) 2023/1542 Art. 77. Primer DPP sectorial obligatorio de la UE; su despliegue valida la infraestructura (registro, data carriers, roles) que heredara el textil</div>
+          </td>
+          <td class="tl-publisher">Fabricantes de baterias &gt;2 kWh</td>
+          <td><span class="tl-status-badge tl-upcoming">Proximo</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#d97706">2027 (indic.)</td>
+          <td>
+            <div class="tl-milestone">Adopcion prevista del acto delegado textil ESPR</div>
+            <div class="tl-publisher">Fecha indicativa del Working Plan (analisis sectoriales apuntan a propuesta fin-2026 / adopcion ~Q2-Q4 2027). Definira campos obligatorios del DPP, requisitos de ecodiseno (durabilidad, contenido reciclado, microplasticos), clases de rendimiento y verificacion</div>
+          </td>
+          <td class="tl-publisher">Comision Europea (acto delegado)</td>
+          <td><span class="tl-status-badge tl-upcoming">Proximo</span>
+            <div class="tl-da-note">Pendiente: borrador formal del acto delegado</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#dc2626">14 dic 2027</td>
+          <td>
+            <div class="tl-milestone">Reg. (UE) 2024/3015 trabajo forzoso plenamente aplicable</div>
+            <div class="tl-publisher">Prohibicion de comercializar en la UE productos hechos con trabajo forzoso. La trazabilidad de cadena de suministro del DPP es el vehiculo natural para acreditar el origen</div>
+          </td>
+          <td class="tl-publisher">Operadores economicos + autoridades</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#dc2626">2028-2029 (est.)</td>
+          <td>
+            <div class="tl-milestone">Aplicacion obligatoria del DPP textil (estimado)</div>
+            <div class="tl-publisher">Estimacion: ~18 meses tras la entrada en vigor del acto delegado; sujeta al texto definitivo y a periodos transitorios. Una vez aplicable: data carrier (QR / GS1 Digital Link) + carga en el Registro DPP antes de la primera comercializacion</div>
+            <div style="font-size:11px; color:#dc2626; font-weight:600; margin-top:4px;">&#x26A0; Cuando aplique, afecta a fabricantes EU e importadores; los importadores recogen los datos en origen</div>
+          </td>
+          <td class="tl-publisher">Fabricantes / Importadores EU</td>
+          <td><span class="tl-status-badge tl-future">Critico</span>
+            <div class="tl-da-note">Pendiente: acto delegado textil</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#dc2626">26 jul 2028</td>
+          <td>
+            <div class="tl-milestone">CSDDD: plazo de transposicion nacional</div>
+            <div class="tl-publisher">Directiva (UE) 2024/1760 modificada por el Omnibus I (Dir. (UE) 2026/470, DOUE 26 feb 2026)</div>
+          </td>
+          <td class="tl-publisher">Estados miembros</td>
+          <td><span class="tl-status-badge tl-future">Futuro</span></td>
+        </tr>
+        <tr>
+          <td class="tl-date-cell" style="color:#dc2626">26 jul 2029</td>
+          <td>
+            <div class="tl-milestone">CSDDD: aplicacion unica a empresas en alcance</div>
+            <div class="tl-publisher">Tras el Omnibus I desaparecen las oleadas: una unica fecha para empresas &gt;5.000 empleados y &gt;1.500 M&euro; (y no-EU &gt;1.500 M&euro; en la UE). Las pymes textiles se ven afectadas de forma <strong>indirecta</strong> via exigencias de clientes</div>
+          </td>
+          <td class="tl-publisher">Empresas sobre umbral</td>
+          <td><span class="tl-status-badge tl-future">Condicionada</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="impl-timeline-note">
+      Las fechas marcadas como <em>pendiente acto delegado</em> dependen de instrumentos que la Comision aun no ha publicado. El informe JRC de mayo 2026 es la base tecnica preliminar del contenido del DPP textil. Verificado contra fuentes primarias a agosto 2026.
+    </div>
+  </div>
+</div>
+
+<!-- G6 SLOT SECTORIAL: LAS 4 CATEGORIAS DE DATA POINTS DEL JRC -->
+<div class="routes-box">
+  <div class="routes">
+    <h3>Las 4 categorias de data points del informe JRC textil (13 mayo 2026)</h3>
+    <p class="routes-sub">El estudio JRC especifica por primera vez el contenido completo del DPP para textil apparel: <strong>49 data points</strong> en 4 categorias. Es apoyo cientifico preparatorio, <strong>no juridicamente vinculante</strong>: el acto delegado definitivo podra modificar campos, umbrales y verificaciones.</p>
+    <div class="routes-grid">
+      <div class="route-card route-1">
+        <h4>Identificacion de producto</h4>
+        <div class="route-co2">&#x1F455;</div>
+        <div class="route-unit">Categoria 1</div>
+        <p>GTIN, identificadores de modelo y lote, codigos aduaneros HS / TARIC, categoria de producto ESPR y PEFCR.</p>
+      </div>
+      <div class="route-card route-2">
+        <h4>Identificacion de productor</h4>
+        <div class="route-co2">&#x1F3ED;</div>
+        <div class="route-unit">Categoria 2</div>
+        <p>Fabricante, importador e instalaciones (GLN / EORI), con nombres, direcciones y contactos. Equivale a UOI / UFI de la metodologia JRC145830.</p>
+      </div>
+      <div class="route-card route-3">
+        <h4>Informacion de producto</h4>
+        <div class="route-co2">&#x1F9F5;</div>
+        <div class="route-unit">Categoria 3</div>
+        <p>Composicion de fibras, scores de robustez y reciclabilidad, contenido reciclado y tipo de reciclado, sustancias de preocupacion (nombre, concentracion), huella de carbono y ambiental, cuidado y garantia.</p>
+      </div>
+      <div class="route-card route-4">
+        <h4>Documentacion de conformidad</h4>
+        <div class="route-co2">&#x2705;</div>
+        <div class="route-unit">Categoria 4</div>
+        <p>Certificado de conformidad, o autodeclaracion mas los parametros de calculo necesarios para la verificacion.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- G6b SLOT SECTORIAL: GRANULARIDAD -->
+<div class="products-box">
+  <div class="products">
+    <h3>Tres niveles de granularidad del DPP textil</h3>
+    <p>A diferencia del acero (colada / lote), el DPP textil puede emitirse a tres niveles. La eleccion condiciona identificadores, data carrier y coste operativo. Haz clic en cada nivel para ver detalle.</p>
+    <div class="products-grid">
+      <div class="prod-card" onclick="this.classList.toggle('expanded')">
+        <div class="prod-code">MODELO</div>
+        <h4>&#x1F4D0; Por modelo</h4>
+        <div class="prod-cf">GS1 AI 01 (GTIN)</div>
+        <div class="prod-route">Un DPP por referencia comercial</div>
+        <div class="prod-expand">&#x25BC; Ver detalle</div>
+        <div class="prod-detail">
+          <strong>Un DPP por modelo/color.</strong> Minimo coste operativo. Todos los datos son de diseno y homologacion (composicion, huella del modelo, cuidado). No permite trazar produccion ni eventos post-venta. Punto de partida razonable para catalogos grandes.
+        </div>
+      </div>
+      <div class="prod-card" onclick="this.classList.toggle('expanded')">
+        <div class="prod-code">LOTE</div>
+        <h4>&#x1F4E6; Por lote (batch)</h4>
+        <div class="prod-cf">GS1 AI 01 + AI 10</div>
+        <div class="prod-route">Modelo + color + lote de produccion</div>
+        <div class="prod-expand">&#x25BC; Ver detalle</div>
+        <div class="prod-detail">
+          <strong>Un DPP por lote de produccion</strong> cubriendo todas las tallas. Anade datos de fabricacion real: planta (tier 1/2), fechas, certificados del lote, resultados de laboratorio. Es el patron del visor XENON y el camino recomendado por Code Contract para empezar.
+        </div>
+      </div>
+      <div class="prod-card" onclick="this.classList.toggle('expanded')">
+        <div class="prod-code">ITEM</div>
+        <h4>&#x1F3F7;&#xFE0F; Por item (serializado)</h4>
+        <div class="prod-cf">GS1 AI 01 + AI 10 + AI 21</div>
+        <div class="prod-route">Prenda individual serializada</div>
+        <div class="prod-expand">&#x25BC; Ver detalle</div>
+        <div class="prod-detail">
+          <strong>Un DPP por prenda fisica</strong> (serial). Permite eventos de ciclo de vida por unidad: venta, reparacion, reventa, fin de vida. Es el patron del visor DEMINA (3 capas: modelo + lote + item). Requiere serializacion en fabrica (p. ej. RFID / atma.io). Trace4Value lo implementa via serialized GTIN.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- PASO 1: ENTENDER EL MARCO (G7) -->
+<div class="phase phase-green">
+  <div class="phase-header" onclick="togglePhase(this)">
+    <div class="phase-number">1</div>
+    <div class="phase-info">
+      <h2>Entender el marco regulatorio</h2>
+      <p>Conocer ESPR + etiquetado 1007/2011 + trabajo forzoso + RAP textil y como se entrelazan, y el calendario realista del acto delegado</p>
+    </div>
+    <div class="phase-deadline">Conocimiento base</div>
+    <div class="phase-chevron">&#x25BC;</div>
+  </div>
+  <div class="phase-body">
+
+    <div class="step">
+      <div class="step-icon">&#x1F4DC;</div>
+      <div class="step-content">
+        <h3>Leer el Reglamento ESPR (UE) 2024/1781</h3>
+        <p>El marco horizontal del Pasaporte Digital del Producto. Articulos clave: Art. 5 (requisitos de ecodiseno — parametros del Anexo I), Art. 7 (requisitos de informacion, incl. DPP y sustancias de preocupacion), Art. 9 (marco del DPP), Art. 12 (data carrier e identificadores unicos), Art. 13 (registro DPP), Art. 24 (disclosure de no vendidos), Art. 25 (prohibicion de destruccion de no vendidos — textil y calzado son el primer sector afectado, desde el 19 jul 2026 para grandes empresas), Art. 18 (productos prioritarios). El textil es la <strong>prioridad n.&ordm; 1</strong> del Working Plan 2025-2030 entre los productos finales. El acto delegado sectorial dara el detalle operativo.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-normativa" href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank">&#x1F517; ESPR 2024/1781 (EUR-Lex)</a>
+            <a class="doc-link doc-normativa" href="https://green-forum.ec.europa.eu/news/2025-2030-working-plan-2025-07-11_en" target="_blank">&#x1F517; Working Plan ESPR 2025-2030</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F3F7;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Etiquetado de fibras: Reg. (UE) 1007/2011, la obligacion que ya tienes</h3>
+        <p>Todo textil comercializado en la UE ya debe declarar su <strong>composicion de fibras</strong> conforme al Reg. 1007/2011 (denominaciones armonizadas, porcentajes, etiquetado fisico). El DPP no lo sustituye: lo <strong>digitaliza y amplia</strong>. La composicion declarada en la etiqueta cosida sera uno de los data points nucleares del DPP (el informe JRC la situa en la categoria «informacion de producto»). La revision del reglamento de etiquetado esta en la agenda de la Comision para alinearlo con el DPP y anadir instrucciones de cuidado digitales.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-normativa" href="https://eur-lex.europa.eu/eli/reg/2011/1007/oj" target="_blank">&#x1F517; Reg. 1007/2011 etiquetado textil</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F6AB;</div>
+      <div class="step-content">
+        <h3>Trabajo forzoso: Reg. (UE) 2024/3015, aplicable el 14 dic 2027</h3>
+        <p>Prohibe comercializar en la UE productos fabricados con trabajo forzoso. <strong>El textil es sector de alto riesgo</strong> en los trabajos preparatorios (algodon, hilatura, confeccion en paises terceros). No exige un documento con nombre propio, pero en la practica exige <strong>trazabilidad de cadena de suministro defendible</strong>: origen de fibra, plantas tier 1-3, auditorias sociales. La Comision publico las <strong>directrices de aplicacion el 26 jun 2026</strong>, junto con el Forced Labour Single Portal; la base de datos publica de riesgo (geografias, productos y sectores) sigue en desarrollo y los seminarios sectoriales arrancan en septiembre de 2026. El cluster de due diligence social del DPP es el vehiculo natural para esta evidencia.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-normativa" href="https://eur-lex.europa.eu/eli/reg/2024/3015/oj" target="_blank">&#x1F517; Reg. 2024/3015 (EUR-Lex)</a>
+            <a class="doc-link doc-normativa" href="https://single-market-economy.ec.europa.eu/single-market/goods/forced-labour-regulation_en" target="_blank">&#x1F517; Forced Labour Regulation (CE)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x267B;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>RAP textil: la Directiva Marco de Residuos revisada (en vigor 16 oct 2025)</h3>
+        <p>Establece <strong>responsabilidad ampliada del productor (EPR)</strong> armonizada para textiles en toda la UE: quien comercializa ropa financia su recogida y tratamiento al final de vida. Transposicion nacional prevista ~jun 2027; esquemas operativos ~abr 2028. Implicacion DPP: las tarifas EPR seran <strong>eco-moduladas</strong> (pagas menos si tu producto es mas duradero/reciclable), y los datos que lo acreditan — durabilidad, reciclabilidad, contenido reciclado — son exactamente los del DPP. El numero de registro EPR es ya un campo del modelo de datos.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-normativa" href="https://environment.ec.europa.eu/news/revised-waste-framework-directive-enters-force-2025-10-16_en" target="_blank">&#x1F517; WFD revisada / RAP textil (CE)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F4CA;</div>
+      <div class="step-content">
+        <h3>Leer el informe JRC de contenido del DPP textil (13 mayo 2026)</h3>
+        <p>La lectura preparatoria mas importante disponible hoy: primera especificacion completa del contenido del DPP para textil apparel, con <strong>49 data points en 4 categorias</strong> (ver arriba). Junto con la metodologia horizontal JRC145830 (granularidad, gobernanza por actor, obligatoriedad), forma la base tecnica del futuro acto delegado. El modelo de datos de Code Contract esta contrastado contra ambos documentos (22 requisitos alineados, 0 parciales, 1 hueco externo: el registro central).</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-guia" href="https://susproc.jrc.ec.europa.eu/product-bureau/sites/default/files/2026-05/Textiles_DPP_20260513.pdf" target="_blank">&#x1F517; JRC — Study on DPP content for textile apparel (PDF)</a>
+            <a class="doc-link doc-guia" href="https://green-forum.ec.europa.eu/implementing-ecodesign-sustainable-products-regulation_en" target="_blank">&#x1F517; Implementing ESPR (Green Forum)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F4D0;</div>
+      <div class="step-content">
+        <h3>Conocer la capa de estandares: JTC 24, CIRPASS-2, GS1</h3>
+        <p>Las <strong>6 primeras normas EN del DPP</strong> se publicaron el 27 may 2026 (EN 18216 intercambio de datos, EN 18219 identificadores, EN 18220 data carriers, EN 18221 almacenamiento, EN 18222 APIs, EN 18223 interoperabilidad) y la <strong>Decision de Ejecucion (UE) 2026/1736</strong> las cito en el DOUE el 15 jul 2026: aplicarlas da <strong>presuncion de conformidad con los Arts. 10 y 11 del ESPR</strong>, es decir, es la via segura. EN 18239 (gestion de derechos de acceso y seguridad) y EN 18246 (autenticacion e integridad) cerraron votacion formal el 16 jul 2026 y se esperan hacia septiembre de 2026; hasta que se citen en el DOUE no dan presuncion de conformidad. Son la fontaneria tecnica que los actos delegados referenciaran: conviene disenar el dataset alineado con ellas desde el principio. <strong>CIRPASS-2</strong> aporta los pilotos de referencia (incl. textil) y <strong>GS1 Digital Link</strong> el esquema de identificadores y QR.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-guia" href="https://standards.cencenelec.eu/" target="_blank">&#x1F517; JTC 24 (CEN-CENELEC)</a>
+            <a class="doc-link doc-guia" href="https://cirpass2.eu/" target="_blank">&#x1F517; CIRPASS-2</a>
+            <a class="doc-link doc-guia" href="https://www.gs1.org/standards/gs1-digital-link" target="_blank">&#x1F517; GS1 Digital Link</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F1EA;&#x1F1F8;</div>
+      <div class="step-content">
+        <h3>Asociaciones sectoriales en Espana y Europa</h3>
+        <p>Estar presente en los foros sectoriales es la via mas eficiente para anticipar el contenido del acto delegado y comparar practicas. <strong>EURATEX</strong> agrupa a la industria textil y de confeccion europea y participa en las consultas ESPR; en Espana, <strong>Texfor</strong> (textil) y las asociaciones de moda canalizan la posicion sectorial. El piloto sueco <strong>Trace4Value</strong> (Kappahl, Marimekko, ETON, Gina Tricot) es la referencia practica mas avanzada de DPP textil en produccion.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-external">RECURSOS EXTERNOS</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-external" href="https://euratex.eu/" target="_blank">&#x1F517; EURATEX</a>
+            <a class="doc-link doc-external" href="https://texfor.es/" target="_blank">&#x1F517; Texfor (ES)</a>
+            <a class="doc-link doc-external" href="https://trace4value.se/" target="_blank">&#x1F517; Trace4Value (piloto textil)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F4A1;</div>
+      <div class="step-content">
+        <h3>Entender el valor de negocio</h3>
+        <p>No es solo cumplimiento. El DPP textil aporta cuatro cosas concretas: <strong>(1)</strong> blinda el acceso al mercado EU cuando el acto delegado sea aplicable (~2028-2029); <strong>(2)</strong> reduce las tarifas EPR eco-moduladas al acreditar durabilidad y reciclabilidad con datos verificables; <strong>(3)</strong> defiende las alegaciones ambientales frente a la presion regulatoria contra el greenwashing (EmpCo) con evidencia trazable, no marketing; <strong>(4)</strong> consolida en un unico esqueleto digital el reporting que ya exigen por separado etiquetado, REACH, trabajo forzoso y clientes retail. Para marcas medianas, empezar temprano evita el cuello de botella de consultoria y datos de proveedor de 2027-2028.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PASO 2: MAPEAR DATOS (G7) -->
+<div class="phase phase-blue">
+  <div class="phase-header" onclick="togglePhase(this)">
+    <div class="phase-number">2</div>
+    <div class="phase-info">
+      <h2>Mapear tus datos actuales</h2>
+      <p>Cruzar los 266 campos del modelo canonico v2 (10 clusters) contra tu informacion real por modelo, lote y prenda</p>
+    </div>
+    <div class="phase-deadline">Meses 1-3</div>
+    <div class="phase-chevron">&#x25BC;</div>
+  </div>
+  <div class="phase-body">
+
+    <div class="step">
+      <div class="step-icon">&#x1F50D;</div>
+      <div class="step-content">
+        <h3>Auditoria de datos: los 10 clusters del DPP textil</h3>
+        <p>El modelo canonico v2 de Code Contract organiza <strong>266 campos en 10 clusters</strong> (operador, identificacion, materiales, cadena de suministro, durabilidad, reparabilidad, fin de vida, huella, due diligence social, conformidad), alineados con el informe JRC de mayo 2026, la metodologia JRC145830 y Trace4Value. De ellos, <strong>88 responden a normas ya en vigor hoy</strong>. La auditoria consiste en cruzar cada campo contra tu informacion real para identificar lo que ya tienes, lo que es parcial y lo que falta.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-guia" href="#attrs-overview">&#x2193; Ver los 10 clusters (mas abajo)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F4CA;</div>
+      <div class="step-content">
+        <h3>Clasificar cada campo por estado y granularidad</h3>
+        <p>Marcar cada campo como: <strong>Disponible</strong> (en PLM/ERP, verificado), <strong>Parcial</strong> (dato generico de coleccion, no por lote), <strong>Falta</strong> (no existe, requiere recogida), <strong>Proveedor</strong> (depende del tier 1/2/3: hilatura, tejeduria, confeccion, tinte). Asignar tambien la granularidad: <em>modelo</em>, <em>lote</em>, <em>item</em>. La composicion y el cuidado son de modelo; los certificados de produccion y resultados de laboratorio, de lote; los eventos post-venta (reparacion, reventa), de item.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-solucion">SOLUCION</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-interno" href="mailto:eduardo@codecontract.io?subject=DPP%20Textil%20-%20Mapping%20de%20mi%20producto" target="_blank">&#x1F4E9; Solicitar mapping de tu producto (Code Contract)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F3ED;</div>
+      <div class="step-content">
+        <h3>Identificar responsables y fuentes internas</h3>
+        <p><strong>Diseno / producto:</strong> composicion, ficha tecnica (TDS), BoM de materiales y avios. <strong>Compras / sourcing:</strong> proveedores tier 1-3, certificados de fibra (GOTS, OCS, GRS), origen. <strong>Produccion / calidad:</strong> lotes, plantas, informes de laboratorio (solidez del color, pilling, encogimiento). <strong>Sostenibilidad:</strong> ACV / PEF, contenido reciclado, auditorias sociales (amfori BSCI, SMETA). <strong>Legal / regulatorio:</strong> REACH, declaraciones de conformidad, registro EPR. <strong>IT:</strong> PLM, ERP, GS1.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-solucion">SOLUCION</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-interno" href="mailto:eduardo@codecontract.io?subject=DPP%20Textil%20-%20Matriz%20de%20responsables" target="_blank">&#x1F4E9; Solicitar matriz de responsables por departamento (Code Contract)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F4D1;</div>
+      <div class="step-content">
+        <h3>Partir de los documentos que ya existen</h3>
+        <p>Buena parte del DPP ya vive en documentos dispersos: la <strong>etiqueta de composicion</strong> (Reg. 1007/2011), la <strong>ficha tecnica</strong> del proveedor, los <strong>informes de laboratorio</strong> por lote, los <strong>certificados</strong> (OEKO-TEX, GOTS, GRS, bluesign), las <strong>facturas y packing lists</strong> que prueban la cadena tier 1-2. La diferencia con el DPP es el formato (PDFs dispersos vs JSON-LD estructurado) y los datos que faltan (huella PEF, reparabilidad, fin de vida). El flujo Trackline extrae los datos de estos documentos fuente con evidencia de origen.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-guia" href="https://trace4value.se/" target="_blank">&#x1F517; Trace4Value (97&rarr;125 campos, piloto real)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F9F5;</div>
+      <div class="step-content">
+        <h3>El reto especifico del textil: la cadena de suministro fragmentada</h3>
+        <p>A diferencia del acero (pocas plantas integradas), una prenda tipica pasa por <strong>4-6 operadores en 2-4 paises</strong>: fibra, hilatura, tejeduria, tinte/acabado, confeccion, distribucion. Los datos del DPP nacen repartidos entre todos ellos. La estrategia realista es: exigir contractualmente al tier 1 (confeccion) el paquete de datos por lote, y construir hacia atras (tier 2-3) por prioridad regulatoria: primero composicion y origen (trabajo forzoso), luego huella y certificados. Sin un flujo documental sistematico por lote, el DPP no escala mas alla del piloto.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SPEC-PACK-DPP R3: tarjeta-puente al mapping -->
+  <a class="bridge-card" href="mapping-textil.html">
+    <div class="bc-title">&#x1F4CA; Ver el mapping completo campo a campo &#x2192;</div>
+    <div class="bc-sub">266 campos &middot; 10 clusters del modelo canonico v2 &middot; documento origen, obligatoriedad, nivel de acceso, vigencia normativa y flujo Trackline de cada dato</div>
+  </a>
+</div>
+
+<!-- PASO 3: COMPLETAR DATOS (G7) -->
+<div class="phase phase-amber">
+  <div class="phase-header" onclick="togglePhase(this)">
+    <div class="phase-number">3</div>
+    <div class="phase-info">
+      <h2>Completar los datos obligatorios</h2>
+      <p>Calcular la huella PEF, declarar contenido reciclado, inventariar sustancias, preparar la evidencia social y los certificados</p>
+    </div>
+    <div class="phase-deadline">Meses 3-12</div>
+    <div class="phase-chevron">&#x25BC;</div>
+  </div>
+  <div class="phase-body">
+
+    <div class="step">
+      <div class="step-icon">&#x1F30D;</div>
+      <div class="step-content">
+        <h3>Huella ambiental segun PEFCR Apparel &amp; Footwear v3.1</h3>
+        <p>La capa ambiental del DPP textil se apoyara previsiblemente en el metodo <strong>PEF</strong> con las reglas de categoria <strong>PEFCR Apparel &amp; Footwear v3.1</strong> (abr 2025): unidad funcional por uso de la prenda, 16 categorias de impacto (carbono, agua, uso de suelo, ecotoxicidad...), Circular Footprint Formula para el contenido reciclado. El informe JRC incluye huella de carbono y ambiental entre los 49 data points. Empezar por los modelos de mayor volumen: el dato es caro de generar y se reutiliza mientras no cambien materiales ni proceso.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-guia" href="https://environment.ec.europa.eu/news/new-eu-rules-measuring-environmental-impact-clothes-and-shoes-2025-06-25_en" target="_blank">&#x1F517; PEFCR Apparel &amp; Footwear (CE)</a>
+            <a class="doc-link doc-guia" href="https://eplca.jrc.ec.europa.eu/PEFmethod.html" target="_blank">&#x1F517; PEF Methodology (JRC)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x267B;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Contenido reciclado: declarar con metodo, no con eslogan</h3>
+        <p>El contenido reciclado (y su tipo: pre-consumer vs <strong>post-consumer</strong>) es data point JRC y sera previsiblemente requisito de ecodiseno del acto delegado. Declararlo exige cadena de custodia: certificados <strong>GRS / RCS</strong> por lote de material, trazables al proveedor de fibra o hilo. Distinguir siempre el porcentaje sobre la prenda completa vs sobre una fibra concreta («poliester 100% reciclado» en una prenda 30% poliester = 30% reciclado real). Las alegaciones sin evidencia chocaran con EmpCo (prohibicion de alegaciones verdes genericas).</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-external">RECURSOS EXTERNOS</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-external" href="https://textileexchange.org/" target="_blank">&#x1F517; GRS / RCS (Textile Exchange)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x2697;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Sustancias de preocupacion (SoC) y quimica textil</h3>
+        <p>El ESPR Art. 7(5) exige informar de las sustancias de preocupacion: nombre, n.&ordm; CAS, concentracion y ubicacion. En textil el foco esta en la <strong>quimica de proceso</strong>: colorantes azoicos, formaldehido, PFAS (impermeabilizacion), ftalatos (estampados plastisol), metales pesados en tintes. Ya aplican REACH Art. 33 (comunicar SVHC &gt;0,1%) y la notificacion SCIP para articulos. Los certificados <strong>OEKO-TEX Standard 100</strong> y <strong>bluesign</strong> son la evidencia de facto; el DPP los estructura y enlaza.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-normativa" href="https://eur-lex.europa.eu/eli/reg/2006/1907/oj" target="_blank">&#x1F517; REACH (Reg. CE 1907/2006)</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label dg-external">RECURSOS EXTERNOS</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-external" href="https://echa.europa.eu/candidate-list-table" target="_blank">&#x1F517; SVHC Candidate List (ECHA)</a>
+            <a class="doc-link doc-external" href="https://echa.europa.eu/scip-database" target="_blank">&#x1F517; Base SCIP (ECHA)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F9EA;</div>
+      <div class="step-content">
+        <h3>Durabilidad y reparabilidad: los ensayos que pediran las clases de rendimiento</h3>
+        <p>El acto delegado textil fijara previsiblemente <strong>requisitos minimos de durabilidad</strong> (el Working Plan lo anuncia y el informe JRC incluye scores de robustez y reciclabilidad). Los ensayos existen ya como normas ISO/EN: solidez del color al lavado / luz / frote, resistencia al pilling, estabilidad dimensional, resistencia de costuras. Recopilarlos <strong>por lote</strong> en el informe de laboratorio es practica habitual de calidad — lo nuevo es estructurarlos como datos DPP. La reparabilidad (piezas de repuesto, manuales, red de reparacion) es cluster propio del modelo y palanca de eco-modulacion EPR.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-guia" href="https://www.iso.org/committee/47882.html" target="_blank">&#x1F517; ISO/TC 38 (ensayos textiles)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F91D;</div>
+      <div class="step-content">
+        <h3>Evidencia social: trabajo forzoso hoy, CSDDD condicionada</h3>
+        <p>Dos instrumentos distintos que conviene no mezclar: <strong>(1)</strong> el Reg. 2024/3015 (trabajo forzoso) aplica a <strong>todos los operadores</strong> desde el 14 dic 2027 — la defensa practica es trazabilidad de origen + auditorias sociales vigentes (amfori BSCI, SMETA, SA8000) enlazadas al DPP; <strong>(2)</strong> la <strong>CSDDD</strong> tras el Omnibus I (Dir. 2026/470) aplica solo a empresas &gt;5.000 empleados y &gt;1.500 M&euro; desde el 26 jul 2029 — pero sus obligaciones bajan en cascada: si vendes a un gran retailer europeo, te pedira esta evidencia por contrato bastante antes.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-normativa" href="https://eur-lex.europa.eu/eli/reg/2024/3015/oj" target="_blank">&#x1F517; Reg. 2024/3015 trabajo forzoso</a>
+            <a class="doc-link doc-normativa" href="https://eur-lex.europa.eu/eli/dir/2026/470/oj" target="_blank">&#x1F517; CSDDD / Omnibus I (Dir. 2026/470)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x2705;</div>
+      <div class="step-content">
+        <h3>Certificaciones voluntarias: el puente hasta el acto delegado</h3>
+        <p>Mientras no haya umbrales armonizados, los esquemas voluntarios son la referencia de mercado y la evidencia que el DPP estructura: <strong>GOTS / OCS</strong> (organico), <strong>GRS / RCS</strong> (reciclado), <strong>OEKO-TEX</strong> (quimica), <strong>bluesign</strong> (proceso), <strong>RWS / RDS</strong> (bienestar animal). Regla practica: registrar en el DPP el <strong>numero de certificado y su vigencia</strong>, no solo el logo — es la diferencia entre una alegacion defendible y greenwashing.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-external">RECURSOS EXTERNOS</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-external" href="https://global-standard.org/" target="_blank">&#x1F517; GOTS</a>
+            <a class="doc-link doc-external" href="https://www.oeko-tex.com/" target="_blank">&#x1F517; OEKO-TEX</a>
+            <a class="doc-link doc-external" href="https://www.bluesign.com/" target="_blank">&#x1F517; bluesign</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PASO 4: DIGITALIZAR (G7) -->
+<div class="phase phase-red">
+  <div class="phase-header" onclick="togglePhase(this)">
+    <div class="phase-number">4</div>
+    <div class="phase-info">
+      <h2>Digitalizar: construir el DPP</h2>
+      <p>Estructurar los datos en JSON-LD, generar identificadores GS1, implementar el data carrier, definir el acceso por actores</p>
+    </div>
+    <div class="phase-deadline">Meses 9-15</div>
+    <div class="phase-chevron">&#x25BC;</div>
+  </div>
+  <div class="phase-body">
+
+    <div class="step">
+      <div class="step-icon">&#x1F5C2;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Estructurar datos en formato DPP (JSON-LD / Anexo III ESPR)</h3>
+        <p>Convertir los campos en dataset estructurado y legible por maquina. El modelo canonico de Code Contract usa <strong>JSON-LD</strong> con <code>@context</code> apuntando a vocabularios reales (W3C VC 2.0, schema.org, GS1, UNTP), unidades UN/CEFACT Rec.20 e importes ISO 4217. Cada campo lleva metadatos: valor, unidad, fuente documental, granularidad (modelo/lote/item), nivel de acceso y obligatoriedad propuesta. Las normas EN 18216-18223 son la referencia de interoperabilidad que el acto delegado referenciara.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-normativa" href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank">&#x1F517; ESPR Anexo III (DPP)</a>
+          </div>
+        </div>
+        <div class="doc-group">
+          <div class="doc-group-label dg-solucion">SOLUCION</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-interno" href="xenon/">&#x1F441;&#xFE0F; Ver dataset real en el visor XENON</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F194;</div>
+      <div class="step-content">
+        <h3>Identificadores: GS1 Digital Link con AI 01 / 10 / 21</h3>
+        <p>El esquema natural del textil: <strong>GTIN</strong> (AI 01) identifica el modelo/variante, <strong>lote</strong> (AI 10) la produccion, <strong>serial</strong> (AI 21) la prenda individual. Un unico URI GS1 Digital Link codifica los tres niveles y resuelve al DPP correspondiente. La metodologia JRC anade los identificadores de operador (UOI — GLN/EORI) y de instalacion (UFI). EN 18219 fija los requisitos de unicidad; ISO/IEC 15459 el marco de emision.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-guia" href="https://www.gs1.org/standards/gs1-digital-link" target="_blank">&#x1F517; GS1 Digital Link</a>
+            <a class="doc-link doc-guia" href="https://www.iso.org/standard/54478.html" target="_blank">&#x1F517; ISO/IEC 15459</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F4F2;</div>
+      <div class="step-content">
+        <h3>Data carrier: QR en etiqueta cosida, colgante o RFID</h3>
+        <p>El textil tiene tres opciones realistas: <strong>(1)</strong> QR en la <strong>etiqueta cosida</strong> (permanente, sobrevive al punto de venta — el carrier de referencia para el DPP porque debe acompanar a la prenda toda su vida util); <strong>(2)</strong> QR en el <strong>colgante</strong> (mejor experiencia en tienda, pero se corta); <strong>(3)</strong> <strong>RFID/NFC</strong> integrado (serializacion item-level automatica, patron Avery Dennison / atma.io del visor DEMINA). EN 18220 define los carriers permitidos y su codificacion; ISO/IEC 18004 la simbologia QR.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-guia">GUIA TECNICA</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-guia" href="https://www.gs1.org/standards/gs1-digital-link" target="_blank">&#x1F517; GS1 Digital Link (QR)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F510;</div>
+      <div class="step-content">
+        <h3>Gobernanza por actor: 6 niveles de acceso</h3>
+        <p>Siguiendo el principio «need-to-know» de la metodologia JRC145830, el modelo Code Contract define permisos campo a campo para 6 actores: <strong>PUB</strong> (publico/consumidor), <strong>REP</strong> (reparadores), <strong>REC</strong> (recicladores), <strong>OL</strong> (operadores logisticos), <strong>AUT</strong> (autoridades de vigilancia), <strong>COM</strong> (comercial/B2B). El consumidor ve composicion, cuidado y huella; el reciclador ve desmontaje y materiales; la autoridad ve el dataset completo con evidencias. prEN 18239 estandarizara la gestion de estos derechos de acceso.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-solucion">SOLUCION</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-interno" href="mailto:eduardo@codecontract.io?subject=DPP%20Textil%20-%20Gobernanza%20por%20actor" target="_blank">&#x1F4E9; Solicitar diseno de gobernanza (Code Contract)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x26D3;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Trazabilidad del dato e integridad</h3>
+        <p>El ESPR Art. 9 y Anexo III exigen que la informacion del DPP sea <strong>exacta, completa, actualizada, interoperable, fiable, integra, segura y accesible segun permisos</strong>. El Reglamento no exige una tecnologia concreta — exige resultados funcionales. La capa operativa minima: cadena de eventos verificable (quien aporto cada dato, cuando, con que documento), <em>hash SHA-256 del dataset</em> como prueba de integridad propia, y vigilancia regulatoria. La firma cualificada <strong>eIDAS QES</strong> y el sello de tiempo (Reg. 2024/1183) son voluntarios pero refuerzan el valor probatorio — es la especializacion de Code Contract.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-normativa" href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj" target="_blank">&#x1F517; eIDAS 2.0 (Reg. UE 2024/1183)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PASO 5: VERIFICAR Y PRODUCCION (G7) -->
+<div class="phase phase-purple">
+  <div class="phase-header" onclick="togglePhase(this)">
+    <div class="phase-number">5</div>
+    <div class="phase-info">
+      <h2>Verificar, registrar y poner en produccion</h2>
+      <p>Piloto end-to-end, verificacion, registro central cuando abra para textil, mantenimiento durante el ciclo de vida</p>
+    </div>
+    <div class="phase-deadline">Antes de 2028-2029</div>
+    <div class="phase-chevron">&#x25BC;</div>
+  </div>
+  <div class="phase-body">
+
+    <div class="step">
+      <div class="step-icon">&#x1F9EA;</div>
+      <div class="step-content">
+        <h3>Piloto DPP para 1-2 modelos estrategicos</h3>
+        <p>Producir un DPP completo end-to-end para 1-2 modelos (idealmente uno por lote y uno serializado item-level). Poblar los campos aplicables, generar el QR GS1 Digital Link, simular la consulta por los 6 actores. Los visores <strong>XENON</strong> (dataset tecnico por lote, con herencia entre prendas hermanas) y <strong>DEMINA</strong> (vista consumidor item-level con eventos post-venta) son implementaciones de referencia navegables de ambos patrones.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-solucion">SOLUCION</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-interno" href="xenon/">&#x1F441;&#xFE0F; Visor XENON (lote)</a>
+            <a class="doc-link doc-interno" href="demina/">&#x1F441;&#xFE0F; Visor DEMINA (item)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F50E;</div>
+      <div class="step-content">
+        <h3>Verificacion de terceros</h3>
+        <p>El informe JRC contempla certificado de conformidad <strong>o</strong> autodeclaracion con parametros de calculo verificables. Para los datos sensibles (huella PEF, contenido reciclado, quimica) la verificacion independiente sera previsible: verificadores PEF, organismos de certificacion GRS/GOTS, laboratorios acreditados ISO 17025. Anticipar la consolidacion de auditorias (social + quimica + ambiental en una ventana) reduce coste y fatiga de proveedores.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F3DB;&#xFE0F;</div>
+      <div class="step-content">
+        <h3>Registro DPP de la Comision: preparado para cuando abra al textil</h3>
+        <p>El Art. 13 ESPR obliga a la Comision a tener el registro central operativo <strong>desde el 19 de julio de 2026</strong>; almacena identificadores unicos y punteros, no el contenido completo. El registro <strong>aun no acepta DPPs textiles</strong> — llegara con el acto delegado (~2027). Lo que si se puede hacer hoy: dejar los identificadores (GTIN, GLN, EORI) y la estructura del dataset listos para la carga, que debera producirse <strong>antes de la primera comercializacion</strong> de cada producto cubierto.</p>
+        <div class="doc-group">
+          <div class="doc-group-label dg-ley">LEY</div>
+          <div class="doc-group-links">
+            <a class="doc-link doc-normativa" href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank">&#x1F517; ESPR Arts. 12-13 (registro)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-icon">&#x1F504;</div>
+      <div class="step-content">
+        <h3>Mantener datos actualizados (estaticos vs dinamicos)</h3>
+        <p>En textil, la mayoria de campos son estaticos por modelo o lote (composicion, huella, certificados de produccion). Los <strong>dinamicos</strong> aparecen con la granularidad item: eventos de venta, reparacion, reventa y fin de vida por prenda — el patron que materializa el visor DEMINA. Ademas: los certificados caducan (OEKO-TEX anual), la huella se revisa si cambian materiales o proveedores, y el acto delegado obligara a revisar el mapping completo cuando se publique. Establecer vigilancia regulatoria y revision anual.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- RESULT (G9) -->
+<div class="result-box">
+  <h2>&#x1F3AF; DPP textil operativo</h2>
+  <p>Tu prenda tiene un Pasaporte Digital completo, accesible via QR / GS1 Digital Link, alineado con el ESPR 2024/1781 y el contenido propuesto por el JRC, con datos trazables a documento fuente y estructura lista para el registro de la UE.</p>
+  <div class="result-items">
+    <div class="result-item">&#x1F4F2; Data carrier en etiqueta</div>
+    <div class="result-item">&#x1F4CB; 266 campos mapeados</div>
+    <div class="result-item">&#x1F30D; Huella PEF (PEFCR A&amp;F)</div>
+    <div class="result-item">&#x267B;&#xFE0F; Contenido reciclado trazable</div>
+    <div class="result-item">&#x2697;&#xFE0F; SoC inventariadas</div>
+    <div class="result-item">&#x1F91D; Evidencia social enlazada</div>
+    <div class="result-item">&#x1F510; Acceso por 6 actores</div>
+    <div class="result-item">&#x1F3DB;&#xFE0F; Listo para el Registro UE</div>
+  </div>
+</div>
+
+</div>
+
+<!-- DATA ATTRIBUTES OVERVIEW: 10 CLUSTERS -->
+<div class="attrs-section" id="attrs-overview">
+  <div class="attrs-box">
+    <h2>&#x1F4CA; Los 10 clusters del modelo canonico DPP textil (v2)</h2>
+    <p class="attrs-sub">266 campos organizados en 10 clusters, alineados con el informe JRC de contenido (may 2026), la metodologia JRC145830 y Trace4Value. 88 campos responden a normas ya en vigor. Cada campo declara tipo de dato, obligatoriedad propuesta (M/R/O), nivel de acceso (PUB/REP/REC/OL/AUT/COM) y fuente normativa. El detalle completo esta en el <a href="mapping-textil.html">mapping campo a campo</a>.</p>
+    <div class="attrs-grid">
+      <div class="attr-card">
+        <h4>&#x1F3E2; C1 &middot; Operador economico <span class="attr-count">36</span></h4>
+        <ul>
+          <li>&middot; Rol del operador (fabricante / importador)</li>
+          <li>&middot; Razon social, forma juridica, direccion</li>
+          <li>&middot; GLN, EORI, NIF / registro nacional</li>
+          <li>&middot; Contacto y persona responsable</li>
+          <li>&middot; Registro EPR textil</li>
+        </ul>
+      </div>
+      <div class="attr-card">
+        <h4>&#x1F194; C2 &middot; Identificacion del producto <span class="attr-count">33</span></h4>
+        <ul>
+          <li>&middot; GTIN (AI 01), SKU, serial (AI 21), lote (AI 10)</li>
+          <li>&middot; Nombre comercial, descripcion, categoria</li>
+          <li>&middot; Codigos HS / TARIC</li>
+          <li>&middot; Talla, color, temporada</li>
+          <li>&middot; Identificador de registro (Art. 13)</li>
+        </ul>
+      </div>
+      <div class="attr-card">
+        <h4>&#x1F9F5; C3 &middot; Materiales y composicion <span class="attr-count">44</span></h4>
+        <ul>
+          <li>&middot; Fibras: tipo, %, origen, certificado (x5)</li>
+          <li>&middot; Contenido reciclado y tipo de reciclado</li>
+          <li>&middot; Avios y componentes (cremalleras, botones)</li>
+          <li>&middot; Sustancias de preocupacion (CAS, concentracion)</li>
+          <li>&middot; Microplasticos / desprendimiento de fibras</li>
+        </ul>
+      </div>
+      <div class="attr-card">
+        <h4>&#x1F30F; C4 &middot; Cadena de suministro <span class="attr-count">16</span></h4>
+        <ul>
+          <li>&middot; Tier 1 confeccion: planta, GLN, pais</li>
+          <li>&middot; Tier 2 tejeduria / tinte</li>
+          <li>&middot; Tier 3 hilatura / fibra</li>
+          <li>&middot; Pais de origen y ruta logistica</li>
+        </ul>
+      </div>
+      <div class="attr-card">
+        <h4>&#x1F4AA; C5 &middot; Durabilidad <span class="attr-count">25</span></h4>
+        <ul>
+          <li>&middot; Vida util de referencia / declarada</li>
+          <li>&middot; Solidez del color (lavado, luz, frote)</li>
+          <li>&middot; Pilling, estabilidad dimensional</li>
+          <li>&middot; Garantia y propiedades tecnicas</li>
+        </ul>
+      </div>
+      <div class="attr-card">
+        <h4>&#x1F527; C6 &middot; Reparabilidad <span class="attr-count">15</span></h4>
+        <ul>
+          <li>&middot; Indice de reparabilidad</li>
+          <li>&middot; Repuestos disponibles y anos</li>
+          <li>&middot; Manual de reparacion / desmontaje</li>
+          <li>&middot; Red de centros de reparacion</li>
+        </ul>
+      </div>
+      <div class="attr-card">
+        <h4>&#x267B;&#xFE0F; C7 &middot; Fin de vida <span class="attr-count">20</span></h4>
+        <ul>
+          <li>&middot; Reciclabilidad fibra-a-fibra y ruta</li>
+          <li>&middot; % material reciclable, componentes no reciclables</li>
+          <li>&middot; Instrucciones de fin de vida</li>
+          <li>&middot; Programa take-back y puntos de recogida</li>
+        </ul>
+      </div>
+      <div class="attr-card">
+        <h4>&#x1F30D; C8 &middot; Huella ambiental <span class="attr-count">23</span></h4>
+        <ul>
+          <li>&middot; Metodo PEF / version PEFCR y unidad funcional</li>
+          <li>&middot; Huella de carbono (kg CO&#x2082;eq)</li>
+          <li>&middot; Agua, uso de suelo, acidificacion, ecotoxicidad</li>
+          <li>&middot; Enlace al informe ACV</li>
+        </ul>
+      </div>
+      <div class="attr-card">
+        <h4>&#x1F91D; C9 &middot; Diligencia debida (social) <span class="attr-count">31</span></h4>
+        <ul>
+          <li>&middot; Politica de due diligence</li>
+          <li>&middot; Auditoria social: esquema, n.&ordm;, fecha, score</li>
+          <li>&middot; Evaluacion de riesgo trabajo forzoso / infantil</li>
+          <li>&middot; Living wage</li>
+        </ul>
+      </div>
+      <div class="attr-card">
+        <h4>&#x2705; C10 &middot; Conformidad y etiquetas <span class="attr-count">23</span></h4>
+        <ul>
+          <li>&middot; Normativa aplicable y declaracion de conformidad</li>
+          <li>&middot; Registro EPR y esquema</li>
+          <li>&middot; Certificados: OEKO-TEX, GOTS, GRS, bluesign...</li>
+          <li>&middot; Significado de simbolos y etiquetas</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPEC-PACK-DPP G8: CHECKLIST DOCUMENTOS OBLIGATORIOS -->
+<div class="checklist-section">
+  <div class="checklist-box">
+    <h2>&#x1F4D1; Checklist regulatorio: obligaciones vigentes y requisitos previsibles via acto delegado</h2>
+    <p class="cl-sub">Antes de poblar el DPP, conoce que documentos exige el marco para el textil. Varios ya son exigibles hoy con independencia del DPP. Marco: ESPR 2024/1781 + Reg. 1007/2011 + REACH + Reg. 2024/3015 + WFD/RAP + CSDDD.</p>
+    <div class="cl-table-wrap">
+    <table class="cl-table">
+      <thead><tr><th>#</th><th>Documento</th><th>Base regulatoria</th><th>Deadline / vigencia</th><th>Obligatoriedad</th><th>Origen (quien lo genera)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td class="cl-doc">Etiqueta de composicion de fibras</td><td class="cl-art">Reg. (UE) 1007/2011</td><td>En vigor (toda prenda comercializada)</td><td>&#x1F534; OBLIGATORIO</td><td>Fabricante / importador</td></tr>
+        <tr><td>2</td><td class="cl-doc">Comunicacion SVHC (REACH Art. 33) + notificacion SCIP</td><td class="cl-art">REACH Art. 33 &middot; SCIP via Dir. Marco de Residuos Art. 9(1)(i)</td><td>En vigor (si SVHC &gt; 0,1% p/p)</td><td>&#x1F7E0; OBLIGATORIO (REACH / residuos)</td><td>Fabricante / proveedores quimicos</td></tr>
+        <tr><td>3</td><td class="cl-doc">Disclosure de productos no vendidos descartados</td><td class="cl-art">ESPR Art. 24 + acto de ejecucion (feb 2026)</td><td>En vigor para grandes empresas</td><td>&#x1F534; OBLIGATORIO</td><td>Marca / retailer</td></tr>
+        <tr><td>4</td><td class="cl-doc">Evidencia de no-destruccion de no vendidos (o excepcion documentada)</td><td class="cl-art">ESPR Art. 25 + acto delegado de excepciones (feb 2026)</td><td>19 jul 2026 (grandes); 2030 (medianas)</td><td>&#x1F534; OBLIGATORIO</td><td>Marca / retailer + gestor de residuos</td></tr>
+        <tr><td>5</td><td class="cl-doc">Registro EPR textil (por Estado miembro)</td><td class="cl-art">WFD revisada (RAP textil)</td><td>Esquemas nacionales ~2027-2028</td><td>&#x1F534; OBLIGATORIO (cuando opere el esquema)</td><td>Productor via SCRAP nacional</td></tr>
+        <tr><td>6</td><td class="cl-doc">Informe huella ambiental PEF (PEFCR A&amp;F v3.1)</td><td class="cl-art">ESPR Arts. 5-7 &middot; via acto delegado textil</td><td>Con el acto delegado (~2028-2029)</td><td>&#x1F534; OBLIGATORIO (previsible)</td><td>Consultor ACV / herramienta PEF</td></tr>
+        <tr><td>7</td><td class="cl-doc">Declaracion de contenido reciclado con cadena de custodia</td><td class="cl-art">ESPR Anexo I &middot; via acto delegado; GRS/RCS como evidencia de facto</td><td>Con el acto delegado</td><td>&#x1F534; OBLIGATORIO (previsible)</td><td>Fabricante + certificador</td></tr>
+        <tr><td>8</td><td class="cl-doc">Informes de ensayo de durabilidad por lote</td><td class="cl-art">ESPR Anexo I (durabilidad) &middot; normas ISO/EN de ensayo</td><td>Con el acto delegado (clases de rendimiento)</td><td>&#x1F534; OBLIGATORIO (previsible)</td><td>Laboratorio acreditado</td></tr>
+        <tr><td>9</td><td class="cl-doc">Evidencia de trazabilidad de origen (trabajo forzoso)</td><td class="cl-art">Reg. (UE) 2024/3015</td><td>Aplicable 14 dic 2027</td><td>&#x1F7E0; OBLIGATORIO (defensa practica)</td><td>Marca + proveedores tier 1-3</td></tr>
+        <tr><td>10</td><td class="cl-doc">Informe de due diligence (CSDDD)</td><td class="cl-art">CSDDD (UE) 2024/1760 mod. Dir. (UE) 2026/470</td><td>26 jul 2029; solo empresas sobre umbral</td><td>&#x1F7E0; CONDICIONADO (tamano / cascada contractual)</td><td>Empresa matriz sujeta a CSDDD</td></tr>
+        <tr><td>11</td><td class="cl-doc">Identificador unico + data carrier (GTIN / GS1 Digital Link, AI 01/10/21)</td><td class="cl-art">ESPR Arts. 9 y 12 &middot; EN 18219/18220 &middot; GS1 como estandar de facto</td><td>Antes de la primera comercializacion con DPP</td><td>&#x1F534; OBLIGATORIO (identificador/carrier) &middot; GS1 recomendado</td><td>Fabricante; GS1 / AECOC si usa GS1</td></tr>
+        <tr><td>12</td><td class="cl-doc">Carga de datos en el Registro DPP de la Comision</td><td class="cl-art">ESPR Art. 13 (registro); Art. 12 (identificadores)</td><td>Cuando el acto delegado textil sea aplicable; registro operativo desde jul 2026</td><td>&#x1F534; OBLIGATORIO (cuando aplique)</td><td>Fabricante via plataforma DPP</td></tr>
+        <tr><td>13</td><td class="cl-doc">Declaracion de conformidad ESPR</td><td class="cl-art">ESPR &middot; via acto delegado sectorial (el JRC contempla certificado o autodeclaracion + parametros)</td><td>Con el acto delegado</td><td>&#x1F534; OBLIGATORIO</td><td>Fabricante</td></tr>
+        <tr><td>14</td><td class="cl-doc">Certificados voluntarios vigentes (OEKO-TEX, GOTS, GRS, bluesign)</td><td class="cl-art">Esquemas privados &middot; evidencia de facto de alegaciones</td><td>Renovacion periodica (OEKO-TEX anual)</td><td>&#x26AA; CONTRACTUAL / de mercado</td><td>Certificadores acreditados</td></tr>
+        <tr><td>15</td><td class="cl-doc">Sello / firma cualificada eIDAS 2.0 del dataset</td><td class="cl-art">Reg. (UE) 2024/1183 Arts. 35-41</td><td>Voluntario hoy; refuerza valor probatorio</td><td>&#x1F535; OBLIGACION FUNCIONAL</td><td>Trust Service Provider cualificado</td></tr>
+        <tr><td>16</td><td class="cl-doc">Hash de integridad criptografica del dataset</td><td class="cl-art">ISO/IEC 27001 &middot; buenas practicas</td><td>Operativo hoy</td><td>&#x1F535; OBLIGACION FUNCIONAL</td><td>Sistema de gestion documental</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="checklist-legend">
+      &#x1F534; exigible por el ESPR / etiquetado / RAP hoy o en deadline conocido &middot; &#x1F7E0; exigible por norma transversal o condicionada (REACH/residuos, trabajo forzoso, CSDDD) &middot; &#x26AA; exigible por contrato o mercado, no por ley &middot; &#x1F535; obligacion funcional: no exigida por nombre, pero refuerza sustancialmente el valor probatorio y la defendibilidad del DPP. Los requisitos «previsibles» dependen del acto delegado textil, aun no adoptado.
+    </div>
+  </div>
+</div>
+
+<!-- SPEC-PACK-DPP G10: EXIGENCIA LEGAL <-> OBLIGACION FUNCIONAL -->
+<div class="checklist-section">
+  <div class="checklist-box">
+    <h2>Exigencias legales y obligaciones funcionales del DPP textil</h2>
+    <p class="cl-sub">El ESPR define el <em>que</em> (la obligacion legal). La columna derecha muestra <em>como se cumple</em> en terminos funcionales: que esta operativo hoy (<strong>&#x2713;</strong>), que esta en transicion (<strong>&#x2699;&#xFE0F;</strong>) y que depende del despliegue europeo o del acto delegado (<strong>&#x1F52E;</strong>). <strong>El Reglamento no exige una tecnologia concreta; exige resultados funcionales.</strong></p>
+    <div class="cl-table-wrap">
+    <table class="cl-table">
+      <thead><tr><th>Elemento</th><th>Exigencia legal (ESPR 2024/1781 + marco textil)</th><th>Obligacion funcional &middot; como se cumple</th></tr></thead>
+      <tbody>
+        <tr><td class="cl-doc">Datos del pasaporte</td><td>Informacion interoperable, estructurada y legible por maquina (Art. 9 + Anexo III)</td><td><strong>&#x2713;</strong> Dataset JSON-LD segun el modelo canonico v2 de 266 campos: responsable, fuente, evidencia y estado por campo.</td></tr>
+        <tr><td class="cl-doc">Identificadores</td><td>Identificador unico de producto, operador e instalacion (Arts. 9, 12)</td><td><strong>&#x2713;</strong> GTIN + lote + serial via GS1 Digital Link (AI 01/10/21); GLN / EORI para operador e instalacion.</td></tr>
+        <tr><td class="cl-doc">Composicion declarada</td><td>Etiquetado de fibras conforme al Reg. 1007/2011 (en vigor)</td><td><strong>&#x2713;</strong> Composicion estructurada por fibra con certificado y origen; coherente con la etiqueta fisica.</td></tr>
+        <tr><td class="cl-doc">Trazabilidad</td><td>Registrar quien aporto cada dato, cuando y con que documento soporte</td><td><strong>&#x2713;</strong> Cadena de eventos verificable + <strong>hash interno del dataset</strong> como prueba de integridad propia (no es sello cualificado eIDAS).</td></tr>
+        <tr><td class="cl-doc">Huella ambiental</td><td>Huella segun metodologia armonizada (via acto delegado, base PEF / PEFCR A&amp;F)</td><td><strong>&#x2699;&#xFE0F;</strong> Captura de ACV por modelo; clases de rendimiento pendientes de los umbrales del acto delegado.</td></tr>
+        <tr><td class="cl-doc">Accesos por rol</td><td>Datos publicos / operadores / autoridades segun need-to-know (JRC145830)</td><td><strong>&#x2699;&#xFE0F;</strong> Gobernanza de 6 actores (PUB/REP/REC/OL/AUT/COM) disenada campo a campo; prEN 18239 estandarizara la gestion de derechos.</td></tr>
+        <tr><td class="cl-doc">QR / publicacion</td><td>Data carrier + identificador cargado en el Registro antes de la primera comercializacion (Arts. 9, 12-13)</td><td><strong>&#x1F52E;</strong> Pendiente del ecosistema: el registro (jul 2026) aun no acepta textil; llegara con el acto delegado.</td></tr>
+        <tr><td class="cl-doc">Capa eIDAS cualificada</td><td>No exigida por el ESPR, pero aporta valor probatorio reforzado (inspecciones, aduanas, litigios)</td><td><strong>&#x1F52E;</strong> Roadmap: firma QES y sello de tiempo cualificado via eIDAS 2.0 — especializacion Code Contract.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ (G11) -->
+<div class="faq-box">
+  <div class="faq">
+    <div class="faq-title">&#x2754; Preguntas frecuentes sobre el DPP Textil</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-icon">&#x1F4AC;</span>
+        <span>El acto delegado textil todavia no existe. &iquest;Que tengo que hacer hoy?</span>
+        <span class="faq-chevron">&#x25BC;</span>
+      </div>
+      <div class="faq-a">
+        Trabajar con el <strong>informe JRC de mayo 2026</strong> (49 data points) como referencia tecnica preparatoria. Es lo mas autorizado disponible, pero <strong>no es juridicamente vinculante</strong>: el acto delegado definitivo podra modificar campos, umbrales y verificaciones. Aun asi, la estructura basica (identificacion, composicion, cadena de suministro, huella, circularidad, conformidad) es estable. La accion mas rentable es mapear tus datos contra ella ahora: los datos caros (huella PEF, trazabilidad tier 2-3, certificados) tardan <strong>meses</strong> en generarse, y ya hay obligaciones vigentes que no esperan al DPP (destruccion de no vendidos, REACH, etiquetado).
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-icon">&#x1F6C3;</span>
+        <span>&iquest;Que pasa si, cuando el acto delegado sea aplicable, no tengo el DPP?</span>
+        <span class="faq-chevron">&#x25BC;</span>
+      </div>
+      <div class="faq-a">
+        Una vez aplicable, el DPP deja de ser opcional. El ESPR preve que quien despache a libre practica un producto cubierto facilite a <strong>aduanas el identificador unico de registro</strong> (Art. 13(5)): el control se traslada a la frontera y un producto sin DPP conforme puede <strong>quedar bloqueado en la importacion</strong>. A ello se suman las sanciones nacionales por incumplimiento del ESPR y la actuacion de vigilancia de mercado (retirada, prohibicion de comercializacion). Para un sector que importa la mayoria de su produccion de Asia, el punto de control aduanero es especialmente relevante.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-icon">&#x1F4AC;</span>
+        <span>&iquest;Basta con subir los PDFs que ya tengo (certificados, fichas tecnicas)?</span>
+        <span class="faq-chevron">&#x25BC;</span>
+      </div>
+      <div class="faq-a">
+        No. El ESPR Anexo III exige informacion <strong>estructurada, interoperable y legible por maquina</strong> — un PDF no lo es. Los PDFs son la <strong>evidencia documental</strong> de la que se extraen los datos: el DPP es el dataset estructurado (JSON-LD) que los referencia. La buena noticia: si tienes los PDFs ordenados por lote (informes de laboratorio, certificados, packing lists), la mitad del trabajo esta hecha — falta la extraccion estructurada, que es exactamente lo que automatiza Trackline.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-icon">&#x1F4AC;</span>
+        <span>&iquest;Un certificado OEKO-TEX / GOTS o un Higg Index equivalen al DPP?</span>
+        <span class="faq-chevron">&#x25BC;</span>
+      </div>
+      <div class="faq-a">
+        No. Son <strong>insumos</strong> del DPP, no el DPP. Un certificado acredita un aspecto concreto (quimica, origen organico) durante una vigencia; el Higg Index es una autoevaluacion de sostenibilidad orientada a benchmarking. El DPP es el <strong>contenedor regulatorio</strong> que estructura todos esos datos con identificadores unicos, acceso por roles, data carrier y (cuando aplique) carga en el registro de la UE. Ninguno de esos esquemas cumple por si solo los Arts. 9-13 del ESPR — pero todos alimentan campos del DPP y conviene registrarlos con numero y vigencia.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-icon">&#x1F4AC;</span>
+        <span>&iquest;DPP por modelo, por lote o por prenda individual?</span>
+        <span class="faq-chevron">&#x25BC;</span>
+      </div>
+      <div class="faq-a">
+        El acto delegado fijara la granularidad minima; el informe JRC contempla identificadores de modelo y lote, y pilotos como Trace4Value operan a nivel de item con GTIN serializado. La practica razonable hoy: <strong>empezar por lote</strong> (modelo + color + lote cubriendo todas las tallas) — anade los datos de produccion real sin el coste de serializar — y <strong>disenar el esquema para que escale a item</strong> (AI 21) cuando los eventos post-venta (reparacion, reventa) lo justifiquen. Los visores XENON (lote) y DEMINA (item) materializan ambos patrones.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-icon">&#x1F4AC;</span>
+        <span>&iquest;Que gana una pyme textil si empieza ya?</span>
+        <span class="faq-chevron">&#x25BC;</span>
+      </div>
+      <div class="faq-a">
+        Cuatro cosas: <strong>(1)</strong> los datos lentos (huella PEF, trazabilidad tier 2-3) estaran listos cuando el acto delegado aplique, evitando el cuello de botella de consultoria de 2027-2028; <strong>(2)</strong> las tarifas EPR eco-moduladas premiaran antes a quien pueda acreditar durabilidad y reciclabilidad; <strong>(3)</strong> los grandes retailers ya piden estos datos por contrato — tenerlos estructurados es ventaja comercial hoy; <strong>(4)</strong> el coste marginal de empezar con 1-2 modelos es bajo y el aprendizaje organizativo (quien aporta cada dato) es lo que de verdad lleva tiempo.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-icon">&#x1F4AC;</span>
+        <span>&iquest;Aplica el DPP a la ropa importada? &iquest;Quien es responsable?</span>
+        <span class="faq-chevron">&#x25BC;</span>
+      </div>
+      <div class="faq-a">
+        Si. El ESPR aplica a todo producto colocado en el mercado EU, fabricado dentro o fuera. La responsabilidad recae en el <strong>operador economico que comercializa</strong> (fabricante EU o importador). En la practica, la marca/importador debe exigir contractualmente a sus proveedores asiaticos los datos que alimentan el DPP — composicion verificada, planta de confeccion, certificados, huella. El Reg. de trabajo forzoso (dic 2027) refuerza el mismo incentivo: sin trazabilidad de origen no hay defensa posible.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-icon">&#x1F4AC;</span>
+        <span>&iquest;Es obligatorio blockchain o firma electronica cualificada?</span>
+        <span class="faq-chevron">&#x25BC;</span>
+      </div>
+      <div class="faq-a">
+        No. La Comision es tecnologicamente <strong>agnostica</strong>: el ESPR exige resultados funcionales (datos exactos, integros, seguros, accesibles por roles), no tecnologias concretas. Blockchain es un enabler opcional segun CIRPASS. La firma cualificada <strong>eIDAS QES</strong> tampoco es exigida por nombre — pero es la via mas solida para que el dato certificado tenga <strong>validez legal probatoria</strong> ante inspecciones, aduanas o litigios. Esa es la apuesta diferencial de Code Contract: no «otra plataforma DPP», sino datos con firma cualificada y evidencia de origen. El hash propio del dataset es prueba de integridad interna, <strong>no equivale a un sello cualificado eIDAS</strong>.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA (G12): PROXIMOS PASOS TRACKLINE -->
+<div class="cta-section">
+  <div class="cta-box">
+    <h2>&#x1F6E0;&#xFE0F; Proximos pasos con Trackline (Code Contract)</h2>
+    <p>Trackline es la plataforma de Code Contract para la fase de preparacion del DPP textil. Hoy gobierna la recoleccion documental, la extraccion estructurada, la validacion y la trazabilidad del dataset segun el modelo canonico v2 de 266 campos. La publicacion final (data carrier + registro central + firma cualificada) se activa cuando el acto delegado y la infraestructura europea esten operativos. Cada bloque indica su estado de madurez: <strong>Hoy &#x2713;</strong> &middot; <strong>En curso &#x2699;&#xFE0F;</strong> &middot; <strong>Roadmap &#x1F52E;</strong>.</p>
+    <div class="cta-steps">
+      <div class="cta-step">
+        <div class="cta-step-num">Hoy &#x2713;</div>
+        <h4>Mapping del modelo (266 campos)</h4>
+        <p>Cargar los 10 clusters en Trackline, asignar responsables (diseno, compras, produccion, calidad, sostenibilidad) y disenar el esquema de recoleccion por lote.</p>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-num">Hoy &#x2713;</div>
+        <h4>Recopilacion con trazabilidad</h4>
+        <p>Cada dato se registra con su evidencia: quien lo aporto, cuando, documento soporte (TDS, BoM, certificado, informe de laboratorio, ACV). Hash interno del dataset como prueba de integridad.</p>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-num">En curso &#x2699;&#xFE0F;</div>
+        <h4>Generacion del DPP</h4>
+        <p>Trackline genera el DPP en JSON-LD con identificadores GS1 (AI 01/10/21), granularidad modelo/lote/item, herencia de masters entre prendas hermanas y enlace a las evidencias del Anexo III.</p>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-num">Roadmap &#x1F52E;</div>
+        <h4>Publicacion y registro</h4>
+        <p>Firma eIDAS QES del dataset, data carrier (QR / GS1 Digital Link), visor web por actores, y carga del identificador en el Registro DPP cuando abra para textil.</p>
+      </div>
+    </div>
+    <div class="cta-links">
+      <a class="cta-link cta-link-primary" href="https://web.codecontractplattform.com/" target="_blank">&#x1F517; Acceder a Trackline</a>
+      <a class="cta-link cta-link-secondary" href="mailto:eduardo@codecontract.io?subject=DPP%20Textil%20-%20consulta" target="_blank">&#x1F4E9; Solicitar mapping de tu producto</a>
+      <a class="cta-link cta-link-secondary" href="https://codecontract.io" target="_blank">&#x1F517; Code Contract S.L.</a>
+      <a class="cta-link cta-link-secondary" href="https://codecontract-dpp.github.io/dpp-construccion/" target="_blank">&#x1F4D6; Guia DPP Construccion</a>
+      <a class="cta-link cta-link-secondary" href="https://codecontract-dpp.github.io/dpp-hierro-acero/" target="_blank">&#x1F527; Guia DPP Hierro y Acero</a>
+      <a class="cta-link cta-link-secondary" href="https://codecontract-dpp.github.io/dpp-validator/" target="_blank">&#x2705; Validador DPP</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER (G13) -->
+<div class="footer">
+  <strong>Fuentes oficiales:</strong>
+  <a href="https://eur-lex.europa.eu/eli/reg/2024/1781/oj" target="_blank">ESPR 2024/1781</a> &middot;
+  <a href="https://green-forum.ec.europa.eu/news/2025-2030-working-plan-2025-07-11_en" target="_blank">Working Plan ESPR 2025-2030</a> &middot;
+  <a href="https://eur-lex.europa.eu/eli/reg/2011/1007/oj" target="_blank">Reg. 1007/2011 etiquetado</a> &middot;
+  <a href="https://eur-lex.europa.eu/eli/reg/2024/3015/oj" target="_blank">Reg. 2024/3015 trabajo forzoso</a> &middot;
+  <a href="https://environment.ec.europa.eu/news/revised-waste-framework-directive-enters-force-2025-10-16_en" target="_blank">WFD / RAP textil</a> &middot;
+  <a href="https://susproc.jrc.ec.europa.eu/product-bureau/sites/default/files/2026-05/Textiles_DPP_20260513.pdf" target="_blank">JRC — DPP textil apparel (may 2026)</a> &middot;
+  <a href="https://standards.cencenelec.eu/" target="_blank">JTC 24 (CEN-CENELEC)</a> &middot;
+  <a href="https://cirpass2.eu/" target="_blank">CIRPASS-2</a> &middot;
+  <a href="https://www.gs1.org/standards/gs1-digital-link" target="_blank">GS1 Digital Link</a><br>
+  <strong>Pack DPP Textil</strong> &mdash; Guia v1.1 &middot; Mapping v1.0 &middot; act. 25 agosto 2026 &middot; Elaborado por <a href="https://codecontract.io" target="_blank">Code Contract S.L.</a><br>
+  <em>Nota: este documento no constituye asesoramiento juridico. El acto delegado textil no esta adoptado a fecha de publicacion. Consultar siempre el texto oficial del reglamento y los actos delegados vigentes.</em>
+</div>
+
+<script>
+function togglePhase(el) {
+  el.classList.toggle('collapsed');
+  var body = el.nextElementSibling;
+  if (body) body.classList.toggle('hidden');
+}
+function toggleFaq(el) {
+  el.classList.toggle('collapsed');
+  var ans = el.nextElementSibling;
+  if (ans) ans.classList.toggle('hidden');
+}
+// Arrancar con todos los desplegables cerrados (fases + FAQ)
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.phase-header').forEach(function (h) { h.classList.add('collapsed'); });
+  document.querySelectorAll('.phase-body').forEach(function (b) { b.classList.add('hidden'); });
+  document.querySelectorAll('.faq-q').forEach(function (q) { q.classList.add('collapsed'); });
+  document.querySelectorAll('.faq-a').forEach(function (a) { a.classList.add('hidden'); });
+});
+</script>
+
+</body>
+</html>

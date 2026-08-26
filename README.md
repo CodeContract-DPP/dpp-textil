@@ -81,7 +81,7 @@ Para actualizar un demo: editar archivos en `xenon/data/*.json` (o equivalente),
 
 - Web corporativa: https://codecontract.io
 - Plataforma Trackline: https://web.codecontractplattform.com/
-- Email: adkady@gmail.com
+- Email: eduardo@codecontract.io
 
 ---
 
