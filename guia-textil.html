@@ -491,7 +491,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="h-level h-solucion">
         <div class="h-level-icon">&#x1F6E0;&#xFE0F;</div>
         <div class="h-level-title">Nivel 3: SOLUCION PROPIA</div>
-        <div class="h-level-desc">Trackline, modelo canonico v2 de 266 campos en 10 clusters, DPP modelo / lote / item con firma eIDAS QES, identificadores GS1 Digital Link (AI 01/10/21), sello de integridad SHA-256, visores XENON y DEMINA. Propuesta de Code Contract.</div>
+        <div class="h-level-desc">Trackline, modelo canonico v2 de 266 campos en 10 clusters, DPP modelo / lote / item con firma eIDAS QES, identificadores GS1 Digital Link (AI 01/10/21), sello de integridad SHA-256 y Visor Textil. Propuesta de Code Contract.</div>
         <div class="h-level-badge">Implementacion</div>
       </div>
     </div>
@@ -751,7 +751,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <div class="prod-route">Modelo + color + lote de produccion</div>
         <div class="prod-expand">&#x25BC; Ver detalle</div>
         <div class="prod-detail">
-          <strong>Un DPP por lote de produccion</strong> cubriendo todas las tallas. Anade datos de fabricacion real: planta (tier 1/2), fechas, certificados del lote, resultados de laboratorio. Es el patron del visor XENON y el camino recomendado por Code Contract para empezar.
+          <strong>Un DPP por lote de produccion</strong> cubriendo todas las tallas. Anade datos de fabricacion real: planta (tier 1/2), fechas, certificados del lote, resultados de laboratorio. Es el patron por lote y el camino recomendado por Code Contract para empezar.
         </div>
       </div>
       <div class="prod-card" onclick="this.classList.toggle('expanded')">
@@ -761,7 +761,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <div class="prod-route">Prenda individual serializada</div>
         <div class="prod-expand">&#x25BC; Ver detalle</div>
         <div class="prod-detail">
-          <strong>Un DPP por prenda fisica</strong> (serial). Permite eventos de ciclo de vida por unidad: venta, reparacion, reventa, fin de vida. Es el patron del visor DEMINA (3 capas: modelo + lote + item). Requiere serializacion en fabrica (p. ej. RFID / atma.io). Trace4Value lo implementa via serialized GTIN.
+          <strong>Un DPP por prenda fisica</strong> (serial). Permite eventos de ciclo de vida por unidad: venta, reparacion, reventa, fin de vida. Es el patron item-level (3 capas: modelo + lote + item). Requiere serializacion en fabrica (p. ej. RFID / atma.io). Trace4Value lo implementa via serialized GTIN.
         </div>
       </div>
     </div>
@@ -1148,7 +1148,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="step-icon">&#x1F4F2;</div>
       <div class="step-content">
         <h3>Data carrier: QR en etiqueta cosida, colgante o RFID</h3>
-        <p>El textil tiene tres opciones realistas: <strong>(1)</strong> QR en la <strong>etiqueta cosida</strong> (permanente, sobrevive al punto de venta — el carrier de referencia para el DPP porque debe acompanar a la prenda toda su vida util); <strong>(2)</strong> QR en el <strong>colgante</strong> (mejor experiencia en tienda, pero se corta); <strong>(3)</strong> <strong>RFID/NFC</strong> integrado (serializacion item-level automatica, patron Avery Dennison / atma.io del visor DEMINA). EN 18220 define los carriers permitidos y su codificacion; ISO/IEC 18004 la simbologia QR.</p>
+        <p>El textil tiene tres opciones realistas: <strong>(1)</strong> QR en la <strong>etiqueta cosida</strong> (permanente, sobrevive al punto de venta — el carrier de referencia para el DPP porque debe acompanar a la prenda toda su vida util); <strong>(2)</strong> QR en el <strong>colgante</strong> (mejor experiencia en tienda, pero se corta); <strong>(3)</strong> <strong>RFID/NFC</strong> integrado (serializacion item-level automatica, patron Avery Dennison / atma.io). EN 18220 define los carriers permitidos y su codificacion; ISO/IEC 18004 la simbologia QR.</p>
         <div class="doc-group">
           <div class="doc-group-label dg-guia">GUIA TECNICA</div>
           <div class="doc-group-links">
@@ -1242,7 +1242,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="step-icon">&#x1F504;</div>
       <div class="step-content">
         <h3>Mantener datos actualizados (estaticos vs dinamicos)</h3>
-        <p>En textil, la mayoria de campos son estaticos por modelo o lote (composicion, huella, certificados de produccion). Los <strong>dinamicos</strong> aparecen con la granularidad item: eventos de venta, reparacion, reventa y fin de vida por prenda — el patron que materializa el visor DEMINA. Ademas: los certificados caducan (OEKO-TEX anual), la huella se revisa si cambian materiales o proveedores, y el acto delegado obligara a revisar el mapping completo cuando se publique. Establecer vigilancia regulatoria y revision anual.</p>
+        <p>En textil, la mayoria de campos son estaticos por modelo o lote (composicion, huella, certificados de produccion). Los <strong>dinamicos</strong> aparecen con la granularidad item: eventos de venta, reparacion, reventa y fin de vida por prenda — el patron item-level. Ademas: los certificados caducan (OEKO-TEX anual), la huella se revisa si cambian materiales o proveedores, y el acto delegado obligara a revisar el mapping completo cuando se publique. Establecer vigilancia regulatoria y revision anual.</p>
       </div>
     </div>
 
@@ -1483,7 +1483,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         <span class="faq-chevron">&#x25BC;</span>
       </div>
       <div class="faq-a">
-        El acto delegado fijara la granularidad minima; el informe JRC contempla identificadores de modelo y lote, y pilotos como Trace4Value operan a nivel de item con GTIN serializado. La practica razonable hoy: <strong>empezar por lote</strong> (modelo + color + lote cubriendo todas las tallas) — anade los datos de produccion real sin el coste de serializar — y <strong>disenar el esquema para que escale a item</strong> (AI 21) cuando los eventos post-venta (reparacion, reventa) lo justifiquen. Los visores XENON (lote) y DEMINA (item) materializan ambos patrones.
+        El acto delegado fijara la granularidad minima; el informe JRC contempla identificadores de modelo y lote, y pilotos como Trace4Value operan a nivel de item con GTIN serializado. La practica razonable hoy: <strong>empezar por lote</strong> (modelo + color + lote cubriendo todas las tallas) — anade los datos de produccion real sin el coste de serializar — y <strong>disenar el esquema para que escale a item</strong> (AI 21) cuando los eventos post-venta (reparacion, reventa) lo justifiquen. El <strong>Visor Textil</strong> materializa ambos patrones.
       </div>
     </div>
 
